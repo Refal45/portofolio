@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -33,6 +33,8 @@
         --toast-text: #111827;
         --demo-btn-bg: #2563eb10;
         --demo-btn-hover: #2563eb20;
+        --overlay-bg: rgba(0, 0, 0, 0.5);
+        --header-bg: rgba(255, 255, 255, 0.85);
       }
 
       body.dark {
@@ -52,6 +54,8 @@
         --toast-text: #f1f5f9;
         --demo-btn-bg: #3b82f620;
         --demo-btn-hover: #3b82f640;
+        --overlay-bg: rgba(0, 0, 0, 0.7);
+        --header-bg: rgba(30, 41, 59, 0.9);
       }
 
       body {
@@ -74,7 +78,7 @@
         background-color: var(--bg-body);
       }
 
-      /* SIDEBAR */
+      /* SIDEBAR (desktop style) */
       .sidebar {
         background-color: var(--bg-sidebar);
         border-right: 1px solid var(--border-color);
@@ -85,6 +89,23 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+      }
+
+      /* Tombol close sidebar (hanya tampil mobile) */
+      .sidebar-close {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.6rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 1rem;
+        padding: 0;
+        line-height: 1;
+      }
+      .sidebar-close:hover {
+        color: var(--active-color);
       }
 
       .profile-img-container {
@@ -175,7 +196,72 @@
       .main-content {
         padding: 2rem 2.5rem;
         overflow-y: auto;
+        position: relative;
       }
+
+      /* ========== MOBILE HEADER MODERN ========== */
+      .mobile-header {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--header-bg);
+        backdrop-filter: blur(12px);
+        padding: 0.8rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+      }
+      .mobile-header .menu-icon {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      }
+      .mobile-header .menu-icon:hover {
+        background: var(--hover-bg);
+        transform: scale(0.97);
+      }
+      .mobile-header .brand {
+        font-weight: 700;
+        font-size: 1.1rem;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: -0.2px;
+      }
+      .mobile-header .right-placeholder {
+        width: 44px;
+      }
+
+      /* Overlay gelap untuk mobile drawer */
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--overlay-bg);
+        z-index: 1040;
+        display: none;
+        backdrop-filter: blur(3px);
+      }
+      .sidebar-overlay.active {
+        display: block;
+      }
+
       .info-badge {
         display: flex;
         flex-wrap: wrap;
@@ -366,23 +452,59 @@
         border-radius: 12px;
         box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
       }
+
+      /* ========== RESPONSIVE MOBILE DRAWER ========== */
       @media (max-width: 850px) {
         .portfolio-grid {
           grid-template-columns: 1fr;
         }
+        .mobile-header {
+          display: flex;
+        }
         .sidebar {
-          position: relative;
-          height: auto;
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100%;
+          z-index: 1050;
+          transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+          border-right: 1px solid var(--border-color);
+          padding-top: 1rem;
+        }
+        .sidebar.open {
+          left: 0;
+        }
+        .sidebar-close {
+          display: block;
+          margin-right: 0.5rem;
+          margin-top: 0.2rem;
         }
         .main-content {
-          padding: 1.5rem;
+          padding: 0 1.2rem 2rem 1.2rem;
+        }
+        .back-to-top {
+          bottom: 15px;
+          left: 15px;
+        }
+        .custom-toast {
+          bottom: 15px;
+          right: 15px;
+        }
+        .section-title {
+          font-size: 1.4rem;
         }
       }
     </style>
   </head>
   <body>
+    <!-- OVERLAY (mobile) -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
     <div class="portfolio-grid">
-      <aside class="sidebar">
+      <aside class="sidebar" id="mainSidebar">
+        <button class="sidebar-close" id="closeSidebarBtn" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
         <div class="profile-img-container">
           <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
         </div>
@@ -402,6 +524,15 @@
       </aside>
 
       <main class="main-content">
+        <!-- MOBILE MODERN HEADER (hanya tampil di mobile) -->
+        <div class="mobile-header">
+          <div class="menu-icon" id="mobileMenuIcon">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="brand">Raifal.dev</div>
+          <div class="right-placeholder"></div>
+        </div>
+
         <div class="info-badge">
           <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
           <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web & Hosting Enthusiast</div>
@@ -515,6 +646,48 @@ $results = $stmt->fetchAll();</pre>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       (function() {
+        // ========== MOBILE DRAWER LOGIC ==========
+        const sidebar = document.getElementById('mainSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() {
+          if (window.innerWidth <= 850) {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('open');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 850) {
+            if (sidebar.classList.contains('open')) closeSidebar();
+            document.body.style.overflow = '';
+          } else {
+            if (sidebar.classList.contains('open')) closeSidebar();
+          }
+        });
+
+        // Tutup sidebar saat klik link navigasi di mobile
+        const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 850) {
+              closeSidebar();
+            }
+          });
+        });
+
         // Dark mode
         const toggleBtn = document.getElementById('darkModeToggle');
         const iconTheme = toggleBtn.querySelector('i');
@@ -558,13 +731,11 @@ $results = $stmt->fetchAll();</pre>
         const modalImage = document.getElementById('modalImage');
         const modalCaption = document.getElementById('modalCaption');
 
-        // Setiap item galeri bisa diklik untuk lightbox
         const galleryItems = document.querySelectorAll('.gallery-item');
         galleryItems.forEach(item => {
           const img = item.querySelector('img');
           const captionDiv = item.querySelector('.gallery-caption');
           const imgSrc = img.getAttribute('src');
-          // Ambil judul dari data-title atau dari caption
           let title = item.getAttribute('data-title') || (captionDiv ? captionDiv.innerText : 'Dokumentasi');
           let tech = item.getAttribute('data-tech') || '';
           item.style.cursor = 'pointer';
@@ -575,7 +746,6 @@ $results = $stmt->fetchAll();</pre>
               modal.show();
             }
           });
-          // Optional: toast saat klik caption atau area lain (kecuali gambar)
           item.addEventListener('click', (e) => {
             if (e.target === img || img.contains(e.target)) return;
             showToast(`📸 ${title} — klik untuk memperbesar`, 'fas fa-camera');
