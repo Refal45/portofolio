@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Pengalaman PKL | Raifal Fadhal Zahran</title>
+    <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition:
+          background-color 0.25s ease,
+          color 0.2s ease,
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      /* LIGHT MODE (default) */
+      :root {
+        --bg-body: #f9fafb;
+        --bg-surface: #ffffff;
+        --bg-sidebar: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #4b5563;
+        --text-muted: #6b7280;
+        --border-color: #e5e7eb;
+        --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        --hover-bg: #f3f4f6;
+        --active-color: #2563eb;
+        --active-bg: #eff6ff;
+        --badge-bg: #f3f4f6;
+        --badge-text: #1f2937;
+        --separator: #e5e7eb;
+        --toast-bg: #ffffff;
+        --toast-text: #111827;
+        --timeline-dot: #2563eb;
+        --input-bg: #ffffff;
+      }
+
+      /* DARK MODE */
+      body.dark {
+        --bg-body: #0f172a;
+        --bg-surface: #1e293b;
+        --bg-sidebar: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        --hover-bg: #334155;
+        --active-color: #60a5fa;
+        --active-bg: #1e3a8a;
+        --badge-bg: #334155;
+        --badge-text: #e2e8f0;
+        --separator: #334155;
+        --toast-bg: #1e293b;
+        --toast-text: #f1f5f9;
+        --timeline-dot: #60a5fa;
+        --input-bg: #0f172a;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-primary);
+        line-height: 1.5;
+      }
+
+      h1,
+      h2,
+      h3,
+      .nav-link-custom {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* Layout Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: 100vh;
+        max-width: 1400px;
+        margin: 0 auto;
+        background-color: var(--bg-body);
+      }
+
+      /* ========== SIDEBAR KIRI ========== */
+      .sidebar {
+        background-color: var(--bg-sidebar);
+        border-right: 1px solid var(--border-color);
+        padding: 2rem 1.5rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile-img-container {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--active-color);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .profile-img:hover {
+        transform: scale(1.02);
+      }
+
+      .greeting {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--active-color);
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .fullname {
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-align: center;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+      }
+
+      .username {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-bottom: 1.8rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--border-color);
+        width: 100%;
+      }
+
+      .nav-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0 0;
+        flex: 1;
+      }
+      .nav-menu li {
+        margin-bottom: 0.6rem;
+      }
+      .nav-link-custom {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0.7rem 1rem;
+        border-radius: 60px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.2s;
+        font-size: 1rem;
+      }
+      .nav-link-custom i {
+        width: 24px;
+        font-size: 1.2rem;
+      }
+      .nav-link-custom:hover {
+        background-color: var(--hover-bg);
+        color: var(--active-color);
+        transform: translateX(5px);
+      }
+      .active-link {
+        background-color: var(--active-bg);
+        color: var(--active-color);
+        font-weight: 600;
+      }
+
+      .theme-switch-wrapper {
+        margin-top: auto;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+      .dark-mode-btn {
+        background: var(--badge-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        padding: 0.6rem 1rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ========== KONTEN UTAMA ========== */
+      .main-content {
+        padding: 2rem 2.5rem;
+        overflow-y: auto;
+      }
+
+      .info-badge {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.8rem;
+      }
+      .location-chip,
+      .open-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--badge-bg);
+        padding: 0.45rem 1.2rem;
+        border-radius: 40px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+      }
+      .open-chip {
+        background: #dcfce7;
+        color: #15803d;
+        border: none;
+      }
+      body.dark .open-chip {
+        background: #14532d;
+        color: #bbf7d0;
+      }
+
+      .section-title {
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        margin-bottom: 1.2rem;
+        border-left: 5px solid var(--active-color);
+        padding-left: 1rem;
+      }
+
+      /* Kartu pengalaman */
+      .exp-card {
+        background: var(--bg-surface);
+        border-radius: 28px;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+        transition: transform 0.2s;
+      }
+      .exp-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .exp-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--active-color);
+      }
+      .exp-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin: 1.8rem 0;
+      }
+      .gallery-item {
+        background: var(--badge-bg);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+      }
+      .gallery-caption {
+        padding: 0.8rem;
+        text-align: center;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .team-member {
+        background: var(--active-bg);
+        border-radius: 60px;
+        padding: 0.5rem 1.2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        color: var(--active-color);
+      }
+      .team-member a {
+        color: var(--active-color);
+        text-decoration: none;
+      }
+
+      .tech-note {
+        background: var(--hover-bg);
+        border-left: 4px solid var(--active-color);
+        padding: 1rem 1.3rem;
+        border-radius: 20px;
+        margin: 1rem 0;
+        font-size: 0.95rem;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        background: var(--active-color);
+        color: white;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border: none;
+      }
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .custom-toast {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: var(--toast-bg);
+        color: var(--toast-text);
+        padding: 12px 20px;
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        font-size: 0.85rem;
+        font-weight: 500;
+        z-index: 1100;
+        backdrop-filter: blur(8px);
+        border-left: 4px solid var(--active-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        pointer-events: none;
+      }
+      .custom-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 850px) {
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: relative;
+          height: auto;
+        }
+        .main-content {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="portfolio-grid">
+      <aside class="sidebar">
+        <div class="profile-img-container">
+          <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
+        </div>
+        <div class="greeting">Halo, Saya</div>
+        <div class="fullname">Raifal Fadhal Zahran</div>
+        <div class="username">@Refal</div>
+
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html" class="nav-link-custom"><i class="fas fa-home"></i> Beranda</a>
+          </li>
+          <li>
+            <a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a>
+          </li>
+          <li>
+            <a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a>
+          </li>
+          <li>
+            <a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a>
+          </li>
+          <li>
+            <a href="pengalaman.html" class="nav-link-custom active-link"><i class="fas fa-briefcase"></i> Pengalaman PKL</a>
+          </li>
+        </ul>
+
+        <div class="theme-switch-wrapper">
+          <div class="dark-mode-btn" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+            <span>Mode Gelap</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="info-badge">
+          <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
+          <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web Junior</div>
+        </div>
+
+        <!-- PENGALAMAN PKL: DOMAENESIA -->
+        <h2 class="section-title"><i class="fas fa-server me-2"></i> Pengalaman PKL & Hosting</h2>
+
+        <div class="exp-card">
+          <div class="exp-title"><i class="fas fa-cloud-upload-alt"></i> Domaenesia - Domain & cPanel Hosting</div>
+          <div class="exp-date"><i class="far fa-calendar-alt"></i> Periode PKL: 2024 | Depok</div>
+          <p>
+            Selama Praktek Kerja Lapangan (PKL) di <strong>Domaenesia</strong>, saya mendapatkan pengalaman langsung dalam mengelola <strong>domain</strong> dan <strong>hosting berbasis cPanel</strong>. Saya belajar mengatur zona DNS,
+            pembelian domain, konfigurasi nameserver, serta mengelola file dan folder melalui cPanel File Manager. Selain itu, saya juga mempelajari manajemen database MySQL, backup otomatis, dan keamanan dasar hosting.
+          </p>
+
+          <!-- Galeri foto domain.jpeg & cpanel.jpeg & foto5.jpg -->
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="domain.jpeg" alt="Manajemen Domain" onerror="this.src = 'https://placehold.co/400x200?text=Domain+Management'" />
+              <div class="gallery-caption"><i class="fas fa-globe"></i> Konfigurasi Domain (Domaenesia)</div>
+            </div>
+            <div class="gallery-item">
+              <img src="cpanel.jpeg" alt="cPanel Dashboard" onerror="this.src = 'https://placehold.co/400x200?text=cPanel+Dashboard'" />
+              <div class="gallery-caption"><i class="fab fa-cpanel"></i> cPanel: File Manager & Database</div>
+            </div>
+            <div class="gallery-item">
+              <img src="foto5.jpg" alt="Screenshot Project" onerror="this.src = 'https://placehold.co/400x200?text=Server+Settings'" />
+              <div class="gallery-caption"><i class="fas fa-code-branch"></i> Tampilan Web UMKM Desa Serang , Tasikmalaya</div>
+            </div>
+          </div>
+
+          <p>
+            Pengalaman paling berharga adalah memahami perbedaan cara eksekusi query pada aplikasi web:
+            <strong>bind parameter (prepared statement)</strong> vs <strong>get result (query langsung)</strong>. Dalam konteks cPanel dan pengembangan web, menggunakan <code>bindParam</code> (seperti pada PDO PHP) memberikan keamanan
+            tinggi terhadap SQL injection karena memisahkan logika query dari data. Sementara <code>getResult</code> atau eksekusi langsung rentan terhadap serangan jika input tidak disaring.
+          </p>
+          <div class="tech-note">
+            <i class="fas fa-database me-2"></i> <strong>Catatan Teknis:</strong> Di cPanel saya mengimplementasikan koneksi database MySQL dengan prepared statement (bindParam) untuk aplikasi internal. Perbedaan utama:
+            <strong>bindParam</strong> mengikat parameter secara aman, eksekusi terpisah; sedangkan <strong>get_result()</strong> (pada MySQLi) mengambil hasil setelah eksekusi, namun tetap harus menggunakan parameter binding. Pada proyek
+            portfolio ini, saya lebih memilih pendekatan binding untuk keamanan dan performa.
+          </div>
+        </div>
+
+        <!-- TIM DI UMKMSerangJuara.com & Kontribusi GitHub -->
+        <div class="exp-card">
+          <div class="exp-title"><i class="fas fa-users"></i> Tim Pengembang — UMKMSerangJuara.com</div>
+          <p>
+            Bergabung dalam tim pengembangan platform<a href="https://umkmserangjuara.com/" target="_blank"> <strong>UMKMSerangJuara.com</strong> </a>, sebuah inisiatif digital untuk mempromosikan Usaha Mikro Kecil dan Menengah di wilayah
+            Serang. Sebagai tim backend & frontend, kami bekerja sama membangun sistem manajemen konten, galeri produk, dan dashboard UMKM. Saya fokus pada integrasi hosting cPanel, optimasi database, serta kolaborasi menggunakan Git &
+            GitHub.
+          </p>
+
+          <div class="team-grid">
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Hyugaaw" target="_blank" rel="noopener">Hyugaaw</a></div>
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/KuchAli" target="_blank" rel="noopener">KuchAli</a></div>
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Refal45" target="_blank" rel="noopener">Refal45 (saya)</a></div>
+          </div>
+          <p class="mt-3">
+            Kami menggunakan <strong>cPanel</strong> untuk deployment dan manajemen file, sementara alur development menggunakan branch system dan issue tracking. Kontribusi saya meliputi perbaikan struktur direktori, konfigurasi
+            environment, serta implementasi parameter binding pada fitur pencarian produk UMKM.
+          </p>
+        </div>
+
+        <!-- Penjelasan Lebih Detail: Bind Param vs Get Result -->
+        <h2 class="section-title"><i class="fas fa-code me-2"></i> Bind Parameter vs Get Result (cPanel & PHP)</h2>
+        <div class="exp-card">
+          <p>Saat bekerja di lingkungan hosting cPanel dengan database MySQL, salah satu aspek krusial adalah bagaimana kita berinteraksi dengan database. Berikut perbandingan yang saya pelajari:</p>
+          <div class="table-responsive">
+            <table class="table table-borderless" style="color: var(--text-primary)">
+              <thead class="border-bottom">
+                <tr>
+                  <th style="width: 30%">Metode</th>
+                  <th>Deskripsi</th>
+                  <th>Keamanan SQL Injection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>bindParam (PDO / MySQLi Prepared)</strong></td>
+                  <td>Mengikat parameter ke statement sebelum eksekusi. Query dan data dikirim terpisah.</td>
+                  <td><i class="fas fa-shield-alt text-success"></i> Sangat aman, karena input tidak dieksekusi sebagai query.</td>
+                </tr>
+                <tr>
+                  <td><strong>getResult (MySQLi -> get_result())</strong></td>
+                  <td>Mengambil hasil set setelah statement dieksekusi. Namun tetap harus menggunakan prepared statement sebelumnya.</td>
+                  <td><i class="fas fa-check-circle text-warning"></i> Aman jika dikombinasikan dengan bind_param, tapi raw query tanpa bind sangat berbahaya.</td>
+                </tr>
+                <tr>
+                  <td><strong>Query langsung (tanpa binding)</strong></td>
+                  <td>Menggabungkan variabel langsung ke perintah SQL (contoh: <code>"SELECT * FROM users WHERE id = $_GET[id]"</code>)</td>
+                  <td><i class="fas fa-exclamation-triangle text-danger"></i> Rawan SQL injection, tidak direkomendasikan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tech-note">
+            <i class="fas fa-terminal"></i> <strong>Praktik terbaik di cPanel:</strong> Selalu gunakan <code>bindParam</code> (PDO) atau <code>bind_param</code> (MySQLi) untuk memproteksi data dari user. <br />Contoh implementasi di project
+            UMKMSerangJuara:
+            <pre style="background: var(--badge-bg); padding: 10px; border-radius: 16px; margin-top: 10px; font-size: 0.8rem">
+$stmt = $pdo->prepare("SELECT * FROM products WHERE category = :cat");
+$stmt->bindParam(':cat', $category, PDO::PARAM_STR);
+$stmt->execute();
+$results = $stmt->fetchAll();
+        </pre
+            >
+            Dengan metode <strong>bindParam</strong>, parameter kategori aman meskipun berisi karakter spesial. <strong>getResult</strong> digunakan setelah eksekusi prepared statement untuk mengambil data, namun bukan alternatif dari
+            binding.
+          </div>
+        </div>
+
+        <!-- Sertifikat / dokumentasi tambahan -->
+        <div class="exp-card">
+          <div class="exp-title"><i class="fas fa-folder-tree"></i> Manajemen File & Direktori di cPanel</div>
+          <p>Selama PKL, saya diberikan akses ke akun cPanel untuk mengelola file, folder, serta hak akses. Beberapa kegiatan rutin:</p>
+          <ul>
+            <li>Upload dan ekstrak file website menggunakan File Manager atau FTP.</li>
+            <li>Mengatur permission folder (755 untuk direktori, 644 untuk file).</li>
+            <li>Mengelola file <code>.htaccess</code> untuk pengalihan dan aturan keamanan.</li>
+            <li>Membuat subdomain dan addon domain untuk lingkungan staging.</li>
+            <li>Backup & restore langsung dari cPanel untuk menjaga ketersediaan data.</li>
+          </ul>
+          <p>
+            Foto <strong>cpanel.jpeg</strong> di atas memperlihatkan antarmuka File Manager yang digunakan untuk mengatur struktur folder proyek seperti <code>public_html</code>, folder aset, serta konfigurasi PHP. Sementara
+            <strong>domain.jpeg</strong> menggambarkan halaman Zone Editor di cPanel untuk mengelola DNS.
+          </p>
+        </div>
+
+        <div class="last-updated text-center mt-4" id="lastUpdated"></div>
+      </main>
+    </div>
+
+    <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
+    <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+      (function () {
+        // --------------------- DARK MODE ---------------------
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const iconTheme = toggleBtn.querySelector('i');
+        const textSpan = toggleBtn.querySelector('span');
+        function updateDarkModeUI(isDark) {
+          if (isDark) {
+            iconTheme.classList.remove('fa-moon');
+            iconTheme.classList.add('fa-sun');
+            textSpan.innerText = 'Mode Terang';
+          } else {
+            iconTheme.classList.remove('fa-sun');
+            iconTheme.classList.add('fa-moon');
+            textSpan.innerText = 'Mode Gelap';
+          }
+        }
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+          document.body.classList.add('dark');
+          updateDarkModeUI(true);
+        } else if (storedTheme === 'light') {
+          document.body.classList.remove('dark');
+          updateDarkModeUI(false);
+        } else {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            updateDarkModeUI(true);
+            localStorage.setItem('theme', 'dark');
+          } else {
+            document.body.classList.remove('dark');
+            updateDarkModeUI(false);
+            localStorage.setItem('theme', 'light');
+          }
+        }
+        toggleBtn.addEventListener('click', () => {
+          const isDark = document.body.classList.contains('dark');
+          if (isDark) {
+            document.body.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            updateDarkModeUI(false);
+          } else {
+            document.body.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            updateDarkModeUI(true);
+          }
+        });
+
+        // --------------------- ACTIVE LINK (pengalaman.html) ---------------------
+        const currentPath = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+        navLinks.forEach((link) => {
+          link.classList.remove('active-link');
+          const href = link.getAttribute('href');
+          if (href === currentPath || (currentPath === 'pengalaman.html' && href === 'pengalaman.html')) {
+            link.classList.add('active-link');
+          }
+        });
+        if (!document.querySelector('.nav-link-custom.active-link')) {
+          const expLink = document.querySelector('a[href="pengalaman.html"]');
+          if (expLink) expLink.classList.add('active-link');
+        }
+
+        // --------------------- TOAST helper ---------------------
+        const toastEl = document.getElementById('toastMsg');
+        const toastTextSpan = document.getElementById('toastText');
+        function showToast(message, icon = 'fas fa-info-circle') {
+          toastTextSpan.innerText = message;
+          const iconElem = toastEl.querySelector('i');
+          if (iconElem) iconElem.className = `${icon} me-2`;
+          toastEl.classList.add('show');
+          setTimeout(() => toastEl.classList.remove('show'), 2500);
+        }
+
+        // --------------------- INTERAKSI GALERI ---------------------
+        document.querySelectorAll('.gallery-item').forEach((item) => {
+          item.addEventListener('click', () => {
+            const caption = item.querySelector('.gallery-caption')?.innerText || 'dokumentasi';
+            showToast(`📸 ${caption} — sorotan pengalaman PKL`, 'fas fa-camera');
+          });
+        });
+
+        // --------------------- TEAM MEMBER GITHUB TOAST (opsional) ---------------------
+        document.querySelectorAll('.team-member a').forEach((link) => {
+          link.addEventListener('click', (e) => {
+            setTimeout(() => showToast(`🔗 Membuka GitHub ${link.innerText}`, 'fab fa-github'), 50);
+          });
+        });
+
+        // --------------------- BACK TO TOP ---------------------
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) backBtn.classList.add('show');
+          else backBtn.classList.remove('show');
+        });
+        backBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --------------------- LAST UPDATED ---------------------
+        const lastUpdatedSpan = document.getElementById('lastUpdated');
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran · cPanel & Fullstack Enthusiast`;
+
+        // --------------------- GREETING DINAMIS ---------------------
+        const greetingElement = document.querySelector('.greeting');
+        if (greetingElement) {
+          const hours = new Date().getHours();
+          let timeGreeting = 'Halo, Saya';
+          if (hours >= 5 && hours < 11) timeGreeting = '☀️ Selamat pagi,';
+          else if (hours >= 11 && hours < 15) timeGreeting = '🌤️ Selamat siang,';
+          else if (hours >= 15 && hours < 18) timeGreeting = '🌇 Selamat sore,';
+          else timeGreeting = '🌙 Selamat malam,';
+          greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
+        }
+
+        // fallback profile image
+        const profileImg = document.getElementById('profilePhoto');
+        if (profileImg) {
+          profileImg.onerror = () => {
+            profileImg.src = 'https://placehold.co/120x120?text=Raifal';
+          };
+        }
+
+        // notifikasi kecil selamat datang di halaman pengalaman
+        setTimeout(() => {
+          showToast('✨ Selamat datang di halaman Pengalaman PKL – Eksplorasi domain, cPanel, bindParam & tim UMKMSerangJuara', 'fas fa-smile-wink');
+        }, 800);
+      })();
+    </script>
+  </body>
+</html>
