@@ -35,6 +35,7 @@
       --toast-bg: #ffffff;
       --toast-text: #111827;
       --overlay-bg: rgba(0, 0, 0, 0.5);
+      --header-bg: rgba(255, 255, 255, 0.85);
     }
 
     /* DARK MODE */
@@ -56,6 +57,7 @@
       --toast-bg: #1e293b;
       --toast-text: #f1f5f9;
       --overlay-bg: rgba(0, 0, 0, 0.7);
+      --header-bg: rgba(30, 41, 59, 0.9);
     }
 
     body {
@@ -275,25 +277,54 @@
       position: relative;
     }
 
-    /* Tombol hamburger (mobile only) */
-    .mobile-menu-toggle {
+    /* ========== MOBILE HEADER MODERN (hanya di mobile) ========== */
+    .mobile-header {
       display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1rem;
+    }
+    .mobile-header .menu-icon {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 40px;
-      padding: 0.6rem 1rem;
-      font-size: 1.2rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
       cursor: pointer;
-      margin-bottom: 1.2rem;
-      width: fit-content;
       color: var(--text-primary);
       transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-    .mobile-menu-toggle:hover {
+    .mobile-header .menu-icon:hover {
       background: var(--hover-bg);
+      transform: scale(0.97);
+    }
+    .mobile-header .brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.2px;
+    }
+    .mobile-header .right-placeholder {
+      width: 44px; /* untuk keseimbangan */
     }
 
-    /* Overlay gelap untuk mobile */
+    /* Overlay gelap untuk mobile drawer */
     .sidebar-overlay {
       position: fixed;
       top: 0;
@@ -451,12 +482,18 @@
       color: var(--text-muted);
     }
 
-    /* ========== RESPONSIVE: MOBILE DRAWER ========== */
+    /* ========== RESPONSIVE: MOBILE DRAWER + MODERN HEADER ========== */
     @media (max-width: 850px) {
       .portfolio-grid {
         grid-template-columns: 1fr;
       }
-      /* Sidebar berubah jadi drawer (fixed) */
+      /* Sembunyikan tombol burger di dalam main-content (pindah ke mobile header) */
+      .mobile-menu-toggle {
+        display: none !important;
+      }
+      .mobile-header {
+        display: flex;
+      }
       .sidebar {
         position: fixed;
         top: 0;
@@ -464,10 +501,9 @@
         width: 280px;
         height: 100%;
         z-index: 1050;
-        transition: left 0.3s ease-in-out;
-        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
         border-right: 1px solid var(--border-color);
-        border-radius: 0;
         padding-top: 1rem;
       }
       .sidebar.open {
@@ -475,16 +511,11 @@
       }
       .sidebar-close {
         display: block;
-        margin-right: 0.2rem;
+        margin-right: 0.5rem;
         margin-top: 0.2rem;
       }
-      .mobile-menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-      }
       .main-content {
-        padding: 1.2rem 1.2rem;
+        padding: 0 1.2rem 2rem 1.2rem;
       }
       .back-to-top {
         bottom: 15px;
@@ -493,6 +524,9 @@
       .custom-toast {
         bottom: 15px;
         right: 15px;
+      }
+      .section-title {
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -540,10 +574,14 @@
   </aside>
 
   <main class="main-content">
-    <!-- Tombol Hamburger muncul hanya mobile -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka menu navigasi">
-      <i class="fas fa-bars"></i> Menu
-    </button>
+    <!-- MOBILE MODERN HEADER (muncul hanya di mobile) -->
+    <div class="mobile-header">
+      <div class="menu-icon" id="mobileMenuIcon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand">Raifal.dev</div>
+      <div class="right-placeholder"></div>
+    </div>
 
     <div class="info-badge">
       <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
@@ -585,10 +623,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   (function() {
-    // ========== MOBILE DRAWER LOGIC ==========
+    // ========== MOBILE DRAWER MODERN ==========
     const sidebar = document.getElementById('mainSidebar');
     const overlay = document.getElementById('sidebarOverlay');
-    const menuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
     
     function openSidebar() {
@@ -603,31 +641,27 @@
       overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
-    if (menuToggle) menuToggle.addEventListener('click', openSidebar);
+    if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
     if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
     if (overlay) overlay.addEventListener('click', closeSidebar);
     
-    // Saat resize window > 850, pastikan sidebar tidak dalam keadaan open, dan reset overflow
+    // Resize handler: jika lebar > 850, pastikan sidebar tidak dalam keadaan open & reset
     window.addEventListener('resize', function() {
       if (window.innerWidth > 850) {
         if (sidebar.classList.contains('open')) closeSidebar();
-        sidebar.style.left = ''; 
         document.body.style.overflow = '';
       } else {
-        // pastikan state open hilang jika muncul karena resize dari desktop ke mobile? biarkan default close
+        // pastikan tertutup saat transisi dari desktop ke mobile
         if (sidebar.classList.contains('open')) closeSidebar();
       }
     });
     
-    // Tutup sidebar ketika klik link di dalam sidebar (mobile user experience)
+    // Tutup sidebar ketika salah satu link navigasi di klik pada mobile
     const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
     navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', () => {
         if (window.innerWidth <= 850) {
-          // Jangan preventDefault, biarkan navigasi berjalan, namun tutup sidebar dulu
-          // Agar transisi mulus, sedikit jeda, tapi tidak ganggu navigasi
           closeSidebar();
-          // tidak perlu menunda navigasi karena link akan dijalankan alami
         }
       });
     });
@@ -771,7 +805,6 @@
       }
     }
     if (!isReload) {
-      // Bukan reload: langsung tampilkan konten tanpa splash
       if (splashEl) splashEl.style.display = 'none';
       mainGrid.classList.add('visible');
     } else {
@@ -817,8 +850,7 @@
         profileImg.src = 'https://via.placeholder.com/120?text=Raifal';
       };
     }
-    
-    console.log('✅ Beranda responsif dengan drawer sidebar siap');
+    console.log('✅ Modern burger menu dengan mobile header siap');
   })();
 </script>
 </body>
