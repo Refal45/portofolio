@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -40,6 +40,8 @@
         --toast-text: #111827;
         --timeline-dot: #2563eb;
         --input-bg: #ffffff;
+        --overlay-bg: rgba(0, 0, 0, 0.5);
+        --header-bg: rgba(255, 255, 255, 0.85);
       }
 
       /* DARK MODE */
@@ -62,6 +64,8 @@
         --toast-text: #f1f5f9;
         --timeline-dot: #60a5fa;
         --input-bg: #0f172a;
+        --overlay-bg: rgba(0, 0, 0, 0.7);
+        --header-bg: rgba(30, 41, 59, 0.9);
       }
 
       body {
@@ -99,6 +103,23 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+      }
+
+      /* Tombol close sidebar (hanya tampil mobile) */
+      .sidebar-close {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.6rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 1rem;
+        padding: 0;
+        line-height: 1;
+      }
+      .sidebar-close:hover {
+        color: var(--active-color);
       }
 
       .profile-img-container {
@@ -205,6 +226,70 @@
       .main-content {
         padding: 2rem 2.5rem;
         overflow-y: auto;
+        position: relative;
+      }
+
+      /* ========== MOBILE HEADER MODERN ========== */
+      .mobile-header {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--header-bg);
+        backdrop-filter: blur(12px);
+        padding: 0.8rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+      }
+      .mobile-header .menu-icon {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      }
+      .mobile-header .menu-icon:hover {
+        background: var(--hover-bg);
+        transform: scale(0.97);
+      }
+      .mobile-header .brand {
+        font-weight: 700;
+        font-size: 1.1rem;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: -0.2px;
+      }
+      .mobile-header .right-placeholder {
+        width: 44px;
+      }
+
+      /* Overlay gelap untuk mobile drawer */
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--overlay-bg);
+        z-index: 1040;
+        display: none;
+        backdrop-filter: blur(3px);
+      }
+      .sidebar-overlay.active {
+        display: block;
       }
 
       .info-badge {
@@ -332,50 +417,6 @@
         transform: translateY(-2px);
       }
 
-      /* Form Kontak */
-      .contact-form {
-        background: var(--bg-surface);
-        border-radius: 28px;
-        padding: 1.5rem;
-        border: 1px solid var(--border-color);
-        box-shadow: var(--card-shadow);
-        margin: 1.8rem 0;
-      }
-      .form-control,
-      .form-select {
-        background-color: var(--input-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
-        border-radius: 60px;
-        padding: 0.7rem 1.2rem;
-      }
-      .form-control:focus,
-      .form-select:focus {
-        border-color: var(--active-color);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        background-color: var(--input-bg);
-        color: var(--text-primary);
-      }
-      textarea.form-control {
-        border-radius: 24px;
-      }
-      .btn-send {
-        background: var(--active-color);
-        border: none;
-        border-radius: 60px;
-        padding: 0.7rem 1.8rem;
-        font-weight: 600;
-        color: white;
-        transition: all 0.2s;
-      }
-      .btn-send:hover {
-        background: #1e40af;
-        transform: scale(0.98);
-      }
-      body.dark .btn-send:hover {
-        background: #3b82f6;
-      }
-
       /* Peta */
       .map-container {
         border-radius: 28px;
@@ -455,16 +496,36 @@
         transform: translateY(0);
       }
 
+      /* ========== RESPONSIVE MOBILE DRAWER ========== */
       @media (max-width: 850px) {
         .portfolio-grid {
           grid-template-columns: 1fr;
         }
+        .mobile-header {
+          display: flex;
+        }
         .sidebar {
-          position: relative;
-          height: auto;
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100%;
+          z-index: 1050;
+          transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+          border-right: 1px solid var(--border-color);
+          padding-top: 1rem;
+        }
+        .sidebar.open {
+          left: 0;
+        }
+        .sidebar-close {
+          display: block;
+          margin-right: 0.5rem;
+          margin-top: 0.2rem;
         }
         .main-content {
-          padding: 1.5rem;
+          padding: 0 1.2rem 2rem 1.2rem;
         }
         .back-to-top {
           bottom: 15px;
@@ -474,12 +535,19 @@
           bottom: 15px;
           right: 15px;
         }
+        .section-title {
+          font-size: 1.4rem;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- OVERLAY (mobile) -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
     <div class="portfolio-grid">
-      <aside class="sidebar">
+      <aside class="sidebar" id="mainSidebar">
+        <button class="sidebar-close" id="closeSidebarBtn" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
         <div class="profile-img-container">
           <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
         </div>
@@ -514,6 +582,15 @@
       </aside>
 
       <main class="main-content">
+        <!-- MOBILE MODERN HEADER (hanya tampil di mobile) -->
+        <div class="mobile-header">
+          <div class="menu-icon" id="mobileMenuIcon">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="brand">Raifal.dev</div>
+          <div class="right-placeholder"></div>
+        </div>
+
         <div class="info-badge">
           <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
           <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web Junior</div>
@@ -521,7 +598,7 @@
 
         <h2 class="section-title"><i class="fas fa-address-card me-2"></i> Hubungi Saya</h2>
 
-        <!-- Kartu kontak detail (LinkedIn sudah diganti dengan label Profil Profesional) -->
+        <!-- Kartu kontak detail -->
         <div class="contact-card">
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
@@ -537,13 +614,10 @@
               <div class="contact-value"><a href="https://github.com/Refal45" target="_blank" rel="noopener noreferrer">github.com/Refal45</a></div>
             </div>
           </div>
-          <!-- Profil Profesional (dulu LinkedIn) - label diubah dan ikon diganti -->
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
-            <!-- Ikon diganti dari linkedin ke briefcase -->
             <div class="contact-detail">
               <div class="contact-label">Profil Profesional</div>
-              <!-- Label baru tanpa kata LinkedIn -->
               <div class="contact-value"><a href="https://www.linkedin.com/in/raifal-fadhal-zahran" target="_blank" rel="noopener noreferrer">Raifal Fadhal Zahran</a></div>
             </div>
           </div>
@@ -562,6 +636,7 @@
             </div>
           </div>
         </div>
+
         <!-- Lokasi peta -->
         <h2 class="section-title"><i class="fas fa-map-pin me-2"></i> Lokasi Saya</h2>
         <div class="map-container">
@@ -574,7 +649,7 @@
           </iframe>
         </div>
 
-        <!-- Media sosial alternatif (linkedin juga ditampilkan) -->
+        <!-- Media sosial alternatif -->
         <div class="social-links mt-3 mb-4">
           <a href="https://github.com/Refal45" class="social-icon" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           <a href="https://www.linkedin.com/in/raifal-fadhal-zahran" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
@@ -592,7 +667,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       (function () {
-        // ----- DARK MODE -----
+        // ========== MOBILE DRAWER LOGIC ==========
+        const sidebar = document.getElementById('mainSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() {
+          if (window.innerWidth <= 850) {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('open');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 850) {
+            if (sidebar.classList.contains('open')) closeSidebar();
+            document.body.style.overflow = '';
+          } else {
+            if (sidebar.classList.contains('open')) closeSidebar();
+          }
+        });
+
+        // Tutup sidebar saat klik link navigasi di mobile
+        const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 850) {
+              closeSidebar();
+            }
+          });
+        });
+
+        // ========== DARK MODE ==========
         const toggleBtn = document.getElementById('darkModeToggle');
         const iconTheme = toggleBtn.querySelector('i');
         const textSpan = toggleBtn.querySelector('span');
@@ -641,24 +758,14 @@
           }
         });
 
-        // ----- ACTIVE LINK OTOMATIS untuk kontak.html
+        // ========== ACTIVE LINK (kontak.html) ==========
         const currentPath = window.location.pathname.split('/').pop();
-        const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
-        navLinks.forEach((link) => {
-          link.classList.remove('active-link');
-          const href = link.getAttribute('href');
-          if (href === currentPath || (href === 'kontak.html' && (currentPath === 'kontak.html' || currentPath === ''))) {
-            link.classList.add('active-link');
-          } else if (href === 'kontak.html' && (!currentPath || currentPath === 'kontak.html')) {
-            link.classList.add('active-link');
-          }
-        });
-        if (!document.querySelector('.nav-link-custom.active-link')) {
-          const kontakLink = document.querySelector('a[href="kontak.html"]');
-          if (kontakLink) kontakLink.classList.add('active-link');
-        }
+        const allNavLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+        allNavLinks.forEach(link => link.classList.remove('active-link'));
+        const kontakLink = document.querySelector('a[href="kontak.html"]');
+        if (kontakLink) kontakLink.classList.add('active-link');
 
-        // ----- TOAST SYSTEM -----
+        // ========== TOAST SYSTEM ==========
         const toastEl = document.getElementById('toastMsg');
         const toastTextSpan = document.getElementById('toastText');
         function showToast(message, icon = 'fas fa-info-circle') {
@@ -669,54 +776,14 @@
           setTimeout(() => toastEl.classList.remove('show'), 2700);
         }
 
-        // ----- FORM KONTAK SIMULASI DENGAN VALIDASI (demo pengiriman) -----
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-          contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('contactName')?.value.trim();
-            const email = document.getElementById('contactEmail')?.value.trim();
-            const subject = document.getElementById('contactSubject')?.value || 'Tidak ada subjek';
-            const message = document.getElementById('contactMessage')?.value.trim();
-
-            if (!name) {
-              showToast('✏️ Nama lengkap harus diisi.', 'fas fa-exclamation-triangle');
-              return;
-            }
-            if (!email) {
-              showToast('📧 Alamat email wajib diisi.', 'fas fa-exclamation-triangle');
-              return;
-            }
-            if (!email.includes('@') || !email.includes('.')) {
-              showToast('⚠️ Format email tidak valid (contoh: nama@domain.com).', 'fas fa-envelope');
-              return;
-            }
-            if (!message) {
-              showToast('💬 Pesan tidak boleh kosong, tulis sesuatu yah.', 'fas fa-comment-dots');
-              return;
-            }
-
-            // simulasi sukses kirim (tanpa backend)
-            console.log(`[DEMO] Pesan dari ${name} (${email}) | Subjek: ${subject} | Pesan: ${message}`);
-            showToast(`✅ Terima kasih ${name}! Pesan Anda telah terkirim (simulasi). Saya akan merespon segera.`, 'fas fa-check-circle');
-            contactForm.reset();
-            // reset manual agar tidak ada sisa
-            document.getElementById('contactName').value = '';
-            document.getElementById('contactEmail').value = '';
-            document.getElementById('contactMessage').value = '';
-            document.getElementById('contactSubject').value = 'Kerjasama';
-          });
-        }
-
-        // ----- SOSIAL LINK TOAST (tanpa mengganggu navigasi) -----
+        // ========== SOSIAL LINK TOAST ==========
         document.querySelectorAll('.social-icon').forEach((icon) => {
           icon.addEventListener('click', (e) => {
-            // hanya notifikasi ringan tanpa blocking navigasi
             setTimeout(() => showToast(`🔗 Membuka ${icon.innerText.trim()}...`, 'fab fa-internet-explorer'), 40);
           });
         });
 
-        // ----- BACK TO TOP -----
+        // ========== BACK TO TOP ==========
         const backBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
           if (window.scrollY > 300) backBtn.classList.add('show');
@@ -726,13 +793,13 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ----- LAST UPDATED DINAMIS -----
+        // ========== LAST UPDATED DINAMIS ==========
         const lastUpdatedSpan = document.getElementById('lastUpdated');
         const now = new Date();
         const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
         lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran · Fullstack Enthusiast`;
 
-        // ----- GREETING BERDASARKAN JAM -----
+        // ========== GREETING BERDASARKAN JAM ==========
         const greetingElement = document.querySelector('.greeting');
         if (greetingElement) {
           const hours = new Date().getHours();
@@ -744,7 +811,7 @@
           greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
         }
 
-        // ----- FALLBACK FOTO PROFILE -----
+        // ========== FALLBACK FOTO PROFILE ==========
         const profileImg = document.getElementById('profilePhoto');
         if (profileImg) {
           profileImg.onerror = () => {
@@ -752,11 +819,10 @@
           };
         }
 
-        // ----- INTERAKSI PLUS: informasi kartu kontak (bantuan non-intrusif) -----
+        // ========== INTERAKSI KARTU KONTAK ==========
         const contactItems = document.querySelectorAll('.contact-item');
         contactItems.forEach((item) => {
           item.addEventListener('click', (ev) => {
-            // jika klik di dalam anchor, jangan double toast (biarkan navigasi berjalan)
             if (ev.target.tagName === 'A' || ev.target.closest('a')) return;
             const labelElem = item.querySelector('.contact-label');
             if (labelElem) {
