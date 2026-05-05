@@ -287,6 +287,7 @@
         overflow: hidden;
         border: 1px solid var(--border-color);
         transition: all 0.2s;
+        cursor: pointer;
       }
       .gallery-item img {
         width: 100%;
@@ -404,28 +405,18 @@
     <div class="portfolio-grid">
       <aside class="sidebar">
         <div class="profile-img-container">
-          <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
+          <img src="profile.jpeg" alt="Foto Profil Raifal Fadhal Zahran" class="profile-img" id="profilePhoto" />
         </div>
         <div class="greeting">Halo, Saya</div>
         <div class="fullname">Raifal Fadhal Zahran</div>
         <div class="username">@Refal</div>
 
         <ul class="nav-menu">
-          <li>
-            <a href="index.html" class="nav-link-custom"><i class="fas fa-home"></i> Beranda</a>
-          </li>
-          <li>
-            <a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a>
-          </li>
-          <li>
-            <a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a>
-          </li>
-          <li>
-            <a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a>
-          </li>
-          <li>
-            <a href="pengalaman.html" class="nav-link-custom active-link"><i class="fas fa-briefcase"></i> Pengalaman PKL</a>
-          </li>
+          <li><a href="index.html" class="nav-link-custom"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a></li>
+          <li><a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a></li>
+          <li><a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a></li>
+          <li><a href="pengalaman.html" class="nav-link-custom active-link"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
         </ul>
 
         <div class="theme-switch-wrapper">
@@ -453,19 +444,19 @@
             pembelian domain, konfigurasi nameserver, serta mengelola file dan folder melalui cPanel File Manager. Selain itu, saya juga mempelajari manajemen database MySQL, backup otomatis, dan keamanan dasar hosting.
           </p>
 
-          <!-- Galeri foto domain.jpeg & cpanel.jpeg & foto5.jpg -->
+          <!-- Galeri foto: domain.jpeg, cpanel.jpeg, foto5.jpg dengan fallback -->
           <div class="gallery-grid">
             <div class="gallery-item">
-              <img src="domain.jpeg" alt="Manajemen Domain" onerror="this.src = 'https://placehold.co/400x200?text=Domain+Management'" />
+              <img src="domain.jpeg" alt="Manajemen Domain di Domaenesia" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Domain+Management&font=montserrat';" />
               <div class="gallery-caption"><i class="fas fa-globe"></i> Konfigurasi Domain (Domaenesia)</div>
             </div>
             <div class="gallery-item">
-              <img src="cpanel.jpeg" alt="cPanel Dashboard" onerror="this.src = 'https://placehold.co/400x200?text=cPanel+Dashboard'" />
+              <img src="cpanel.jpeg" alt="cPanel Dashboard Hosting" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=cPanel+Dashboard&font=montserrat';" />
               <div class="gallery-caption"><i class="fab fa-cpanel"></i> cPanel: File Manager & Database</div>
             </div>
             <div class="gallery-item">
-              <img src="foto5.jpg" alt="Screenshot Project" onerror="this.src = 'https://placehold.co/400x200?text=Server+Settings'" />
-              <div class="gallery-caption"><i class="fas fa-code-branch"></i> Tampilan Web UMKM Desa Serang , Tasikmalaya</div>
+              <img src="foto5.jpg" alt="Website UMKM Desa Serang, Tasikmalaya" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=UMKM+Web+Preview&font=montserrat';" />
+              <div class="gallery-caption"><i class="fas fa-code-branch"></i> Tampilan Web UMKM Desa Serang, Tasikmalaya</div>
             </div>
           </div>
 
@@ -485,15 +476,15 @@
         <div class="exp-card">
           <div class="exp-title"><i class="fas fa-users"></i> Tim Pengembang — UMKMSerangJuara.com</div>
           <p>
-            Bergabung dalam tim pengembangan platform<a href="https://umkmserangjuara.com/" target="_blank"> <strong>UMKMSerangJuara.com</strong> </a>, sebuah inisiatif digital untuk mempromosikan Usaha Mikro Kecil dan Menengah di wilayah
+            Bergabung dalam tim pengembangan platform <a href="https://umkmserangjuara.com/" target="_blank" rel="noopener noreferrer"><strong>UMKMSerangJuara.com</strong></a>, sebuah inisiatif digital untuk mempromosikan Usaha Mikro Kecil dan Menengah di wilayah
             Serang. Sebagai tim backend & frontend, kami bekerja sama membangun sistem manajemen konten, galeri produk, dan dashboard UMKM. Saya fokus pada integrasi hosting cPanel, optimasi database, serta kolaborasi menggunakan Git &
             GitHub.
           </p>
 
           <div class="team-grid">
-            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Hyugaaw" target="_blank" rel="noopener">Hyugaaw</a></div>
-            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/KuchAli" target="_blank" rel="noopener">KuchAli</a></div>
-            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Refal45" target="_blank" rel="noopener">Refal45 (saya)</a></div>
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Hyugaaw" target="_blank" rel="noopener noreferrer">Hyugaaw</a></div>
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/KuchAli" target="_blank" rel="noopener noreferrer">KuchAli</a></div>
+            <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Refal45" target="_blank" rel="noopener noreferrer">Refal45 (saya)</a></div>
           </div>
           <p class="mt-3">
             Kami menggunakan <strong>cPanel</strong> untuk deployment dan manajemen file, sementara alur development menggunakan branch system dan issue tracking. Kontribusi saya meliputi perbaikan struktur direktori, konfigurasi
@@ -521,9 +512,9 @@
                   <td><i class="fas fa-shield-alt text-success"></i> Sangat aman, karena input tidak dieksekusi sebagai query.</td>
                 </tr>
                 <tr>
-                  <td><strong>getResult (MySQLi -> get_result())</strong></td>
+                  <td><strong>getResult (MySQLi → get_result())</strong></td>
                   <td>Mengambil hasil set setelah statement dieksekusi. Namun tetap harus menggunakan prepared statement sebelumnya.</td>
-                  <td><i class="fas fa-check-circle text-warning"></i> Aman jika dikombinasikan dengan bind_param, tapi raw query tanpa bind sangat berbahaya.</td>
+                  <td><i class="fas fa-check-circle text-warning"></i> Aman jika dikombinasikan dengan bind_param, tapi raw query tanpa binding sangat berbahaya.</td>
                 </tr>
                 <tr>
                   <td><strong>Query langsung (tanpa binding)</strong></td>
@@ -541,8 +532,7 @@ $stmt = $pdo->prepare("SELECT * FROM products WHERE category = :cat");
 $stmt->bindParam(':cat', $category, PDO::PARAM_STR);
 $stmt->execute();
 $results = $stmt->fetchAll();
-        </pre
-            >
+        </pre>
             Dengan metode <strong>bindParam</strong>, parameter kategori aman meskipun berisi karakter spesial. <strong>getResult</strong> digunakan setelah eksekusi prepared statement untuk mengambil data, namun bukan alternatif dari
             binding.
           </div>
@@ -646,7 +636,7 @@ $results = $stmt->fetchAll();
           setTimeout(() => toastEl.classList.remove('show'), 2500);
         }
 
-        // --------------------- INTERAKSI GALERI ---------------------
+        // --------------------- INTERAKSI GALERI (klik gambar tampilkan toast) ---------------------
         document.querySelectorAll('.gallery-item').forEach((item) => {
           item.addEventListener('click', () => {
             const caption = item.querySelector('.gallery-caption')?.innerText || 'dokumentasi';
@@ -654,7 +644,7 @@ $results = $stmt->fetchAll();
           });
         });
 
-        // --------------------- TEAM MEMBER GITHUB TOAST (opsional) ---------------------
+        // --------------------- TEAM MEMBER GITHUB TOAST ---------------------
         document.querySelectorAll('.team-member a').forEach((link) => {
           link.addEventListener('click', (e) => {
             setTimeout(() => showToast(`🔗 Membuka GitHub ${link.innerText}`, 'fab fa-github'), 50);
@@ -677,7 +667,7 @@ $results = $stmt->fetchAll();
         const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
         lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran · cPanel & Fullstack Enthusiast`;
 
-        // --------------------- GREETING DINAMIS ---------------------
+        // --------------------- GREETING DINAMIS (selamat pagi/siang/sore/malam) ---------------------
         const greetingElement = document.querySelector('.greeting');
         if (greetingElement) {
           const hours = new Date().getHours();
@@ -689,15 +679,15 @@ $results = $stmt->fetchAll();
           greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
         }
 
-        // fallback profile image
+        // --------------------- FALLBACK PROFILE IMAGE jika profile.jpeg tidak ada ---------------------
         const profileImg = document.getElementById('profilePhoto');
         if (profileImg) {
           profileImg.onerror = () => {
-            profileImg.src = 'https://placehold.co/120x120?text=Raifal';
+            profileImg.src = 'https://placehold.co/120x120?text=RFZ&font=montserrat';
           };
         }
 
-        // notifikasi kecil selamat datang di halaman pengalaman
+        // --------------------- NOTIFIKASI SELAMAT DATANG DI HALAMAN PENGALAMAN ---------------------
         setTimeout(() => {
           showToast('✨ Selamat datang di halaman Pengalaman PKL – Eksplorasi domain, cPanel, bindParam & tim UMKMSerangJuara', 'fas fa-smile-wink');
         }, 800);
