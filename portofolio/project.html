@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -38,6 +38,8 @@
         --toast-text: #111827;
         --demo-btn-bg: #2563eb10;
         --demo-btn-hover: #2563eb20;
+        --overlay-bg: rgba(0, 0, 0, 0.5);
+        --header-bg: rgba(255, 255, 255, 0.85);
       }
 
       body.dark {
@@ -58,6 +60,8 @@
         --toast-text: #f1f5f9;
         --demo-btn-bg: #3b82f620;
         --demo-btn-hover: #3b82f640;
+        --overlay-bg: rgba(0, 0, 0, 0.7);
+        --header-bg: rgba(30, 41, 59, 0.9);
       }
 
       body {
@@ -83,7 +87,7 @@
         background-color: var(--bg-body);
       }
 
-      /* SIDEBAR */
+      /* SIDEBAR (desktop style) */
       .sidebar {
         background-color: var(--bg-sidebar);
         border-right: 1px solid var(--border-color);
@@ -94,6 +98,23 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+      }
+
+      /* Tombol close sidebar (hanya tampil mobile) */
+      .sidebar-close {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.6rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 1rem;
+        padding: 0;
+        line-height: 1;
+      }
+      .sidebar-close:hover {
+        color: var(--active-color);
       }
 
       .profile-img-container {
@@ -184,7 +205,72 @@
       .main-content {
         padding: 2rem 2.5rem;
         overflow-y: auto;
+        position: relative;
       }
+
+      /* ========== MOBILE HEADER MODERN ========== */
+      .mobile-header {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--header-bg);
+        backdrop-filter: blur(12px);
+        padding: 0.8rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+      }
+      .mobile-header .menu-icon {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      }
+      .mobile-header .menu-icon:hover {
+        background: var(--hover-bg);
+        transform: scale(0.97);
+      }
+      .mobile-header .brand {
+        font-weight: 700;
+        font-size: 1.1rem;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: -0.2px;
+      }
+      .mobile-header .right-placeholder {
+        width: 44px;
+      }
+
+      /* Overlay gelap untuk mobile drawer */
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--overlay-bg);
+        z-index: 1040;
+        display: none;
+        backdrop-filter: blur(3px);
+      }
+      .sidebar-overlay.active {
+        display: block;
+      }
+
       .info-badge {
         display: flex;
         flex-wrap: wrap;
@@ -299,7 +385,7 @@
         color: var(--active-color);
         transform: translateX(3px);
       }
-      /* Lightbox modal full resolution */
+      /* Lightbox modal */
       .image-modal .modal-dialog {
         max-width: 95vw;
         margin: 1.75rem auto;
@@ -377,23 +463,59 @@
         margin-top: 2rem;
         color: var(--text-muted);
       }
+
+      /* ========== RESPONSIVE MOBILE DRAWER ========== */
       @media (max-width: 850px) {
         .portfolio-grid {
           grid-template-columns: 1fr;
         }
+        .mobile-header {
+          display: flex;
+        }
         .sidebar {
-          position: relative;
-          height: auto;
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100%;
+          z-index: 1050;
+          transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+          border-right: 1px solid var(--border-color);
+          padding-top: 1rem;
+        }
+        .sidebar.open {
+          left: 0;
+        }
+        .sidebar-close {
+          display: block;
+          margin-right: 0.5rem;
+          margin-top: 0.2rem;
         }
         .main-content {
-          padding: 1.5rem;
+          padding: 0 1.2rem 2rem 1.2rem;
+        }
+        .back-to-top {
+          bottom: 15px;
+          left: 15px;
+        }
+        .custom-toast {
+          bottom: 15px;
+          right: 15px;
+        }
+        .section-title {
+          font-size: 1.4rem;
         }
       }
     </style>
   </head>
   <body>
+    <!-- OVERLAY (mobile) -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
     <div class="portfolio-grid">
-      <aside class="sidebar">
+      <aside class="sidebar" id="mainSidebar">
+        <button class="sidebar-close" id="closeSidebarBtn" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
         <div class="profile-img-container">
           <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
         </div>
@@ -423,6 +545,15 @@
       </aside>
 
       <main class="main-content">
+        <!-- MOBILE MODERN HEADER (hanya tampil di mobile) -->
+        <div class="mobile-header">
+          <div class="menu-icon" id="mobileMenuIcon">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="brand">Raifal.dev</div>
+          <div class="right-placeholder"></div>
+        </div>
+
         <div class="info-badge">
           <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
           <div class="open-chip"><i class="fas fa-laptop-code"></i> Portofolio Karya</div>
@@ -457,6 +588,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       (function () {
+        // ========== MOBILE DRAWER LOGIC ==========
+        const sidebar = document.getElementById('mainSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() {
+          if (window.innerWidth <= 850) {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+        function closeSidebar() {
+          sidebar.classList.remove('open');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 850) {
+            if (sidebar.classList.contains('open')) closeSidebar();
+            document.body.style.overflow = '';
+          } else {
+            if (sidebar.classList.contains('open')) closeSidebar();
+          }
+        });
+
+        // Tutup sidebar saat klik link navigasi di mobile
+        const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 850) {
+              closeSidebar();
+            }
+          });
+        });
+
         // ================= DARK MODE =================
         const toggleBtn = document.getElementById('darkModeToggle');
         const iconTheme = toggleBtn.querySelector('i');
@@ -552,7 +725,6 @@
             demoLink: 'https://umkmserangjuara.com/',
           },
           {
-            // TAMBAHAN: foto6.jpg - portofolio teknologi HTML, CSS, JavaScript
             file: 'foto6.jpg',
             title: 'Portofolio Teknologi HTML, CSS & JS',
             caption: 'Kumpulan proyek front-end modern: landing page, komponen interaktif, dan utility CSS murni.',
@@ -569,18 +741,16 @@
         photos.forEach((photo) => {
           const card = document.createElement('div');
           card.className = 'project-card';
-          // inner html dasar: gambar + info
           card.innerHTML = `
-        <img src="${photo.file}" alt="${photo.title}" loading="lazy" style="cursor:pointer;" />
-        <div class="project-info">
-          <div class="project-title">${photo.title}</div>
-          <div class="project-caption">${photo.caption}</div>
-          <div class="tech-stack-badge"><i class="fas fa-code"></i> ${photo.tech}</div>
-        </div>
-      `;
+            <img src="${photo.file}" alt="${photo.title}" loading="lazy" style="cursor:pointer;" />
+            <div class="project-info">
+              <div class="project-title">${photo.title}</div>
+              <div class="project-caption">${photo.caption}</div>
+              <div class="tech-stack-badge"><i class="fas fa-code"></i> ${photo.tech}</div>
+            </div>
+          `;
 
           const imgElement = card.querySelector('img');
-          // event klik gambar -> lightbox (full resolusi asli)
           imgElement.addEventListener('click', (e) => {
             e.stopPropagation();
             modalImage.src = photo.file;
@@ -588,7 +758,6 @@
             modal.show();
           });
 
-          // tambahkan demo link jika ada (E-commerce & Undangan)
           if (photo.demoLink) {
             const infoDiv = card.querySelector('.project-info');
             const demoAnchor = document.createElement('a');
@@ -597,16 +766,11 @@
             demoAnchor.rel = 'noopener noreferrer';
             demoAnchor.className = 'demo-link';
             demoAnchor.innerHTML = '<i class="fas fa-external-link-alt"></i> Live Demo →';
-            // supaya klik link tidak trigger toast card
-            demoAnchor.addEventListener('click', (e) => {
-              e.stopPropagation();
-            });
+            demoAnchor.addEventListener('click', (e) => e.stopPropagation());
             infoDiv.appendChild(demoAnchor);
           }
 
-          // klik area selain gambar / demo link => toast informasi
           card.addEventListener('click', (e) => {
-            // jika target adalah link atau di dalam link, jangan muncul toast
             if (e.target.closest('.demo-link')) return;
             if (e.target === imgElement || imgElement.contains(e.target)) return;
             showToast(`📸 ${photo.title} — ${photo.caption} (${photo.tech})`, 'fas fa-image');
@@ -615,7 +779,7 @@
           photoGrid.appendChild(card);
         });
 
-        // ================= DATA VIDEO (sesuai daftar, tanpa link demo) =================
+        // ================= DATA VIDEO =================
         const videos = [
           { name: 'kampus.mp4', title: 'Sistem Informasi Kampus', caption: 'Manajemen data mahasiswa, dosen, dan jadwal kuliah.', tech: 'HTML, CSS, JavaScript, PHP Murni, MySQL' },
           { name: 'cafe.mp4', title: 'Aplikasi Pemesanan Cafe', caption: 'Sistem pemesanan menu cafe secara online.', tech: 'HTML, CSS, JavaScript, PHP Murni, MySQL' },
@@ -631,16 +795,16 @@
           const card = document.createElement('div');
           card.className = 'project-card';
           card.innerHTML = `
-        <video controls preload="metadata">
-          <source src="${video.name}" type="video/mp4">
-          Browser tidak mendukung video.
-        </video>
-        <div class="project-info">
-          <div class="project-title">${video.title}</div>
-          <div class="project-caption">${video.caption}</div>
-          <div class="tech-stack-badge"><i class="fas fa-code"></i> ${video.tech}</div>
-        </div>
-      `;
+            <video controls preload="metadata">
+              <source src="${video.name}" type="video/mp4">
+              Browser tidak mendukung video.
+            </video>
+            <div class="project-info">
+              <div class="project-title">${video.title}</div>
+              <div class="project-caption">${video.caption}</div>
+              <div class="tech-stack-badge"><i class="fas fa-code"></i> ${video.tech}</div>
+            </div>
+          `;
           card.addEventListener('click', (e) => {
             if (!e.target.closest('video') && !e.target.closest('.demo-link')) {
               showToast(`🎬 ${video.title} — ${video.caption} (${video.tech})`, 'fas fa-film');
