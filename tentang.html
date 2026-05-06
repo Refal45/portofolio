@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Raifal Fadhal Zahran | Perjalanan & Kisah</title>
+  <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* LIGHT MODE (default) */
+    :root {
+      --bg-body: #f9fafb;
+      --bg-surface: #ffffff;
+      --bg-sidebar: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --border-color: #e5e7eb;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --hover-bg: #f3f4f6;
+      --active-color: #2563eb;
+      --active-bg: #eff6ff;
+      --badge-bg: #f3f4f6;
+      --badge-text: #1f2937;
+      --separator: #e5e7eb;
+      --toast-bg: #ffffff;
+      --toast-text: #111827;
+      --timeline-dot: #2563eb;
+      --overlay-bg: rgba(0, 0, 0, 0.5);
+      --header-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    /* DARK MODE */
+    body.dark {
+      --bg-body: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-sidebar: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --hover-bg: #334155;
+      --active-color: #60a5fa;
+      --active-bg: #1e3a8a;
+      --badge-bg: #334155;
+      --badge-text: #e2e8f0;
+      --separator: #334155;
+      --toast-bg: #1e293b;
+      --toast-text: #f1f5f9;
+      --timeline-dot: #60a5fa;
+      --overlay-bg: rgba(0, 0, 0, 0.7);
+      --header-bg: rgba(30, 41, 59, 0.9);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, .nav-link-custom {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Layout Grid: desktop 2 kolom */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+      max-width: 1400px;
+      margin: 0 auto;
+      background-color: var(--bg-body);
+    }
+
+    /* ========== SIDEBAR KIRI ========== */
+    .sidebar {
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tombol close sidebar (hanya di mobile) */
+    .sidebar-close {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      align-self: flex-end;
+      margin-bottom: 1rem;
+      padding: 0;
+      line-height: 1;
+    }
+    .sidebar-close:hover {
+      color: var(--active-color);
+    }
+
+    .profile-img-container {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--active-color);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+    .profile-img:hover {
+      transform: scale(1.02);
+    }
+
+    .greeting {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--active-color);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .fullname {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-align: center;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .username {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--border-color);
+      width: 100%;
+    }
+
+    .nav-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+      flex: 1;
+    }
+    .nav-menu li {
+      margin-bottom: 0.6rem;
+    }
+    .nav-link-custom {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0.7rem 1rem;
+      border-radius: 60px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+    .nav-link-custom i {
+      width: 24px;
+      font-size: 1.2rem;
+    }
+    .nav-link-custom:hover {
+      background-color: var(--hover-bg);
+      color: var(--active-color);
+      transform: translateX(5px);
+    }
+    .active-link {
+      background-color: var(--active-bg);
+      color: var(--active-color);
+      font-weight: 600;
+    }
+
+    .theme-switch-wrapper {
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .dark-mode-btn {
+      background: var(--badge-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 40px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ========== KONTEN UTAMA ========== */
+    .main-content {
+      padding: 2rem 2.5rem;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* ========== MOBILE HEADER MODERN ========== */
+    .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1rem;
+    }
+    .mobile-header .menu-icon {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .mobile-header .menu-icon:hover {
+      background: var(--hover-bg);
+      transform: scale(0.97);
+    }
+    .mobile-header .brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.2px;
+    }
+    .mobile-header .right-placeholder {
+      width: 44px;
+    }
+
+    /* Overlay gelap untuk mobile drawer */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--overlay-bg);
+      z-index: 1040;
+      display: none;
+      backdrop-filter: blur(3px);
+    }
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    .info-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .location-chip,
+    .open-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--badge-bg);
+      padding: 0.45rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+    .open-chip {
+      background: #dcfce7;
+      color: #15803d;
+      border: none;
+    }
+    body.dark .open-chip {
+      background: #14532d;
+      color: #bbf7d0;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid var(--active-color);
+      padding-left: 1rem;
+    }
+
+    .timeline-card {
+      background: var(--bg-surface);
+      border-radius: 28px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .timeline-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--active-color);
+    }
+    .timeline-icon {
+      font-size: 1.8rem;
+      color: var(--active-color);
+      margin-right: 1rem;
+      width: 48px;
+      text-align: center;
+    }
+    .timeline-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title a {
+      color: var(--active-color);
+      text-decoration: none;
+    }
+    .timeline-title a:hover {
+      text-decoration: underline;
+    }
+    .timeline-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-sub a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .timeline-sub a:hover {
+      color: var(--active-color);
+      text-decoration: underline;
+    }
+    .timeline-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 1.5rem 0 1rem;
+    }
+    .tech-item {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 0.55rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tech-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--active-color);
+      background: var(--active-bg);
+      color: var(--active-color);
+    }
+
+    .heart-note {
+      background: linear-gradient(145deg, var(--bg-surface) 0%, var(--hover-bg) 100%);
+      border-left: 6px solid #f97316;
+      border-radius: 24px;
+      padding: 1.4rem 1.8rem;
+      margin: 1.8rem 0;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .heart-note:hover {
+      transform: translateY(-2px);
+    }
+    .heart-note i {
+      font-size: 1.8rem;
+      color: #f97316;
+      margin-right: 12px;
+    }
+
+    .extra-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.2rem;
+      background: var(--bg-surface);
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+
+    .last-updated {
+      text-align: center;
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: var(--active-color);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      border: none;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      transform: scale(1.05);
+      background: #1e40af;
+    }
+
+    .custom-toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--toast-bg);
+      color: var(--toast-text);
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 0.85rem;
+      font-weight: 500;
+      z-index: 1100;
+      backdrop-filter: blur(8px);
+      border-left: 4px solid var(--active-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .custom-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE: MOBILE DRAWER ========== */
+    @media (max-width: 850px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .mobile-header {
+        display: flex;
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100%;
+        z-index: 1050;
+        transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+        border-right: 1px solid var(--border-color);
+        padding-top: 1rem;
+      }
+      .sidebar.open {
+        left: 0;
+      }
+      .sidebar-close {
+        display: block;
+        margin-right: 0.5rem;
+        margin-top: 0.2rem;
+      }
+      .main-content {
+        padding: 0 1.2rem 2rem 1.2rem;
+      }
+      .back-to-top {
+        bottom: 15px;
+        left: 15px;
+      }
+      .custom-toast {
+        bottom: 15px;
+        right: 15px;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- OVERLAY (mobile) -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<div class="portfolio-grid">
+  <!-- SIDEBAR (menjadi drawer di mobile) -->
+  <aside class="sidebar" id="mainSidebar">
+    <button class="sidebar-close" id="closeSidebarBtn" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
+    <div class="profile-img-container">
+      <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
+    </div>
+    <div class="greeting">Halo, Saya</div>
+    <div class="fullname">Raifal Fadhal Zahran</div>
+    <div class="username">@Refal</div>
+
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link-custom"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="tentang.html" class="nav-link-custom active-link"><i class="fas fa-user"></i> Tentang</a></li>
+      <li><a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a></li>
+      <li><a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a></li>
+      <li><a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
+    </ul>
+
+    <div class="theme-switch-wrapper">
+      <div class="dark-mode-btn" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+        <span>Mode Gelap</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <!-- MOBILE MODERN HEADER (hanya tampil di mobile) -->
+    <div class="mobile-header">
+      <div class="menu-icon" id="mobileMenuIcon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="brand">Raifal.dev</div>
+      <div class="right-placeholder"></div>
+    </div>
+
+    <div class="info-badge">
+      <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
+      <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web Junior</div>
+    </div>
+
+    <!-- Perjalanan pendidikan & pengalaman -->
+    <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i> Perjalanan & Latar Belakang</h2>
+
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-school"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">
+          <a href="https://smk.sch.id/sekolah/20229213" target="_blank" rel="noopener noreferrer">SMK Kesuma Bangsa 2 Depok</a>
+        </div>
+        <div class="timeline-sub"><a href="https://id.wikipedia.org/wiki/Rekayasa_perangkat_lunak" target="_blank" style="color: blue; text-decoration: none"> Rekayasa Perangkat Lunak (RPL) </a> | 2023 - 2026</div>
+        <div class="timeline-desc">Mendalami dasar pengembangan software, algoritma, desain web, serta kerja tim dalam proyek digital. Aktif dalam pengembangan aplikasi sekolah dan basis data.</div>
+      </div>
+    </div>
+
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">PKL - Magang Fullstack</div>
+        <div class="timeline-sub"><a href="https://www.bsi.ac.id/Cabang-ubsi-margonda-a" target="_blank" rel="noopener noreferrer" style="color: blue">Universitas Bina Sarana Informatika (UBSI) Margonda</a> · 4 bulan</div>
+        <div class="timeline-desc">
+          Mengerjakan proyek internal berbasis web berita kampus, kota Depok, dan UMKM Desa Serang, Tasikmalaya. Mengintegrasikan backend PHP Native & Laravel, manajemen database MySQL, dan kolaborasi tim. Mendapat pengalaman langsung
+          menangani sistem informasi kampus skala kecil serta maintenance aplikasi asistensi.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-trophy"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">Penerima Beasiswa 75%</div>
+        <div class="timeline-sub">
+          <a href="https://www.bsi.ac.id/Cabang-ubsi-margonda-a" target="_blank" rel="noopener noreferrer" style="color: blue">Universitas Bina Sarana Informatika (UBSI) Margonda</a>
+        </div>
+        <div class="timeline-desc">
+          Meraih beasiswa berprestasi karena dedikasi akademik & portofolio teknis, serta konsisten mempertahankan peringkat 5 besar di kelas. Kesempatan mengikuti pengabdian masyarakat oleh LPPM UBSI Margonda terhalang TKA (Tes
+          Kemampuan Akademik) sehingga tidak bisa mengikutinya.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-hand-sparkles"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">Pengabdian Masyarakat (terhalang TKA)</div>
+        <div class="timeline-sub">Undangan kolaborasi sosial · 2025</div>
+        <div class="timeline-desc">
+          Pernah diajak untuk ikut program pengabdian masyarakat tempatnya di
+          <a href="https://youtu.be/JX25FFpelK8?si=YP5QR078LbZskPse" target="_blank" rel="noopener noreferrer">Desa Serang, Tasikmalaya di bidang UMKM</a>, namun terhalang TKA (Tes Kemampuan Akademik) sehingga tidak dapat berpartisipasi
+          penuh. Tetap menjadi pengalaman berharga.
+        </div>
+      </div>
+    </div>
+
+    <!-- Bagian pribadi "cinta ditikung" , fokus masa depan -->
+    <div class="heart-note">
+      <div class="d-flex align-items-center mb-2">
+        <i class="fas fa-heart-broken"></i>
+        <h3 class="mb-0 ms-2" style="font-weight: 700; font-size: 1.3rem">Dari patah hati menuju kode</h3>
+      </div>
+      <p class="mb-2" style="color: var(--text-secondary); font-size: 1rem">
+        <i class="fas fa-quote-left me-1 opacity-50"></i>
+        "Cinta saya sempat ditikung, padahal yang ditolak itu mantannya ada 5. Menyedihkan? sedikit. Tapi saya sadar, energi hati lebih baik diarahkan ke hal produktif."
+      </p>
+      <p class="mb-0" style="font-weight: 500">
+        💻 Akhirnya saya putuskan fokus 100% ke masa depan sebagai <strong class="text-primary">Fullstack Web Junior</strong>. Membangun aplikasi, eksplorasi framework, dan menyelesaikan proyek nyata menjadi prioritas.
+        <i class="fas fa-smile-wink"></i> Tidak ada drama, yang ada adalah <strong>commitment to code</strong>.
+      </p>
+    </div>
+
+    <!-- Kompetensi fullstack -->
+    <h2 class="section-title mt-4"><i class="fas fa-code-branch"></i> Teknologi & Tools (Fullstack Stack)</h2>
+    <div class="tech-stack" id="techStackAbout">
+      <span class="tech-item" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
+      <span class="tech-item" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+      <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+      <span class="tech-item" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
+      <span class="tech-item" data-tech="Bootstrap 5"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+      <span class="tech-item" data-tech="Git/GitHub"><i class="fab fa-github"></i> Git & GitHub</span>
+      <span class="tech-item" data-tech="Google OAuth"><i class="fas fa-user-shield"></i> Google Auth</span>
+      <span class="tech-item" data-tech="Google Maps API"><i class="fas fa-map-marked-alt"></i> Maps API</span>
+      <span class="tech-item" data-tech="cPanel & Hosting"><i class="fas fa-server"></i> cPanel / Domaenesia</span>
+    </div>
+
+    <div class="extra-note">
+      <i class="fas fa-road me-2" style="color: var(--active-color)"></i>
+      <strong>Target Juni 2026:</strong> Mendapatkan posisi Fullstack Web Junior di perusahaan teknologi atau startup. Terus mengasah skill dengan membangun proyek open-source, mengikuti bootcamp internal, dan berkontribusi di komunitas
+      developer Depok.
+    </div>
+
+    <div class="last-updated" id="lastUpdated"></div>
+  </main>
+</div>
+
+<div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
+<div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function () {
+    // ========== MOBILE DRAWER LOGIC ==========
+    const sidebar = document.getElementById('mainSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+    function openSidebar() {
+      if (window.innerWidth <= 850) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
+    if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 850) {
+        if (sidebar.classList.contains('open')) closeSidebar();
+        document.body.style.overflow = '';
+      } else {
+        if (sidebar.classList.contains('open')) closeSidebar();
+      }
+    });
+
+    // Tutup sidebar saat klik link navigasi di mobile
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 850) {
+          closeSidebar();
+        }
+      });
+    });
+
+    // ========== DARK MODE ==========
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const iconTheme = toggleBtn.querySelector('i');
+    const textSpan = toggleBtn.querySelector('span');
+
+    function updateDarkModeUI(isDark) {
+      if (isDark) {
+        iconTheme.classList.remove('fa-moon');
+        iconTheme.classList.add('fa-sun');
+        textSpan.innerText = 'Mode Terang';
+      } else {
+        iconTheme.classList.remove('fa-sun');
+        iconTheme.classList.add('fa-moon');
+        textSpan.innerText = 'Mode Gelap';
+      }
+    }
+
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+      document.body.classList.add('dark');
+      updateDarkModeUI(true);
+    } else if (storedTheme === 'light') {
+      document.body.classList.remove('dark');
+      updateDarkModeUI(false);
+    } else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+        updateDarkModeUI(true);
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark');
+        updateDarkModeUI(false);
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.contains('dark');
+      if (isDark) {
+        document.body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        updateDarkModeUI(false);
+      } else {
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        updateDarkModeUI(true);
+      }
+    });
+
+    // ========== ACTIVE LINK (tentang.html) ==========
+    const currentPath = window.location.pathname.split('/').pop();
+    const allNavLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+    allNavLinks.forEach(link => link.classList.remove('active-link'));
+    const tentangLink = document.querySelector('a[href="tentang.html"]');
+    if (tentangLink) tentangLink.classList.add('active-link');
+
+    // ========== TOAST & TECHNOLOGIES ==========
+    const toastEl = document.getElementById('toastMsg');
+    const toastTextSpan = document.getElementById('toastText');
+    function showToast(message, icon = 'fas fa-microchip') {
+      toastTextSpan.innerText = message;
+      const iconElem = toastEl.querySelector('i');
+      if (iconElem) iconElem.className = `${icon} me-2`;
+      toastEl.classList.add('show');
+      setTimeout(() => toastEl.classList.remove('show'), 2000);
+    }
+
+    const techInfo = {
+      'PHP Native': 'PHP murni tanpa framework, fleksibel untuk custom logic dan sistem legacy.',
+      Laravel: 'Framework PHP modern dengan fitur artisan, eloquent ORM, dan ekosistem kaya.',
+      JavaScript: 'Interaktivitas web, ES6+, async/await, DOM manipulation.',
+      MySQL: 'Database relasional, perancangan skema, query kompleks.',
+      'Bootstrap 5': 'Framework CSS untuk responsive layout dan komponen UI siap pakai.',
+      'Git/GitHub': 'Version control, kolaborasi tim, dan manajemen repository.',
+      'Google OAuth': 'Implementasi login dengan akun Google, autentikasi aman.',
+      'Google Maps API': 'Integrasi peta interaktif, geolokasi, dan rute.',
+      'cPanel & Hosting': 'Manajemen file hosting, database, email, dan deployment aplikasi web.',
+    };
+
+    document.querySelectorAll('.tech-item').forEach((item) => {
+      const techName = item.getAttribute('data-tech') || item.innerText.trim();
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const message = techInfo[techName] || `${techName} merupakan bagian dari keahlian fullstack saya.`;
+        showToast(message, 'fas fa-code');
+      });
+    });
+
+    // ========== TIMELINE CARD KLIK ==========
+    document.querySelectorAll('.timeline-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const titleElem = card.querySelector('.timeline-title');
+        let title = titleElem ? titleElem.innerText.trim() : 'Perjalanan';
+        showToast(`✨ ${title} — bagian dari perjalanan saya menjadi fullstack dev.`, 'fas fa-history');
+      });
+    });
+
+    // ========== HEART NOTE INTERAKSI ==========
+    const heartNote = document.querySelector('.heart-note');
+    if (heartNote) {
+      heartNote.addEventListener('click', () => {
+        showToast('💪 Fokus masa depan: menjadi Fullstack Web Junior yang handal!', 'fas fa-rocket');
+      });
+    }
+
+    // ========== BACK TO TOP ==========
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backBtn.classList.add('show');
+      else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ========== LAST UPDATED ==========
+    const lastUpdatedSpan = document.getElementById('lastUpdated');
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran · Fullstack Enthusiast`;
+
+    // ========== GREETING BASED ON TIME ==========
+    const greetingElement = document.querySelector('.greeting');
+    if (greetingElement) {
+      const hours = new Date().getHours();
+      let timeGreeting = 'Halo, Saya';
+      if (hours >= 5 && hours < 11) timeGreeting = '☀️ Selamat pagi,';
+      else if (hours >= 11 && hours < 15) timeGreeting = '🌤️ Selamat siang,';
+      else if (hours >= 15 && hours < 18) timeGreeting = '🌇 Selamat sore,';
+      else timeGreeting = '🌙 Selamat malam,';
+      greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
+    }
+
+    // fallback gambar profile
+    const profileImg = document.getElementById('profilePhoto');
+    if (profileImg) {
+      profileImg.onerror = () => {
+        profileImg.src = 'https://via.placeholder.com/120?text=Raifal';
+      };
+    }
+  })();
+</script>
+</body>
+</html>
