@@ -385,6 +385,38 @@
         color: var(--active-color);
         transform: translateX(3px);
       }
+
+      /* ========== VIDEO FULLSCREEN FIX (VERTICAL FULL COVER) ========== */
+      video:fullscreen,
+      video:-webkit-full-screen,
+      video:fullscreen {
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: cover !important;
+        max-width: none !important;
+        max-height: none !important;
+        background-color: black;
+      }
+      /* Fallback untuk browser lama */
+      video:-webkit-full-screen {
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: cover !important;
+      }
+      /* Pastikan saat keluar fullscreen kembali normal */
+      video:not(:fullscreen) {
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+      }
+      /* Tambahan untuk menghindari scroll saat fullscreen */
+      :-webkit-full-screen {
+        overflow: hidden !important;
+      }
+      :fullscreen {
+        overflow: hidden !important;
+      }
+
       /* Lightbox modal */
       .image-modal .modal-dialog {
         max-width: 95vw;
@@ -505,6 +537,10 @@
         }
         .section-title {
           font-size: 1.4rem;
+        }
+        /* Perbaikan tinggi video preview di mobile */
+        .project-card video {
+          height: 200px;
         }
       }
     </style>
@@ -795,7 +831,7 @@
           const card = document.createElement('div');
           card.className = 'project-card';
           card.innerHTML = `
-            <video controls preload="metadata">
+            <video controls preload="metadata" playsinline>
               <source src="${video.name}" type="video/mp4">
               Browser tidak mendukung video.
             </video>
@@ -805,6 +841,35 @@
               <div class="tech-stack-badge"><i class="fas fa-code"></i> ${video.tech}</div>
             </div>
           `;
+          
+          // Tambahan untuk memastikan fullscreen working di semua browser
+          const videoEl = card.querySelector('video');
+          if (videoEl) {
+            // Event listener untuk fullscreen change (memastikan styling)
+            videoEl.addEventListener('fullscreenchange', () => {
+              if (document.fullscreenElement === videoEl) {
+                videoEl.style.objectFit = 'cover';
+                videoEl.style.width = '100vw';
+                videoEl.style.height = '100vh';
+              } else {
+                videoEl.style.objectFit = '';
+                videoEl.style.width = '';
+                videoEl.style.height = '';
+              }
+            });
+            videoEl.addEventListener('webkitfullscreenchange', () => {
+              if (document.webkitFullscreenElement === videoEl) {
+                videoEl.style.objectFit = 'cover';
+                videoEl.style.width = '100vw';
+                videoEl.style.height = '100vh';
+              } else {
+                videoEl.style.objectFit = '';
+                videoEl.style.width = '';
+                videoEl.style.height = '';
+              }
+            });
+          }
+          
           card.addEventListener('click', (e) => {
             if (!e.target.closest('video') && !e.target.closest('.demo-link')) {
               showToast(`🎬 ${video.title} — ${video.caption} (${video.tech})`, 'fas fa-film');
