@@ -386,30 +386,32 @@
         transform: translateX(3px);
       }
 
-      /* ========== VIDEO FULLSCREEN FIX (VERTICAL FULL COVER) ========== */
+      /* ========== FIX FULLSCREEN VIDEO TIDAK TERPOTONG ========== */
+      /* Saat fullscreen, video akan tampil dengan object-fit contain (seluruh video terlihat, mungkin ada black bar) */
       video:fullscreen,
       video:-webkit-full-screen,
       video:fullscreen {
         width: 100vw !important;
         height: 100vh !important;
-        object-fit: cover !important;
+        object-fit: contain !important; /* Mengganti cover menjadi contain agar tidak terpotong */
+        background-color: #000 !important;
         max-width: none !important;
         max-height: none !important;
-        background-color: black;
       }
       /* Fallback untuk browser lama */
       video:-webkit-full-screen {
         width: 100vw !important;
         height: 100vh !important;
-        object-fit: cover !important;
+        object-fit: contain !important;
+        background-color: #000 !important;
       }
-      /* Pastikan saat keluar fullscreen kembali normal */
+      /* Saat tidak fullscreen, kembali ke cover untuk preview rapi */
       video:not(:fullscreen) {
         object-fit: cover;
         width: 100%;
         height: 200px;
       }
-      /* Tambahan untuk menghindari scroll saat fullscreen */
+      /* Mencegah scroll saat fullscreen */
       :-webkit-full-screen {
         overflow: hidden !important;
       }
@@ -538,7 +540,6 @@
         .section-title {
           font-size: 1.4rem;
         }
-        /* Perbaikan tinggi video preview di mobile */
         .project-card video {
           height: 200px;
         }
@@ -842,30 +843,33 @@
             </div>
           `;
           
-          // Tambahan untuk memastikan fullscreen working di semua browser
+          // Event listener untuk memastikan fullscreen menggunakan contain
           const videoEl = card.querySelector('video');
           if (videoEl) {
-            // Event listener untuk fullscreen change (memastikan styling)
             videoEl.addEventListener('fullscreenchange', () => {
               if (document.fullscreenElement === videoEl) {
-                videoEl.style.objectFit = 'cover';
+                videoEl.style.objectFit = 'contain';
                 videoEl.style.width = '100vw';
                 videoEl.style.height = '100vh';
+                videoEl.style.backgroundColor = '#000';
               } else {
                 videoEl.style.objectFit = '';
                 videoEl.style.width = '';
                 videoEl.style.height = '';
+                videoEl.style.backgroundColor = '';
               }
             });
             videoEl.addEventListener('webkitfullscreenchange', () => {
               if (document.webkitFullscreenElement === videoEl) {
-                videoEl.style.objectFit = 'cover';
+                videoEl.style.objectFit = 'contain';
                 videoEl.style.width = '100vw';
                 videoEl.style.height = '100vh';
+                videoEl.style.backgroundColor = '#000';
               } else {
                 videoEl.style.objectFit = '';
                 videoEl.style.width = '';
                 videoEl.style.height = '';
+                videoEl.style.backgroundColor = '';
               }
             });
           }
