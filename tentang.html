@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* (semua style sama seperti kode yang diberikan, tidak ada perubahan) */
     * {
       margin: 0;
       padding: 0;
@@ -16,7 +17,6 @@
       transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* LIGHT MODE (default) */
     :root {
       --bg-body: #f9fafb;
       --bg-surface: #ffffff;
@@ -41,7 +41,6 @@
       --wish-gold: #fbbf24;
     }
 
-    /* DARK MODE */
     body.dark {
       --bg-body: #0f172a;
       --bg-surface: #1e293b;
@@ -77,7 +76,6 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    /* Layout Grid: desktop 2 kolom */
     .portfolio-grid {
       display: grid;
       grid-template-columns: 300px 1fr;
@@ -87,7 +85,6 @@
       background-color: var(--bg-body);
     }
 
-    /* ========== SIDEBAR KIRI ========== */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -216,14 +213,12 @@
       justify-content: center;
     }
 
-    /* ========== KONTEN UTAMA ========== */
     .main-content {
       padding: 2rem 2.5rem;
       overflow-y: auto;
       position: relative;
     }
 
-    /* ========== MOBILE HEADER ========== */
     .mobile-header {
       display: none;
       align-items: center;
@@ -277,7 +272,6 @@
       display: block;
     }
 
-    /* Wishlist Gallery & Cards */
     .wishlist-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -396,6 +390,42 @@
     .timeline-card:hover {
       transform: translateY(-3px);
       border-color: var(--active-color);
+    }
+    .timeline-icon {
+      font-size: 1.8rem;
+      color: var(--active-color);
+      margin-right: 1rem;
+      width: 48px;
+      text-align: center;
+    }
+    .timeline-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title a {
+      color: var(--active-color);
+      text-decoration: none;
+    }
+    .timeline-title a:hover {
+      text-decoration: underline;
+    }
+    .timeline-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-sub a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .timeline-sub a:hover {
+      color: var(--active-color);
+      text-decoration: underline;
+    }
+    .timeline-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
     }
 
     .tech-stack {
@@ -561,43 +591,71 @@
       <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web Junior</div>
     </div>
 
-    <!-- ========== GALERI FOTO REFAL ========== -->
+    <!-- GALERI FOTO REFAL -->
     <h2 class="section-title"><i class="fas fa-images me-2"></i> Galeri Perjalanan</h2>
     <div class="wishlist-gallery">
-      <img src="refal.jpeg" alt="Refal 1" class="gallery-img" data-img="refal1">
-      <img src="refal2.jpeg" alt="Refal 2" class="gallery-img" data-img="refal2">
-      <img src="refal3.jpeg" alt="Refal 3" class="gallery-img" data-img="refal3">
-      <img src="refal4.jpeg" alt="Refal 4" class="gallery-img" data-img="refal4">
+      <img src="refal.jpeg" alt="Refal 1" class="gallery-img">
+      <img src="refal2.jpeg" alt="Refal 2" class="gallery-img">
+      <img src="refal3.jpeg" alt="Refal 3" class="gallery-img">
+      <img src="refal4.jpeg" alt="Refal 4" class="gallery-img">
     </div>
 
-    <!-- Perjalanan pendidikan & pengalaman (tetap) -->
+    <!-- PERJALANAN & LATAR BELAKANG (semua link dipertahankan) -->
     <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i> Perjalanan & Latar Belakang</h2>
+    
+    <!-- Card 1: SMK Kesuma Bangsa 2 Depok + link sekolah & Wikipedia RPL -->
     <div class="timeline-card d-flex flex-wrap align-items-start">
       <div class="timeline-icon"><i class="fas fa-school"></i></div>
       <div class="flex-grow-1">
-        <div class="timeline-title">SMK Kesuma Bangsa 2 Depok</div>
-        <div class="timeline-sub">Rekayasa Perangkat Lunak (RPL) | 2023 - 2026</div>
-        <div class="timeline-desc">Mendalami dasar pengembangan software, algoritma, desain web, serta kerja tim dalam proyek digital.</div>
+        <div class="timeline-title">
+          <a href="https://smk.sch.id/sekolah/20229213" target="_blank" rel="noopener noreferrer">SMK Kesuma Bangsa 2 Depok</a>
+        </div>
+        <div class="timeline-sub">
+          <a href="https://id.wikipedia.org/wiki/Rekayasa_perangkat_lunak" target="_blank" rel="noopener noreferrer">Rekayasa Perangkat Lunak (RPL)</a> | 2023 - 2026
+        </div>
+        <div class="timeline-desc">Mendalami dasar pengembangan software, algoritma, desain web, serta kerja tim dalam proyek digital. Aktif dalam pengembangan aplikasi sekolah dan basis data.</div>
       </div>
     </div>
+
+    <!-- Card 2: PKL Magang Fullstack + link UBSI Margonda -->
     <div class="timeline-card d-flex flex-wrap align-items-start">
       <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
       <div class="flex-grow-1">
         <div class="timeline-title">PKL - Magang Fullstack</div>
-        <div class="timeline-sub">Universitas Bina Sarana Informatika (UBSI) Margonda · 4 bulan</div>
-        <div class="timeline-desc">Proyek web berita kampus, UMKM Desa Serang, backend PHP Native & Laravel, MySQL.</div>
-      </div>
-    </div>
-    <div class="timeline-card d-flex flex-wrap align-items-start">
-      <div class="timeline-icon"><i class="fas fa-trophy"></i></div>
-      <div class="flex-grow-1">
-        <div class="timeline-title">Penerima Beasiswa UBSI Margonda</div>
-        <div class="timeline-sub">Berkat dedikasi akademik & portofolio</div>
-        <div class="timeline-desc">Peringkat 5 besar kelas, kesempatan pengabdian masyarakat terhalang TKA.</div>
+        <div class="timeline-sub">
+          <a href="https://www.bsi.ac.id/Cabang-ubsi-margonda-a" target="_blank" rel="noopener noreferrer">Universitas Bina Sarana Informatika (UBSI) Margonda</a> · 4 bulan
+        </div>
+        <div class="timeline-desc">Mengerjakan proyek internal berbasis web berita kampus, kota Depok, dan UMKM Desa Serang, Tasikmalaya. Mengintegrasikan backend PHP Native & Laravel, manajemen database MySQL, dan kolaborasi tim. Mendapat pengalaman langsung menangani sistem informasi kampus skala kecil serta maintenance aplikasi asistensi.</div>
       </div>
     </div>
 
-    <!-- ========== WISHLIST 2026 (harapan & refleksi) ========== -->
+    <!-- Card 3: Penerima Beasiswa + link UBSI Margonda -->
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-trophy"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">Penerima Beasiswa</div>
+        <div class="timeline-sub">
+          <a href="https://www.bsi.ac.id/Cabang-ubsi-margonda-a" target="_blank" rel="noopener noreferrer">Universitas Bina Sarana Informatika (UBSI) Margonda</a>
+        </div>
+        <div class="timeline-desc">Meraih beasiswa berprestasi karena dedikasi akademik & portofolio teknis, serta konsisten mempertahankan peringkat 5 besar di kelas. Kesempatan mengikuti pengabdian masyarakat oleh LPPM UBSI Margonda terhalang TKA (Tes Kemampuan Akademik) sehingga tidak bisa mengikutinya.</div>
+      </div>
+    </div>
+
+    <!-- Card 4: Pengabdian Masyarakat + link YouTube (sesuai permintaan) -->
+    <div class="timeline-card d-flex flex-wrap align-items-start">
+      <div class="timeline-icon"><i class="fas fa-hand-sparkles"></i></div>
+      <div class="flex-grow-1">
+        <div class="timeline-title">Pengabdian Masyarakat (terhalang TKA)</div>
+        <div class="timeline-sub">Undangan kolaborasi sosial · 2025</div>
+        <div class="timeline-desc">
+          Pernah diajak untuk ikut program pengabdian masyarakat tempatnya di 
+          <a href="https://youtu.be/JX25FFpelK8?si=YP5QR078LbZskPse" target="_blank" rel="noopener noreferrer">Desa Serang, Tasikmalaya di bidang UMKM</a>, 
+          namun terhalang TKA (Tes Kemampuan Akademik) sehingga tidak dapat berpartisipasi penuh. Tetap menjadi pengalaman berharga.
+        </div>
+      </div>
+    </div>
+
+    <!-- WISHLIST 2026 -->
     <h2 class="section-title"><i class="fas fa-star-of-life me-2" style="color: var(--wish-gold);"></i> Wishlist 2026 — Harapan & Doa</h2>
     <div class="wishlist-card">
       <div class="wishlist-grid">
@@ -611,7 +669,7 @@
         </div>
         <div class="wish-item" data-wish="3">
           <div class="wish-icon"><i class="fas fa-university" style="color: var(--wish-gold);"></i></div>
-          <div class="wish-text">🎓 Menerima <strong>BJU UBSI Margonda</strong> — Fakultas Teknik dan Informatika, Software Engineer.</div>
+          <div class="wish-text">🎓 Menerima <strong>BJU UBSI Margonda</strong> — Fakultas Teknologi Informasi, Software Engineer.</div>
         </div>
         <div class="wish-item" data-wish="4">
           <div class="wish-icon"><i class="fas fa-chart-line" style="color: #3b82f6;"></i></div>
@@ -645,7 +703,7 @@
 
     <div class="extra-note">
       <i class="fas fa-road me-2" style="color: var(--active-color)"></i>
-      <strong>Target :</strong> Mendapatkan posisi Fullstack Web Junior di perusahaan teknologi atau startup. Terus mengasah skill dengan membangun proyek open-source, mengikuti bootcamp internal, dan berkontribusi di komunitas developer Depok.
+      <strong>Target Juni 2026:</strong> Mendapatkan posisi Fullstack Web Junior di perusahaan teknologi atau startup. Terus mengasah skill dengan membangun proyek open-source, mengikuti bootcamp internal, dan berkontribusi di komunitas developer Depok.
     </div>
 
     <div class="last-updated" id="lastUpdated"></div>
@@ -657,7 +715,7 @@
 
 <script>
   (function () {
-    // ========== MOBILE DRAWER ==========
+    // MOBILE DRAWER
     const sidebar = document.getElementById('mainSidebar');
     const overlay = document.getElementById('sidebarOverlay');
     const mobileMenuIcon = document.getElementById('mobileMenuIcon');
@@ -672,7 +730,7 @@
     const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
     navLinks.forEach(link => link.addEventListener('click', () => { if (window.innerWidth <= 850) closeSidebar(); }));
 
-    // ========== DARK MODE ==========
+    // DARK MODE
     const toggleBtn = document.getElementById('darkModeToggle');
     const iconTheme = toggleBtn.querySelector('i');
     const textSpan = toggleBtn.querySelector('span');
@@ -691,12 +749,12 @@
       else { document.body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkModeUI(true); }
     });
 
-    // ========== ACTIVE LINK (tentang.html) ==========
+    // ACTIVE LINK
     document.querySelectorAll('.nav-menu .nav-link-custom').forEach(link => link.classList.remove('active-link'));
     const tentangLink = document.querySelector('a[href="tentang.html"]');
     if (tentangLink) tentangLink.classList.add('active-link');
 
-    // ========== TOAST ==========
+    // TOAST
     const toastEl = document.getElementById('toastMsg');
     const toastTextSpan = document.getElementById('toastText');
     function showToast(message, icon = 'fas fa-microchip') {
@@ -707,7 +765,7 @@
       setTimeout(() => toastEl.classList.remove('show'), 2500);
     }
 
-    // ========== TECH STACK TOAST ==========
+    // TECH STACK
     const techInfo = {
       'PHP Native': 'PHP murni tanpa framework, fleksibel untuk custom logic.', Laravel: 'Framework PHP modern dengan artisan, eloquent ORM.', JavaScript: 'ES6+, DOM, async/await.', MySQL: 'Database relasional, query kompleks.', 'Bootstrap 5': 'Framework CSS responsive.', 'Git/GitHub': 'Version control & kolaborasi.', 'Google OAuth': 'Login dengan akun Google.', 'Google Maps API': 'Integrasi peta interaktif.', 'cPanel & Hosting': 'Manajemen hosting & deployment.'
     };
@@ -716,7 +774,7 @@
       item.addEventListener('click', () => showToast(techInfo[techName] || `${techName} bagian dari fullstack saya.`, 'fas fa-code'));
     });
 
-    // ========== WISHLIST ITEMS KLIK ==========
+    // WISHLIST ITEMS
     document.querySelectorAll('.wish-item').forEach(item => {
       item.addEventListener('click', (e) => {
         const text = item.querySelector('.wish-text')?.innerText || 'Harapan besar untuk masa depan!';
@@ -724,7 +782,7 @@
       });
     });
 
-    // ========== GALERI FOTO KLIK ==========
+    // GALERI FOTO
     document.querySelectorAll('.gallery-img').forEach(img => {
       img.addEventListener('click', () => {
         showToast(`📸 Kenangan berharga Raifal — tetap semangat menggapai mimpi!`, 'fas fa-camera');
@@ -732,7 +790,7 @@
       img.onerror = function() { this.src = 'https://via.placeholder.com/150?text=Refal'; };
     });
 
-    // ========== TIMELINE CARD KLIK ==========
+    // TIMELINE CARDS (termasuk yang baru)
     document.querySelectorAll('.timeline-card').forEach(card => {
       card.addEventListener('click', () => {
         const title = card.querySelector('.timeline-title')?.innerText || 'Perjalanan';
@@ -740,12 +798,12 @@
       });
     });
 
-    // ========== BACK TO TOP ==========
+    // BACK TO TOP
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { if (window.scrollY > 300) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // ========== LAST UPDATED & GREETING ==========
+    // LAST UPDATED & GREETING
     const lastUpdatedSpan = document.getElementById('lastUpdated');
     const now = new Date();
     const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
