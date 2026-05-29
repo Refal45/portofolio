@@ -38,6 +38,7 @@
       --header-bg: rgba(255, 255, 255, 0.85);
       --wish-heart: #f43f5e;
       --wish-gold: #fbbf24;
+      --modal-bg: rgba(0, 0, 0, 0.9);
     }
 
     body.dark {
@@ -62,6 +63,7 @@
       --header-bg: rgba(30, 41, 59, 0.9);
       --wish-heart: #fb7185;
       --wish-gold: #fcd34d;
+      --modal-bg: rgba(0, 0, 0, 0.95);
     }
 
     body {
@@ -271,6 +273,7 @@
       display: block;
     }
 
+    /* Galeri dengan zoom */
     .wishlist-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -290,6 +293,58 @@
     .gallery-img:hover {
       transform: scale(1.02);
       border-color: var(--active-color);
+    }
+
+    /* Modal Zoom Gambar */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--modal-bg);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+    }
+    .image-modal.active {
+      display: flex;
+    }
+    .modal-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      animation: zoomFade 0.2s ease;
+    }
+    @keyframes zoomFade {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.5rem;
+      color: white;
+      background: rgba(0,0,0,0.6);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      border: none;
+    }
+    .modal-close:hover {
+      background: var(--active-color);
+      transform: scale(1.05);
     }
 
     .wishlist-card {
@@ -481,7 +536,6 @@
       visibility: visible;
     }
 
-    /* TOAST STYLE - DIPERBAIKI UNTUK MENAMPILKAN TEKS PANJANG TANPA TERPOTONG */
     .custom-toast {
       position: fixed;
       bottom: 25px;
@@ -507,7 +561,6 @@
       white-space: normal;
       word-break: break-word;
       line-height: 1.45;
-      letter-spacing: 0.2px;
     }
     .custom-toast i {
       font-size: 1.4rem;
@@ -558,7 +611,6 @@
         right: 18px;
         max-width: 88vw;
         padding: 12px 16px;
-        font-size: 0.85rem;
       }
     }
   </style>
@@ -605,13 +657,13 @@
       <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web Junior</div>
     </div>
 
-    <!-- GALERI FOTO REFAL -->
-    <h2 class="section-title"><i class="fas fa-images me-2"></i> Galeri Perjalanan</h2>
-    <div class="wishlist-gallery">
-      <img src="refal.jpeg" alt="Refal 1" class="gallery-img">
-      <img src="refal2.jpeg" alt="Refal 2" class="gallery-img">
-      <img src="refal3.jpeg" alt="Refal 3" class="gallery-img">
-      <img src="refal4.jpeg" alt="Refal 4" class="gallery-img">
+    <!-- GALERI FOTO DENGAN ZOOM -->
+    <h2 class="section-title"><i class="fas fa-images me-2"></i> Galeri Perjalanan (Klik untuk Zoom)</h2>
+    <div class="wishlist-gallery" id="imageGallery">
+      <img src="refal.jpeg" alt="Refal 1 - Perjalanan Karir" class="gallery-img" data-full="refal.jpeg">
+      <img src="refal2.jpeg" alt="Refal 2 - Momen PKL" class="gallery-img" data-full="refal2.jpeg">
+      <img src="refal3.jpeg" alt="Refal 3 - Beasiswa" class="gallery-img" data-full="refal3.jpeg">
+      <img src="refal4.jpeg" alt="Refal 4 - Harapan 2026" class="gallery-img" data-full="refal4.jpeg">
     </div>
 
     <!-- PERJALANAN & LATAR BELAKANG -->
@@ -665,7 +717,7 @@
       </div>
     </div>
 
-    <!-- WISHLIST 2026 (tidak ada teks terpotong lagi) -->
+    <!-- WISHLIST 2026 -->
     <h2 class="section-title"><i class="fas fa-star-of-life me-2" style="color: var(--wish-gold);"></i> Wishlist 2026 — Harapan & Doa</h2>
     <div class="wishlist-card">
       <div class="wishlist-grid">
@@ -688,8 +740,7 @@
         <div class="wish-item heart-special" data-wish="5">
           <div class="wish-icon"><i class="fas fa-heart-broken" style="color: var(--wish-heart);"></i></div>
           <div class="wish-text">
-            💔 <strong>Minusnya: saya bodoh dalam percintaan</strong> — mungkin itu kurang cocok.<br>
-            Semoga saja digantikan dengan yang lebih baik, dan dapet pekerjaan di bidang saya sebagai <strong>Fullstack Engineer Junior</strong>. Aamiin ya Allah. Dan suatu saat nanti dia bakalan menyesal. <i class="fas fa-smile-wink"></i> Selamat menikmati musang yang anda pilih.
+            💔 <strong>Minusnya: saya bodoh dalam percintaan</strong> — semoga digantikan dengan yang lebih baik, dapet pekerjaan di bidang saya sebagai <strong>Fullstack Engineer Junior</strong>. Aamiin. Dan suatu saat nanti dia bakalan menyesal. <i class="fas fa-smile-wink"></i> Selamat menikmati musang yang anda pilih.
           </div>
         </div>
         <div class="wish-item" data-wish="6">
@@ -722,27 +773,31 @@
   </main>
 </div>
 
+<!-- Modal Zoom Gambar -->
+<div id="imageModal" class="image-modal">
+  <button class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></button>
+  <img class="modal-img" id="modalImg" alt="Zoom Image">
+</div>
+
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
 <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script>
   (function () {
-    // Mobile drawer
+    // ======================= MOBILE DRAWER =======================
     const sidebar = document.getElementById('mainSidebar');
     const overlay = document.getElementById('sidebarOverlay');
     const mobileMenuIcon = document.getElementById('mobileMenuIcon');
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-
     function openSidebar() { if (window.innerWidth <= 850) { sidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
     function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
     if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
     if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
     if (overlay) overlay.addEventListener('click', closeSidebar);
     window.addEventListener('resize', () => { if (window.innerWidth > 850 && sidebar.classList.contains('open')) closeSidebar(); });
-    const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
-    navLinks.forEach(link => link.addEventListener('click', () => { if (window.innerWidth <= 850) closeSidebar(); }));
+    document.querySelectorAll('.nav-menu .nav-link-custom').forEach(link => link.addEventListener('click', () => { if (window.innerWidth <= 850) closeSidebar(); }));
 
-    // Dark mode
+    // ======================= DARK MODE =======================
     const toggleBtn = document.getElementById('darkModeToggle');
     const iconTheme = toggleBtn.querySelector('i');
     const textSpan = toggleBtn.querySelector('span');
@@ -761,12 +816,7 @@
       else { document.body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkModeUI(true); }
     });
 
-    // Active link
-    document.querySelectorAll('.nav-menu .nav-link-custom').forEach(link => link.classList.remove('active-link'));
-    const tentangLink = document.querySelector('a[href="tentang.html"]');
-    if (tentangLink) tentangLink.classList.add('active-link');
-
-    // Toast dengan durasi pintar & teks penuh (tidak terpotong)
+    // ======================= TOAST SYSTEM =======================
     let toastTimeout = null;
     const toastEl = document.getElementById('toastMsg');
     const toastTextSpan = document.getElementById('toastText');
@@ -776,33 +826,58 @@
       const iconElem = toastEl.querySelector('i');
       if (iconElem) iconElem.className = `${icon} me-2`;
       toastEl.classList.add('show');
-      // Durasi berdasarkan panjang pesan (teks panjang lebih lama biar terbaca)
       let duration = 2800;
       if (message.length > 180) duration = 4500;
       else if (message.length > 100) duration = 3500;
       toastTimeout = setTimeout(() => toastEl.classList.remove('show'), duration);
     }
 
-    // Wishlist items: FULL TEXT tanpa substring(0,100) → masalah terpotong selesai!
+    // ======================= ZOOM GAMBAR (FITUR ZOOM) =======================
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const allGalleryImages = document.querySelectorAll('.gallery-img');
+    
+    function openModal(imgSrc) {
+      modalImg.src = imgSrc;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      modalImg.src = '';
+    }
+    allGalleryImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const fullSrc = img.getAttribute('data-full') || img.src;
+        openModal(fullSrc);
+      });
+    });
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+    // ======================= WISHLIST CLICK =======================
     document.querySelectorAll('.wish-item').forEach(item => {
-      item.addEventListener('click', (e) => {
+      item.addEventListener('click', () => {
         const rawTextElem = item.querySelector('.wish-text');
-        let fullText = rawTextElem ? rawTextElem.innerText.trim() : 'Harapan besar untuk masa depan!';
-        // Bersihkan sedikit dari spasi berlebih tapi tetap utuh
+        let fullText = rawTextElem ? rawTextElem.innerText.trim() : 'Harapan besar!';
         fullText = fullText.replace(/\s+/g, ' ').trim();
         showToast(`✨ ${fullText}`, 'fas fa-star');
       });
     });
 
-    // Galeri foto
-    document.querySelectorAll('.gallery-img').forEach(img => {
-      img.addEventListener('click', () => {
-        showToast(`📸 Kenangan berharga Raifal — tetap semangat menggapai mimpi!`, 'fas fa-camera');
+    // ======================= GALERI FOTO TOAST =======================
+    allGalleryImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showToast(`📸 Klik lagi untuk zoom penuh!`, 'fas fa-camera');
       });
-      img.onerror = function() { this.src = 'https://via.placeholder.com/150?text=Refal'; };
     });
 
-    // Timeline cards
+    // ======================= TIMELINE CARDS =======================
     document.querySelectorAll('.timeline-card').forEach(card => {
       card.addEventListener('click', () => {
         const title = card.querySelector('.timeline-title')?.innerText || 'Perjalanan';
@@ -810,7 +885,7 @@
       });
     });
 
-    // Tech stack
+    // ======================= TECH STACK =======================
     const techInfo = {
       'PHP Native': 'PHP murni tanpa framework, fleksibel untuk custom logic.', Laravel: 'Framework PHP modern dengan artisan, eloquent ORM.', JavaScript: 'ES6+, DOM, async/await.', MySQL: 'Database relasional, query kompleks.', 'Bootstrap 5': 'Framework CSS responsive.', 'Git/GitHub': 'Version control & kolaborasi.', 'Google OAuth': 'Login dengan akun Google.', 'Google Maps API': 'Integrasi peta interaktif.', 'cPanel & Hosting': 'Manajemen hosting & deployment.'
     };
@@ -819,17 +894,16 @@
       item.addEventListener('click', () => showToast(techInfo[techName] || `${techName} bagian dari fullstack saya.`, 'fas fa-code'));
     });
 
-    // Back to top
+    // ======================= BACK TO TOP =======================
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { if (window.scrollY > 300) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // Last updated & greeting
+    // ======================= LAST UPDATED & GREETING =======================
     const lastUpdatedSpan = document.getElementById('lastUpdated');
     const now = new Date();
     const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
     lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran · Wishlist 2026`;
-
     const greetingElement = document.querySelector('.greeting');
     if (greetingElement) {
       const hours = new Date().getHours();
@@ -840,10 +914,12 @@
       else timeGreeting = '🌙 Selamat malam,';
       greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
     }
-
     // Profile fallback
     const profileImg = document.getElementById('profilePhoto');
     if (profileImg) profileImg.onerror = () => { profileImg.src = 'https://via.placeholder.com/120?text=Raifal'; };
+    allGalleryImages.forEach(img => {
+      img.onerror = function() { this.src = 'https://via.placeholder.com/150?text=Refal'; this.setAttribute('data-full', this.src); };
+    });
   })();
 </script>
 </body>
