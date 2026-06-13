@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Raifal Fadhal Zahran | Portfolio</title>
-  <!-- Bootstrap 5 (utilitas) + Font Awesome + Google Fonts -->
+  <title>Raifal Fadhal Zahran | Fullstack Developer</title>
+  <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -16,302 +16,223 @@
       transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* LIGHT MODE (Galaxy Putih & Biru Lembut) */
+    /* LIGHT MODE (default) */
     :root {
-      --bg-body: linear-gradient(145deg, #f4faff 0%, #e9f2fc 100%);
-      --bg-surface: rgba(255, 255, 255, 0.75);
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --text-primary: #0a2a3b;
-      --text-secondary: #1c5779;
-      --text-muted: #2f6b8f;
-      --border-color: rgba(13, 110, 253, 0.2);
-      --card-shadow: 0 25px 45px -12px rgba(0, 30, 60, 0.2);
-      --hover-bg: rgba(13, 110, 253, 0.06);
-      --active-color: #0d6efd;
-      --active-bg: rgba(13, 110, 253, 0.1);
-      --badge-bg: rgba(255, 255, 255, 0.9);
-      --badge-text: #0a4b6e;
-      --separator: rgba(13, 110, 253, 0.2);
+      --bg-body: #f7f9fc;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --hover-bg: #f1f5f9;
+      --active-color: #4f46e5;
+      --active-glow: rgba(79, 70, 229, 0.15);
+      --badge-bg: #f1f5f9;
+      --badge-text: #1e293b;
+      --separator: #e2e8f0;
       --toast-bg: #ffffff;
-      --toast-text: #0a2a3b;
-      --overlay-bg: rgba(0, 0, 0, 0.3);
-      --header-bg: rgba(255, 255, 255, 0.8);
-      --sidebar-bg: rgba(255, 255, 255, 0.96);
-      --hero-overlay: rgba(255, 255, 255, 0.65);
+      --toast-text: #0f172a;
+      --overlay-bg: rgba(0, 0, 0, 0.5);
+      --header-bg: rgba(255, 255, 255, 0.85);
+      --gradient-start: #4f46e5;
+      --gradient-end: #7c3aed;
+      --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, rgba(124, 58, 237, 0.02) 100%);
     }
 
     /* DARK MODE */
     body.dark {
-      --bg-body: linear-gradient(135deg, #0a1128 0%, #0f1f3a 100%);
-      --bg-surface: rgba(15, 25, 45, 0.7);
-      --bg-card: rgba(20, 35, 60, 0.85);
-      --text-primary: #eef5ff;
-      --text-secondary: #c9e0ff;
-      --text-muted: #9ab9e0;
-      --border-color: rgba(56, 189, 248, 0.3);
-      --card-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
-      --hover-bg: rgba(56, 189, 248, 0.12);
-      --active-color: #38bdf8;
-      --active-bg: rgba(56, 189, 248, 0.18);
-      --badge-bg: rgba(20, 40, 65, 0.85);
-      --badge-text: #c9e0ff;
-      --separator: rgba(56, 189, 248, 0.3);
-      --toast-bg: #1e2a47;
-      --toast-text: #eef5ff;
-      --overlay-bg: rgba(0, 0, 0, 0.6);
-      --header-bg: rgba(10, 17, 40, 0.85);
-      --sidebar-bg: rgba(20, 35, 65, 0.96);
-      --hero-overlay: rgba(10, 20, 40, 0.7);
+      --bg-body: #0b1120;
+      --bg-surface: #111827;
+      --bg-card: #1f2937;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      --hover-bg: #1e293b;
+      --active-color: #818cf8;
+      --active-glow: rgba(129, 140, 248, 0.2);
+      --badge-bg: #1e293b;
+      --badge-text: #e2e8f0;
+      --separator: #334155;
+      --toast-bg: #1f2937;
+      --toast-text: #f1f5f9;
+      --overlay-bg: rgba(0, 0, 0, 0.7);
+      --header-bg: rgba(17, 24, 39, 0.9);
+      --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.05) 0%, rgba(139, 92, 246, 0.03) 100%);
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg-body);
+      background-color: var(--bg-body);
       color: var(--text-primary);
       line-height: 1.5;
-      min-height: 100vh;
     }
 
-    /* Splash screen */
+    h1, h2, h3, .nav-link-custom {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ========== SPLASH SCREEN ========== */
     .splash-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #020b17, #000000);
+      background: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
       z-index: 9999;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
       opacity: 1;
       visibility: visible;
     }
-    .splash-screen.fade-out { opacity: 0; visibility: hidden; }
-    .splash-content { text-align: center; color: white; font-family: 'Poppins', sans-serif; }
+    .splash-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .splash-content {
+      text-align: center;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
     .splash-message {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #fff, #88ccff);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff, #c4b5fd);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
-    .splash-sub { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; }
-    .loading-dots { margin-top: 2rem; display: flex; justify-content: center; gap: 10px; }
+    .splash-sub {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+    @media (max-width: 600px) {
+      .splash-message { font-size: 1.8rem; }
+      .splash-sub { font-size: 1rem; }
+    }
+    .loading-dots {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
     .loading-dots span {
-      width: 10px; height: 10px; background-color: #38bdf8; border-radius: 50%;
-      display: inline-block; animation: bounce 1.4s infinite ease-in-out both;
+      width: 10px;
+      height: 10px;
+      background-color: #a78bfa;
+      border-radius: 50%;
+      display: inline-block;
+      animation: bounce 1.4s infinite ease-in-out both;
     }
     .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
     .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-    @keyframes bounce { 0%,80%,100% { transform: scale(0); opacity: 0.3; } 40% { transform: scale(1); opacity: 1; } }
-
-    /* Container utama */
-    .app-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      opacity: 0;
-      transition: opacity 0.5s ease;
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+      40% { transform: scale(1); opacity: 1; }
     }
-    .app-container.visible { opacity: 1; }
 
-    /* Desktop header (navigasi center) */
-    .desktop-header {
+    /* ========== MAIN CONTAINER ========== */
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background-color: var(--bg-body);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .main-container.visible {
+      opacity: 1;
+    }
+
+    /* ========== DESKTOP TOP NAV (centered) ========== */
+    .top-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.6rem 2rem;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+      padding: 1rem 2rem;
       background: var(--header-bg);
-      backdrop-filter: blur(12px);
-      border-radius: 80px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 5px 18px rgba(0,0,0,0.03);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
     }
-    .logo-area { font-weight: 800; font-size: 1.3rem; background: linear-gradient(135deg, var(--active-color), #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .nav-center { display: flex; gap: 0.4rem; background: var(--bg-surface); padding: 0.25rem; border-radius: 60px; backdrop-filter: blur(4px); }
-    .nav-center .nav-link {
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      background: var(--bg-surface);
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(4px);
+    }
+    .nav-link-center {
       padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      font-weight: 500;
-      text-decoration: none;
+      font-weight: 600;
       color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 40px;
       transition: all 0.2s;
       font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
-    .nav-center .nav-link:hover, .nav-center .active-link {
+    .nav-link-center i {
+      margin-right: 6px;
+      font-size: 0.9rem;
+    }
+    .nav-link-center:hover {
+      background: var(--hover-bg);
+      color: var(--active-color);
+    }
+    .nav-link-center.active {
       background: var(--active-color);
       color: white;
-      box-shadow: 0 6px 14px rgba(13,110,253,0.25);
+      box-shadow: 0 4px 12px var(--active-glow);
     }
-    .desktop-dark-toggle {
-      background: var(--bg-surface);
+    .theme-toggle-desktop {
+      background: var(--badge-bg);
       border: 1px solid var(--border-color);
       border-radius: 40px;
-      padding: 0.45rem 1rem;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--text-primary);
-    }
-
-    /* ========== HERO: FOTO SEBAGAI BACKGROUND, CARD DI ATASNYA ========== */
-    .hero-bg {
-      position: relative;
-      border-radius: 48px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      background-size: cover;
-      background-position: center 30%;
-      background-repeat: no-repeat;
-      box-shadow: var(--card-shadow);
-      min-height: 460px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      /* Background image akan di-set via JS/dynamic atau inline style, fallback */
+      gap: 8px;
     }
-    .hero-bg::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--hero-overlay);
-      backdrop-filter: blur(2px);
-      z-index: 1;
-    }
-    .hero-card {
-      position: relative;
-      z-index: 2;
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      border-radius: 40px;
-      padding: 2.2rem 2.5rem;
-      width: 90%;
-      max-width: 700px;
-      margin: 2rem auto;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
-    }
-    .hero-card:hover { transform: scale(1.01); }
-    .greeting-badge { font-size: 1rem; font-weight: 500; color: var(--active-color); letter-spacing: 1px; margin-bottom: 0.75rem; }
-    .hero-title { font-size: 2.5rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.2; }
-    .hero-title span { background: linear-gradient(135deg, var(--active-color), #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .info-badge-hero {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 1rem 0 1.2rem;
-    }
-    .location-chip, .open-chip {
-      display: inline-flex; align-items: center; gap: 8px; background: var(--badge-bg);
-      padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500;
-      border: 1px solid var(--border-color); color: var(--text-primary);
-    }
-    .open-chip { background: #dcfce7; color: #15803d; border: none; }
-    body.dark .open-chip { background: #14532d; color: #bbf7d0; }
-    .description-text {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-top: 0.5rem;
-    }
-    .typed-cursor { font-size: 1rem; opacity: 1; animation: blink 0.7s infinite; }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-
-    /* Tech Section */
-    .tech-section {
-      background: var(--bg-surface);
-      backdrop-filter: blur(8px);
-      border-radius: 48px;
-      padding: 1.6rem 2rem;
-      margin: 1.8rem 0;
-      border: 1px solid var(--border-color);
-    }
-    .section-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      border-left: 5px solid var(--active-color);
-      padding-left: 1rem;
-    }
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 1rem;
-    }
-    .tech-item {
-      background: var(--badge-bg);
-      padding: 0.55rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      transition: all 0.2s;
-      color: var(--badge-text);
-    }
-    .tech-item:hover {
-      transform: translateY(-3px);
-      border-color: var(--active-color);
-      background: var(--active-bg);
-      color: var(--active-color);
-    }
-    .extra-note {
-      background: var(--bg-card);
-      padding: 1rem 1.2rem;
-      border-radius: 24px;
-      font-size: 0.9rem;
-      border: 1px solid var(--border-color);
-    }
-    .last-updated {
-      text-align: center;
-      font-size: 0.7rem;
-      margin-top: 1.5rem;
-      color: var(--text-muted);
-    }
-
-    /* ========== MOBILE STYLE ========== */
+    /* mobile header & drawer */
     .mobile-header {
       display: none;
       align-items: center;
       justify-content: space-between;
       background: var(--header-bg);
-      backdrop-filter: blur(14px);
-      padding: 0.7rem 1.2rem;
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 1.2rem;
       position: sticky;
       top: 0;
       z-index: 1020;
-      border-radius: 30px;
-      margin-bottom: 1rem;
-      border: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
     }
-    .mobile-logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, var(--active-color), #a855f7);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .burger-icon {
+    .menu-icon {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 40px;
@@ -321,85 +242,86 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1.3rem;
       color: var(--text-primary);
     }
-    /* Sidebar drawer kiri */
-    .sidebar-drawer {
+    .brand-mobile {
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    /* DRAWER (mobile sidebar) */
+    .drawer {
       position: fixed;
       top: 0;
       left: -100%;
       width: 280px;
       height: 100%;
-      background: var(--sidebar-bg);
-      backdrop-filter: blur(20px);
+      background: var(--bg-surface);
       z-index: 1050;
       transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      box-shadow: 6px 0 25px rgba(0, 0, 0, 0.2);
-      border-right: 1px solid var(--border-color);
-      padding: 1.5rem 1.2rem;
+      box-shadow: 4px 0 25px rgba(0, 0, 0, 0.2);
+      padding: 1.5rem 1rem;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
+      border-right: 1px solid var(--border-color);
     }
-    .sidebar-drawer.open { left: 0; }
-    .close-sidebar {
-      background: transparent;
+    .drawer.open {
+      left: 0;
+    }
+    .drawer-close {
+      background: none;
       border: none;
-      font-size: 1.6rem;
-      color: var(--text-secondary);
+      font-size: 1.5rem;
       align-self: flex-end;
+      color: var(--text-secondary);
       cursor: pointer;
       margin-bottom: 1rem;
     }
-    .sidebar-profile {
+    .drawer-profile {
       text-align: center;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
-    .sidebar-profile img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
+    .drawer-img {
+      width: 80px;
+      height: 80px;
       object-fit: cover;
+      border-radius: 50%;
       border: 3px solid var(--active-color);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      margin-bottom: 0.5rem;
     }
-    .sidebar-fullname {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-top: 0.5rem;
-    }
-    .nav-menu-mobile {
+    .drawer-nav {
       list-style: none;
       padding: 0;
       flex: 1;
     }
-    .nav-menu-mobile li { margin-bottom: 0.8rem; }
-    .nav-menu-mobile .nav-link {
+    .drawer-nav li {
+      margin-bottom: 0.8rem;
+    }
+    .drawer-link {
       display: flex;
       align-items: center;
       gap: 12px;
       padding: 0.7rem 1rem;
-      border-radius: 40px;
-      text-decoration: none;
+      border-radius: 50px;
       color: var(--text-secondary);
+      text-decoration: none;
       font-weight: 500;
     }
-    .nav-menu-mobile .nav-link.active-link {
+    .drawer-link.active, .drawer-link:hover {
       background: var(--active-bg);
       color: var(--active-color);
     }
-    .theme-mobile-btn {
+    .drawer-dark-toggle {
       background: var(--badge-bg);
+      border: 1px solid var(--border-color);
       border-radius: 40px;
       padding: 0.6rem;
       text-align: center;
       cursor: pointer;
       margin-top: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
     .sidebar-overlay {
       position: fixed;
@@ -407,49 +329,232 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--overlay-bg);
+      background-color: var(--overlay-bg);
       z-index: 1040;
       display: none;
       backdrop-filter: blur(3px);
     }
-    .sidebar-overlay.active { display: block; }
-
-    @media (max-width: 850px) {
-      .app-container { padding: 0 1rem; }
-      .desktop-header { display: none; }
-      .mobile-header { display: flex; }
-      .hero-card { padding: 1.5rem; width: 95%; margin: 1.5rem auto; }
-      .hero-title { font-size: 1.8rem; }
-      .info-badge-hero { gap: 0.7rem; }
-      .tech-section { padding: 1.2rem; }
-      .section-title { font-size: 1.3rem; }
-      .hero-bg { min-height: 400px; }
+    .sidebar-overlay.active {
+      display: block;
     }
-
-    /* Toast & back to top */
+    /* HERO SECTION (foto kanan + navigasi center sudah selesai) */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 2.5rem 2rem 1rem 2rem;
+      background: var(--hero-bg);
+      border-radius: 2rem;
+      margin: 1.5rem 2rem;
+    }
+    .hero-left .greeting-hero {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--active-color);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .hero-left .fullname-hero {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .hero-left .tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--active-color);
+      padding-left: 1rem;
+    }
+    .info-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+    .location-chip, .open-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--badge-bg);
+      padding: 0.45rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .open-chip {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    body.dark .open-chip {
+      background: #14532d;
+      color: #bbf7d0;
+    }
+    .description-text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 1rem 0 1.2rem 0;
+    }
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .profile-bg-card {
+      background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+      border-radius: 40% 60% 50% 50% / 45% 40% 60% 55%;
+      padding: 0.8rem;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.3);
+    }
+    .profile-img-large {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 35% 65% 40% 60% / 45% 40% 60% 55%;
+      border: 4px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin: 2rem 2rem 1rem 2rem;
+      display: inline-block;
+      background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-left: 5px solid var(--active-color);
+      padding-left: 1rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 0 2rem 2rem 2rem;
+    }
+    .tech-item {
+      background: var(--badge-bg);
+      padding: 0.6rem 1.3rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tech-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--active-color);
+      background: var(--active-bg);
+      color: var(--active-color);
+    }
+    .extra-note {
+      margin: 0 2rem 1.5rem 2rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--bg-card);
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      box-shadow: var(--card-shadow);
+    }
+    .last-updated {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding-bottom: 2rem;
+    }
     .custom-toast {
-      position: fixed; bottom: 20px; right: 20px;
-      background: var(--toast-bg); color: var(--toast-text);
-      padding: 10px 18px; border-radius: 50px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      font-size: 0.85rem; font-weight: 500;
-      z-index: 1100; backdrop-filter: blur(8px);
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--toast-bg);
+      color: var(--toast-text);
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 0.85rem;
+      z-index: 1100;
       border-left: 4px solid var(--active-color);
-      display: flex; align-items: center; gap: 10px;
-      opacity: 0; transform: translateY(20px);
-      transition: 0.25s; pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
     }
-    .custom-toast.show { opacity: 1; transform: translateY(0); }
+    .custom-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .back-to-top {
-      position: fixed; bottom: 20px; left: 20px;
-      background: var(--active-color); color: white;
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; opacity: 0; visibility: hidden;
-      transition: 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border: none; z-index: 1000;
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: var(--active-color);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
     }
-    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      .hero-left .info-badge {
+        justify-content: center;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .profile-img-large {
+        width: 200px;
+        height: 200px;
+      }
+      .top-nav {
+        display: none;
+      }
+      .mobile-header {
+        display: flex;
+      }
+      .section-title, .tech-stack, .extra-note {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+    @media (min-width: 901px) {
+      .drawer, .sidebar-overlay, .mobile-header {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -457,91 +562,96 @@
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
-    <div id="splashSub" class="splash-sub">di portfolio</div>
+    <div id="splashSub" class="splash-sub">di portfolio saya</div>
     <div class="loading-dots"><span></span><span></span><span></span></div>
   </div>
 </div>
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<aside class="sidebar-drawer" id="mobileSidebar">
-  <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
-  <div class="sidebar-profile">
-    <img src="profile.jpeg" alt="Raifal" id="sidebarProfileImg" />
-    <div class="sidebar-fullname">Raifal Fadhal Zahran</div>
-    <div class="text-muted" style="font-size:0.8rem; text-align:center;">@Refal</div>
+<!-- MOBILE DRAWER -->
+<div id="mobileDrawer" class="drawer">
+  <button class="drawer-close" id="closeDrawerBtn"><i class="fas fa-times"></i></button>
+  <div class="drawer-profile">
+    <img src="profile.jpeg" alt="Raifal" class="drawer-img" id="drawerProfileImg" />
+    <div class="fw-bold mt-2">Raifal Fadhal Zahran</div>
+    <small class="text-muted">@Refal</small>
   </div>
-  <ul class="nav-menu-mobile">
-    <li><a href="index.html" class="nav-link active-link" id="mobileNavBeranda"><i class="fas fa-home"></i> Beranda</a></li>
-    <li><a href="tentang.html" class="nav-link"><i class="fas fa-user"></i> Tentang</a></li>
-    <li><a href="project.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
-    <li><a href="kontak.html" class="nav-link"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="pengalaman.html" class="nav-link"><i class="fas fa-briefcase"></i> PKL</a></li>
+  <ul class="drawer-nav">
+    <li><a href="index.html" class="drawer-link active" id="drawerBeranda"><i class="fas fa-home"></i> Beranda</a></li>
+    <li><a href="tentang.html" class="drawer-link"><i class="fas fa-user"></i> Tentang</a></li>
+    <li><a href="project.html" class="drawer-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
+    <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
+    <li><a href="pengalaman.html" class="drawer-link"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
   </ul>
-  <div class="theme-mobile-btn" id="darkModeToggleMobile">
+  <div class="drawer-dark-toggle" id="drawerDarkToggle">
     <i class="fas fa-moon"></i> <span>Mode Gelap</span>
   </div>
-</aside>
+</div>
 
-<div class="app-container" id="appContainer">
-  <!-- Desktop Header -->
-  <header class="desktop-header">
-    <div class="logo-area"><i class="fas fa-code"></i> Raifal.dev</div>
-    <div class="nav-center">
-      <a href="index.html" class="nav-link active-link" id="desktopNavBeranda"><i class="fas fa-home"></i> Beranda</a>
-      <a href="tentang.html" class="nav-link"><i class="fas fa-user"></i> Tentang</a>
-      <a href="project.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyek</a>
-      <a href="kontak.html" class="nav-link"><i class="fas fa-envelope"></i> Kontak</a>
-      <a href="pengalaman.html" class="nav-link"><i class="fas fa-briefcase"></i> PKL</a>
+<div class="main-container" id="mainContainer">
+  <!-- DESKTOP TOP NAV (centered) -->
+  <div class="top-nav">
+    <div class="logo">Raifal.dev</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link-center active" id="desktopNavBeranda"><i class="fas fa-home"></i> Beranda</a>
+      <a href="tentang.html" class="nav-link-center"><i class="fas fa-user"></i> Tentang</a>
+      <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
+      <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
+      <a href="pengalaman.html" class="nav-link-center"><i class="fas fa-briefcase"></i> PKL</a>
     </div>
-    <div class="desktop-dark-toggle" id="darkModeToggleDesktop">
+    <div class="theme-toggle-desktop" id="desktopThemeToggle">
       <i class="fas fa-moon"></i> <span>Mode Gelap</span>
     </div>
-  </header>
-
-  <!-- Mobile Header (burger kanan) -->
-  <div class="mobile-header">
-    <div class="mobile-logo"><i class="fas fa-star-of-life"></i> Raifal.dev</div>
-    <div class="burger-icon" id="burgerMenuIcon"><i class="fas fa-bars"></i></div>
   </div>
 
-  <!-- HERO: Background foto profil, card teks di atas -->
-  <div class="hero-bg" id="heroBackground">
-    <div class="hero-card">
-      <div class="greeting-badge" id="greetingTime">☀️ Selamat pagi,</div>
-      <h1 class="hero-title">Raifal <span>Fadhal Zahran</span></h1>
-      <div class="info-badge-hero">
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <div class="menu-icon" id="mobileMenuIcon"><i class="fas fa-bars"></i></div>
+    <div class="brand-mobile">Raifal.dev</div>
+    <div style="width:44px;"></div>
+  </div>
+
+  <!-- HERO SECTION: kiri teks, kanan foto sebagai background / visual utama -->
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="greeting-hero" id="dynamicGreeting">Halo, Saya</div>
+      <div class="fullname-hero">Raifal Fadhal Zahran</div>
+      <div class="tagline">Fullstack Developer & Tech Enthusiast</div>
+      <div class="info-badge">
         <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
         <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
       </div>
       <div class="description-text" id="typingContainer"></div>
     </div>
+    <div class="hero-right">
+      <div class="profile-bg-card">
+        <img src="profile.jpeg" alt="Raifal Fadhal Zahran" class="profile-img-large" id="heroProfileImg" />
+      </div>
+    </div>
   </div>
 
-  <!-- Tech Stack Section -->
-  <div class="tech-section">
-    <h2 class="section-title">🚀 Teknologi yang saya gunakan</h2>
-    <div class="tech-stack" id="techStack">
-      <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
-      <span class="tech-item" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
-      <span class="tech-item" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
-      <span class="tech-item" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
-      <span class="tech-item" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
-      <span class="tech-item" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
-      <span class="tech-item" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
-      <span class="tech-item" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
-      <span class="tech-item" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
-      <span class="tech-item" data-tech="Domaenesia"><i class="fas fa-globe"></i> Domaenesia</span>
-      <span class="tech-item" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
-      <span class="tech-item" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
-      <span class="tech-item" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
-      <span class="tech-item" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
-      <span class="tech-item" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
-    </div>
-    <div class="extra-note">
-      <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
-      <strong>End-to-end development stack:</strong> Dari backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen database MySQL via XAMPP, version control GitHub, serta koding di VS Code.
-    </div>
+  <h2 class="section-title">⚙️ Teknologi yang saya gunakan</h2>
+  <div class="tech-stack" id="techStack">
+    <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+    <span class="tech-item" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+    <span class="tech-item" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+    <span class="tech-item" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
+    <span class="tech-item" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
+    <span class="tech-item" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
+    <span class="tech-item" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
+    <span class="tech-item" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
+    <span class="tech-item" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
+    <span class="tech-item" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+    <span class="tech-item" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
+    <span class="tech-item" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
+    <span class="tech-item" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
+    <span class="tech-item" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
+  </div>
+
+  <div class="extra-note">
+    <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
+    <strong>End-to-end development stack:</strong> Backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen MySQL via XAMPP, version control GitHub, serta koding di VS Code.
   </div>
   <div class="last-updated" id="lastUpdated"></div>
 </div>
@@ -551,183 +661,184 @@
 
 <script>
   (function() {
-    // ========== SET BACKGROUND FOTO ==========
-    const heroBg = document.getElementById('heroBackground');
-    const profileImgUrl = 'profile.jpeg'; // fallback jika gagal nanti via onerror
-    function setHeroBackground(url) {
-      heroBg.style.backgroundImage = `url('${url}')`;
-      heroBg.style.backgroundSize = 'cover';
-      heroBg.style.backgroundPosition = 'center 30%';
-    }
-    setHeroBackground(profileImgUrl);
-    // Fallback jika gambar gagal load
-    const testImg = new Image();
-    testImg.onerror = () => {
-      setHeroBackground('https://via.placeholder.com/1200x600?text=Raifal+Galaxy');
-    };
-    testImg.src = profileImgUrl;
+    // MOBILE DRAWER LOGIC
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('sidebarOverlay');
+    const menuIcon = document.getElementById('mobileMenuIcon');
+    const closeDrawer = document.getElementById('closeDrawerBtn');
+    function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+    function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if (menuIcon) menuIcon.addEventListener('click', openDrawer);
+    if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
+    if (overlay) overlay.addEventListener('click', closeDrawerFunc);
+    window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+    drawerLinks.forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); }); });
 
-    // ========== DARK MODE ==========
-    const desktopToggle = document.getElementById('darkModeToggleDesktop');
-    const mobileToggle = document.getElementById('darkModeToggleMobile');
-    function updateDarkUI(isDark) {
-      const setIcon = (el, dark) => {
-        if(!el) return;
-        const icon = el.querySelector('i');
-        const span = el.querySelector('span');
-        if(dark) {
-          if(icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-          if(span) span.innerText = 'Mode Terang';
+    // DARK MODE (dual toggle)
+    const body = document.body;
+    const desktopToggle = document.getElementById('desktopThemeToggle');
+    const drawerToggle = document.getElementById('drawerDarkToggle');
+    const updateDarkUI = (isDark) => {
+      const toggles = [desktopToggle, drawerToggle];
+      toggles.forEach(t => {
+        if (!t) return;
+        const icon = t.querySelector('i');
+        const span = t.querySelector('span');
+        if (isDark) {
+          icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
+          span.innerText = 'Mode Terang';
         } else {
-          if(icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-          if(span) span.innerText = 'Mode Gelap';
+          icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
+          span.innerText = 'Mode Gelap';
         }
-      };
-      setIcon(desktopToggle, isDark);
-      setIcon(mobileToggle, isDark);
-    }
+      });
+    };
+    const setTheme = (theme) => {
+      if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
+      else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
+    };
     const stored = localStorage.getItem('theme');
-    if(stored === 'dark') { document.body.classList.add('dark'); updateDarkUI(true); }
-    else if(stored === 'light') { document.body.classList.remove('dark'); updateDarkUI(false); }
+    if (stored === 'dark') setTheme('dark');
+    else if (stored === 'light') setTheme('light');
     else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if(prefersDark) { document.body.classList.add('dark'); updateDarkUI(true); localStorage.setItem('theme','dark'); }
-      else { updateDarkUI(false); localStorage.setItem('theme','light'); }
+      setTheme(prefersDark ? 'dark' : 'light');
     }
-    function toggleDarkMode() {
-      const isDark = document.body.classList.contains('dark');
-      if(isDark) {
-        document.body.classList.remove('dark');
-        localStorage.setItem('theme','light');
-        updateDarkUI(false);
-      } else {
-        document.body.classList.add('dark');
-        localStorage.setItem('theme','dark');
-        updateDarkUI(true);
-      }
-    }
-    if(desktopToggle) desktopToggle.addEventListener('click', toggleDarkMode);
-    if(mobileToggle) mobileToggle.addEventListener('click', toggleDarkMode);
+    const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
+    if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
+    if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // ========== MOBILE DRAWER ==========
-    const sidebar = document.getElementById('mobileSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    const burgerBtn = document.getElementById('burgerMenuIcon');
-    const closeBtn = document.getElementById('closeSidebarBtn');
-    function openDrawer() { if(window.innerWidth <= 850) { sidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-    function closeDrawer() { sidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    if(burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
-    if(overlay) overlay.addEventListener('click', closeDrawer);
-    document.querySelectorAll('.nav-menu-mobile .nav-link').forEach(link => {
-      link.addEventListener('click', () => { if(window.innerWidth <= 850) closeDrawer(); });
-    });
-    window.addEventListener('resize', () => { if(window.innerWidth > 850 && sidebar.classList.contains('open')) closeDrawer(); });
+    // ACTIVE LINK (index)
+    const setActive = () => {
+      document.querySelectorAll('.nav-link-center, .drawer-link').forEach(l => l.classList.remove('active'));
+      const desktopActive = document.getElementById('desktopNavBeranda');
+      const drawerActive = document.getElementById('drawerBeranda');
+      if (desktopActive) desktopActive.classList.add('active');
+      if (drawerActive) drawerActive.classList.add('active');
+    };
+    setActive();
 
-    // ========== ACTIVE LINK ==========
-    const allDesktop = document.querySelectorAll('.nav-center .nav-link');
-    const allMobile = document.querySelectorAll('.nav-menu-mobile .nav-link');
-    allDesktop.forEach(l => l.classList.remove('active-link'));
-    allMobile.forEach(l => l.classList.remove('active-link'));
-    const deskBeranda = document.getElementById('desktopNavBeranda');
-    const mobBeranda = document.getElementById('mobileNavBeranda');
-    if(deskBeranda) deskBeranda.classList.add('active-link');
-    if(mobBeranda) mobBeranda.classList.add('active-link');
-
-    // ========== TYPING EFFECT (teks deskripsi) ==========
-    const fullDesc = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
-    const typingEl = document.getElementById('typingContainer');
-    let idx = 0;
-    function typeWriter() {
-      if(idx < fullDesc.length) {
-        typingEl.innerHTML += fullDesc.charAt(idx);
-        idx++;
-        setTimeout(typeWriter, 28);
-      } else {
-        typingEl.innerHTML += '<span class="typed-cursor">|</span>';
-      }
-    }
-    typingEl.innerHTML = '';
-    typeWriter();
-
-    // ========== GREETING TIME ==========
-    const greetSpan = document.getElementById('greetingTime');
-    const hour = new Date().getHours();
-    let greetText = '☀️ Selamat pagi,';
-    if(hour >= 5 && hour < 11) greetText = '☀️ Selamat pagi,';
-    else if(hour >= 11 && hour < 15) greetText = '🌤️ Selamat siang,';
-    else if(hour >= 15 && hour < 18) greetText = '🌇 Selamat sore,';
-    else greetText = '🌙 Selamat malam,';
-    if(greetSpan) greetSpan.innerHTML = `${greetText} <span style="font-weight:600;">Saya</span>`;
-
-    // ========== TOAST & TECH INFO ==========
-    const toast = document.getElementById('toastMsg');
+    // TOAST + TECH INFO
+    const toastEl = document.getElementById('toastMsg');
     const toastTextSpan = document.getElementById('toastText');
-    function showToast(msg, icon='fas fa-microchip') {
+    function showToast(msg, icon = 'fas fa-code') {
       toastTextSpan.innerText = msg;
-      const iconElem = toast.querySelector('i');
-      if(iconElem) iconElem.className = `${icon} me-2`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
+      const iconElem = toastEl.querySelector('i');
+      if (iconElem) iconElem.className = `${icon} me-2`;
+      toastEl.classList.add('show');
+      setTimeout(() => toastEl.classList.remove('show'), 2000);
     }
-    const techDetails = {
-      JavaScript:'Bahasa utama interaktivitas web modern', Bootstrap:'Framework CSS responsive', CSS:'Desain visual & tata letak', GitHub:'Version control & kolaborasi', HTML:'Struktur halaman', 'Google Cloud':'Cloud computing & skalabilitas', 'VS Code':'Editor kode kaya ekstensi', MySQL:'Database relasional', XAMPP:'Lingkungan server lokal', Domaenesia:'Domain & hosting Indonesia', cPanel:'Manajemen hosting', 'Google Auth':'Otentikasi OAuth', 'Google Maps':'Peta interaktif', Laravel:'Framework PHP modern', 'PHP Native':'PHP murni fleksibel'
+    const techMap = {
+      JavaScript: '⚡ Bahasa pemrograman utama untuk interaktivitas web & async logic.',
+      Bootstrap: '🎨 Framework CSS populer untuk antarmuka responsif modern.',
+      CSS: '🎭 Style sheet untuk desain visual yang memukau.',
+      GitHub: '🐙 Kolaborasi kode & version control dengan Git.',
+      HTML: '🏗️ Markup struktur halaman web semantics.',
+      'Google Cloud': '☁️ Cloud computing untuk deployment & skalabilitas.',
+      'VS Code': '✍️ Editor kode ringan dengan ekstensi powerful.',
+      MySQL: '🗄️ Sistem manajemen basis data relasional handal.',
+      XAMPP: '🖥️ Lingkungan lokal server Apache & MySQL.',
+      Laravel: '🚀 Framework PHP modern dengan ekosistem kaya.',
+      'PHP Native': '🐘 Kode PHP murni fleksibel untuk custom logic.',
+      'Google Auth': '🔐 Otentikasi pengguna via akun Google OAuth.',
+      'Google Maps': '🗺️ Integrasi peta interaktif & geolokasi.',
+      cPanel: '📊 Panel kontrol hosting manajemen server & file.',
     };
     document.querySelectorAll('.tech-item').forEach(el => {
       el.addEventListener('click', (e) => {
-        const tech = el.getAttribute('data-tech') || el.innerText.trim().split('\n')[0];
-        const msg = techDetails[tech] || `${tech} dalam stack teknologi saya.`;
-        showToast(msg);
+        e.stopPropagation();
+        const tech = el.getAttribute('data-tech') || el.innerText.trim();
+        const msg = techMap[tech] || `${tech} merupakan bagian dari stack teknologi yang saya kuasai.`;
+        showToast(msg, 'fas fa-microchip');
       });
     });
 
-    // Back to Top
+    // BACK TO TOP
     const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backBtn.classList.add('show');
+      else backBtn.classList.remove('show');
+    });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // Last Updated
-    const now = new Date();
-    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran ✨`;
+    // LAST UPDATED
+    const lastSpan = document.getElementById('lastUpdated');
+    const nowDate = new Date();
+    const formatted = nowDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    lastSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formatted} | Raifal Fadhal Zahran`;
 
-    // Splash Screen
+    // GREETING DYNAMIC
+    const hour = new Date().getHours();
+    let greet = 'Halo, Saya';
+    if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
+    else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
+    else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
+    else greet = '🌙 Selamat malam,';
+    const greetSpan = document.getElementById('dynamicGreeting');
+    if (greetSpan) greetSpan.innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
+
+    // TYPING EFFECT
+    const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
+    const container = document.getElementById('typingContainer');
+    let idx = 0;
+    container.innerHTML = '';
+    function typeWriter() {
+      if (idx < fullBio.length) {
+        container.innerHTML += fullBio.charAt(idx);
+        idx++;
+        setTimeout(typeWriter, 28);
+      } else {
+        container.innerHTML += '<span class="typed-cursor">|</span>';
+      }
+    }
+    typeWriter();
+
+    // SPLASH SCREEN
     const splash = document.getElementById('splashScreen');
-    const container = document.getElementById('appContainer');
-    const isReload = performance?.getEntriesByType('navigation')[0]?.type === 'reload';
-    if(!isReload) {
-      if(splash) splash.style.display = 'none';
-      container.classList.add('visible');
+    const mainCtn = document.getElementById('mainContainer');
+    let isReload = false;
+    if (performance && performance.getEntriesByType) {
+      const nav = performance.getEntriesByType('navigation');
+      if (nav.length && nav[0].type === 'reload') isReload = true;
+    }
+    if (!isReload) {
+      if (splash) splash.style.display = 'none';
+      mainCtn.classList.add('visible');
     } else {
+      splash.style.display = 'flex';
       const msgs = [
-        { main:'Selamat datang', sub:'di galaksi portfolio' },
-        { main:'Raifal Fadhal Zahran', sub:'Fullstack Developer' },
-        { main:'Kode & Kreativitas', sub:'Tanpa batas' }
+        { main: 'Selamat datang', sub: 'di portfolio saya' },
+        { main: 'Konichiwa', sub: 'こんにちは' },
+        { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' }
       ];
       let step = 0;
       const splashMsg = document.getElementById('splashMessage');
       const splashSub = document.getElementById('splashSub');
-      function updateSplash(idx) {
-        if(idx >= msgs.length) {
+      function updateSplash(index) {
+        if (index >= msgs.length) {
           splash.classList.add('fade-out');
-          setTimeout(() => { splash.style.display = 'none'; container.classList.add('visible'); }, 800);
+          setTimeout(() => { splash.style.display = 'none'; mainCtn.classList.add('visible'); }, 800);
           return;
         }
         splashMsg.style.opacity = '0';
         splashSub.style.opacity = '0';
         setTimeout(() => {
-          splashMsg.innerText = msgs[idx].main;
-          splashSub.innerText = msgs[idx].sub;
+          splashMsg.innerText = msgs[index].main;
+          splashSub.innerText = msgs[index].sub;
           splashMsg.style.opacity = '1';
           splashSub.style.opacity = '1';
         }, 200);
-        setTimeout(() => updateSplash(idx+1), 1600);
+        setTimeout(() => updateSplash(index+1), 1700);
       }
       updateSplash(0);
     }
-
-    // Fallback gambar sidebar
-    const sidebarImg = document.getElementById('sidebarProfileImg');
-    if(sidebarImg) sidebarImg.onerror = () => sidebarImg.src = 'https://via.placeholder.com/100?text=RF';
+    // FALLBACK IMAGE
+    const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
+    profileImgs.forEach(img => {
+      if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; };
+    });
+    console.log('✅ Modern redesign with centered nav & right image background ready');
   })();
 </script>
 </body>
