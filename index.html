@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Raifal Fadhal Zahran | Galaxy Portfolio</title>
-  <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
+  <title>Raifal Fadhal Zahran | Portofolio</title>
+  <!-- Bootstrap 5 (hanya untuk grid utilitas) + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -16,52 +16,52 @@
       transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* LIGHT MODE (Galaxy Putih & Biru) */
+    /* LIGHT MODE (Galaxy Putih & Biru Muda) - nyaman dipandang */
     :root {
-      --bg-body: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+      --bg-body: linear-gradient(145deg, #f4faff 0%, #e9f2fc 100%);
       --bg-surface: rgba(255, 255, 255, 0.75);
       --bg-card: rgba(255, 255, 255, 0.9);
-      --text-primary: #0b2b3b;
-      --text-secondary: #1e4a6e;
-      --text-muted: #2c6289;
+      --text-primary: #0a2a3b;
+      --text-secondary: #1c5779;
+      --text-muted: #2f6b8f;
       --border-color: rgba(13, 110, 253, 0.2);
-      --card-shadow: 0 20px 35px -12px rgba(0, 30, 60, 0.15);
-      --hover-bg: rgba(13, 110, 253, 0.08);
+      --card-shadow: 0 20px 35px -12px rgba(0, 30, 60, 0.12);
+      --hover-bg: rgba(13, 110, 253, 0.06);
       --active-color: #0d6efd;
-      --active-bg: rgba(13, 110, 253, 0.12);
-      --badge-bg: rgba(255, 255, 255, 0.85);
-      --badge-text: #0b3b5f;
+      --active-bg: rgba(13, 110, 253, 0.1);
+      --badge-bg: rgba(255, 255, 255, 0.9);
+      --badge-text: #0a4b6e;
       --separator: rgba(13, 110, 253, 0.2);
       --toast-bg: #ffffff;
-      --toast-text: #0b2b3b;
+      --toast-text: #0a2a3b;
       --overlay-bg: rgba(0, 0, 0, 0.3);
-      --header-bg: rgba(255, 255, 255, 0.7);
-      --glow-color: rgba(13, 110, 253, 0.4);
-      --galaxy-star: #ffffff;
+      --header-bg: rgba(255, 255, 255, 0.8);
+      --glow-color: rgba(13, 110, 253, 0.35);
+      --sidebar-bg: rgba(255, 255, 255, 0.96);
     }
 
-    /* DARK MODE (Galaxy gelap biru) */
+    /* DARK MODE (Galaxy gelap kebiruan) */
     body.dark {
-      --bg-body: linear-gradient(135deg, #0a1128 0%, #101f3c 100%);
+      --bg-body: linear-gradient(135deg, #0a1128 0%, #0f1f3a 100%);
       --bg-surface: rgba(15, 25, 45, 0.7);
       --bg-card: rgba(20, 35, 60, 0.9);
       --text-primary: #eef5ff;
       --text-secondary: #c9e0ff;
       --text-muted: #9ab9e0;
       --border-color: rgba(56, 189, 248, 0.3);
-      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
-      --hover-bg: rgba(56, 189, 248, 0.15);
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(56, 189, 248, 0.12);
       --active-color: #38bdf8;
-      --active-bg: rgba(56, 189, 248, 0.2);
-      --badge-bg: rgba(20, 40, 65, 0.8);
+      --active-bg: rgba(56, 189, 248, 0.18);
+      --badge-bg: rgba(20, 40, 65, 0.85);
       --badge-text: #c9e0ff;
       --separator: rgba(56, 189, 248, 0.3);
       --toast-bg: #1e2a47;
       --toast-text: #eef5ff;
       --overlay-bg: rgba(0, 0, 0, 0.6);
-      --header-bg: rgba(10, 17, 40, 0.8);
+      --header-bg: rgba(10, 17, 40, 0.85);
       --glow-color: rgba(56, 189, 248, 0.5);
-      --galaxy-star: #cbd5e6;
+      --sidebar-bg: rgba(20, 35, 65, 0.96);
     }
 
     body {
@@ -72,120 +72,69 @@
       min-height: 100vh;
     }
 
-    h1, h2, h3, .nav-link {
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* ========== SPLASH SCREEN ========== */
+    /* Splash screen (sama seperti sebelumnya) */
     .splash-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #030b1a, #000000);
+      background: radial-gradient(circle at center, #020b17, #000000);
       z-index: 9999;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
       opacity: 1;
       visibility: visible;
     }
-    .splash-screen.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .splash-content {
-      text-align: center;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-    }
+    .splash-screen.fade-out { opacity: 0; visibility: hidden; }
+    .splash-content { text-align: center; color: white; font-family: 'Poppins', sans-serif; }
     .splash-message {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
       background: linear-gradient(135deg, #fff, #88ccff);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
-    .splash-sub {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    @media (max-width: 600px) {
-      .splash-message { font-size: 1.8rem; }
-      .splash-sub { font-size: 1rem; }
-    }
-    .loading-dots {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+    .splash-sub { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; }
+    .loading-dots { margin-top: 2rem; display: flex; justify-content: center; gap: 10px; }
     .loading-dots span {
-      width: 10px;
-      height: 10px;
-      background-color: #38bdf8;
-      border-radius: 50%;
-      display: inline-block;
-      animation: bounce 1.4s infinite ease-in-out both;
+      width: 10px; height: 10px; background-color: #38bdf8; border-radius: 50%;
+      display: inline-block; animation: bounce 1.4s infinite ease-in-out both;
     }
     .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
     .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-      40% { transform: scale(1); opacity: 1; }
-    }
+    @keyframes bounce { 0%,80%,100% { transform: scale(0); opacity: 0.3; } 40% { transform: scale(1); opacity: 1; } }
 
-    /* LAYOUT UTAMA */
-    .app-wrapper {
-      max-width: 1400px;
+    /* Main container */
+    .app-container {
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 2rem;
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
     }
-    .app-wrapper.visible {
-      opacity: 1;
-    }
+    .app-container.visible { opacity: 1; }
 
     /* ========== DESKTOP HEADER (Navigasi Center) ========== */
     .desktop-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
+      padding: 0.6rem 2rem;
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
       background: var(--header-bg);
       backdrop-filter: blur(12px);
       border-radius: 80px;
-      margin-top: 1rem;
-      padding: 0.6rem 2rem;
-      position: sticky;
-      top: 1rem;
-      z-index: 100;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.03);
     }
-    .logo-area {
-      font-weight: 800;
-      font-size: 1.3rem;
-      background: linear-gradient(135deg, var(--active-color), #8b5cf6);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .nav-center {
-      display: flex;
-      gap: 0.5rem;
-      background: var(--bg-surface);
-      padding: 0.3rem;
-      border-radius: 60px;
-      backdrop-filter: blur(4px);
-    }
-    .nav-center .nav-link-custom {
+    .logo-area { font-weight: 800; font-size: 1.3rem; background: linear-gradient(135deg, var(--active-color), #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .nav-center { display: flex; gap: 0.4rem; background: var(--bg-surface); padding: 0.25rem; border-radius: 60px; backdrop-filter: blur(4px); }
+    .nav-center .nav-link {
       padding: 0.5rem 1.2rem;
       border-radius: 40px;
       font-weight: 500;
@@ -193,21 +142,21 @@
       color: var(--text-secondary);
       transition: all 0.2s;
       font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .nav-center .nav-link-custom i {
-      margin-right: 6px;
-    }
-    .nav-center .nav-link-custom:hover,
-    .nav-center .active-link {
+    .nav-center .nav-link i { font-size: 0.9rem; }
+    .nav-center .nav-link:hover, .nav-center .active-link {
       background: var(--active-color);
       color: white;
-      box-shadow: 0 4px 10px rgba(13,110,253,0.3);
+      box-shadow: 0 6px 14px rgba(13,110,253,0.25);
     }
     .desktop-dark-toggle {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 40px;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -217,13 +166,13 @@
       color: var(--text-primary);
     }
 
-    /* HERO 2 KOLOM: Kiri Teks, Kanan Foto Galaxy */
+    /* Hero: dua kolom desktop */
     .hero-galaxy {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
-      gap: 3rem;
+      gap: 2.5rem;
       align-items: center;
-      margin: 1rem 0 2rem 0;
+      margin-bottom: 2rem;
     }
     .hero-left {
       background: var(--bg-surface);
@@ -233,104 +182,72 @@
       border: 1px solid var(--border-color);
       box-shadow: var(--card-shadow);
     }
-    .greeting-large {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--active-color);
-      letter-spacing: 1px;
+    .greeting-badge { font-size: 0.9rem; font-weight: 500; color: var(--active-color); letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .hero-title { font-size: 2.6rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.2; }
+    .hero-title span { background: linear-gradient(135deg, var(--active-color), #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .info-badge { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.2rem 0 1rem; }
+    .location-chip, .open-chip {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--badge-bg);
+      padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500;
+      border: 1px solid var(--border-color); color: var(--text-primary);
     }
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin: 0.5rem 0 0.5rem;
-      line-height: 1.2;
-    }
-    .hero-title span {
-      background: linear-gradient(135deg, var(--active-color), #8b5cf6);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+    .open-chip { background: #dcfce7; color: #15803d; border: none; }
+    body.dark .open-chip { background: #14532d; color: #bbf7d0; }
+    .description-text { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin: 1.2rem 0 0.5rem; }
+
+    /* Foto profil kanan dengan efek galaxy */
     .hero-right {
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .galaxy-profile {
+    .galaxy-frame {
       position: relative;
-      width: 320px;
-      height: 320px;
+      width: 300px;
+      height: 300px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(13,110,253,0.2) 0%, rgba(0,0,0,0) 70%);
+      background: radial-gradient(circle, rgba(13,110,253,0.15) 0%, transparent 70%);
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .galaxy-profile img {
-      width: 280px;
-      height: 280px;
+    .galaxy-frame img {
+      width: 270px;
+      height: 270px;
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid var(--active-color);
-      box-shadow: 0 0 40px var(--glow-color);
-      transition: transform 0.3s ease;
+      box-shadow: 0 0 35px var(--glow-color);
+      transition: transform 0.3s;
       background: #0b2b3b;
     }
-    .galaxy-profile img:hover {
-      transform: scale(1.02);
-    }
-    /* efek bintang galaxy */
-    .galaxy-profile::before {
+    .galaxy-frame img:hover { transform: scale(1.02); }
+    .galaxy-frame::before {
       content: "";
       position: absolute;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,255,200,0.2) 2%, transparent 2.5%),
-                  radial-gradient(circle at 70% 85%, rgba(200,220,255,0.3) 1.5%, transparent 2%);
-      background-size: 40px 40px, 60px 60px;
+      background: radial-gradient(circle at 25% 35%, rgba(255,245,200,0.2) 2%, transparent 2.5%),
+                  radial-gradient(circle at 70% 80%, rgba(200,220,255,0.2) 1.8%, transparent 2%);
+      background-size: 45px 45px, 60px 60px;
       background-repeat: repeat;
       border-radius: 50%;
       pointer-events: none;
-      opacity: 0.6;
     }
-    .info-badge {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 1.5rem 0 1rem;
-    }
-    .location-chip, .open-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--badge-bg);
-      padding: 0.45rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-primary);
+
+    /* Section teknologi */
+    .tech-section {
+      background: var(--bg-surface);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 1.6rem 2rem;
+      margin: 1.5rem 0;
       border: 1px solid var(--border-color);
-    }
-    .open-chip {
-      background: #dcfce7;
-      color: #15803d;
-      border: none;
-    }
-    body.dark .open-chip {
-      background: #14532d;
-      color: #bbf7d0;
-    }
-    .description-text {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin: 1rem 0 1.5rem;
     }
     .section-title {
       font-weight: 700;
-      font-size: 1.4rem;
-      margin: 1.8rem 0 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
       border-left: 5px solid var(--active-color);
       padding-left: 1rem;
     }
@@ -338,36 +255,34 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .tech-item {
       background: var(--badge-bg);
-      color: var(--badge-text);
       padding: 0.55rem 1.2rem;
       border-radius: 40px;
-      font-weight: 500;
       font-size: 0.85rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       border: 1px solid var(--border-color);
       cursor: pointer;
       transition: all 0.2s;
+      color: var(--badge-text);
     }
     .tech-item:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       border-color: var(--active-color);
       background: var(--active-bg);
       color: var(--active-color);
     }
     .extra-note {
-      margin: 1.5rem 0;
-      padding: 1rem 1.2rem;
       background: var(--bg-card);
+      padding: 1rem 1.2rem;
       border-radius: 24px;
-      border: 1px solid var(--border-color);
       font-size: 0.9rem;
-      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-color);
     }
     .last-updated {
       text-align: center;
@@ -376,218 +291,206 @@
       color: var(--text-muted);
     }
 
-    /* Custom Toast & Back to Top */
-    .custom-toast {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: var(--toast-bg);
-      color: var(--toast-text);
-      padding: 12px 20px;
-      border-radius: 50px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      font-size: 0.85rem;
-      font-weight: 500;
-      z-index: 1100;
-      backdrop-filter: blur(8px);
-      border-left: 4px solid var(--active-color);
-      display: flex;
+    /* ========== MOBILE STYLE (burger menu di kanan, sidebar kiri, foto jadi background subtle) ========== */
+    .mobile-header {
+      display: none;
       align-items: center;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s, transform 0.3s;
-      pointer-events: none;
+      justify-content: space-between;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      padding: 0.7rem 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border-color);
     }
-    .custom-toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .mobile-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--active-color), #a855f7);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
-    .back-to-top {
-      position: fixed;
-      bottom: 25px;
-      left: 25px;
-      background: var(--active-color);
-      color: white;
+    .burger-icon {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 40px;
       width: 44px;
       height: 44px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
+      font-size: 1.3rem;
+      color: var(--text-primary);
       transition: 0.2s;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
+    }
+    /* Sidebar drawer dari kiri */
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 280px;
+      height: 100%;
+      background: var(--sidebar-bg);
+      backdrop-filter: blur(20px);
+      z-index: 1050;
+      transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 6px 0 25px rgba(0, 0, 0, 0.2);
+      border-right: 1px solid var(--border-color);
+      padding: 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .sidebar-drawer.open { left: 0; }
+    .close-sidebar {
+      background: transparent;
       border: none;
+      font-size: 1.6rem;
+      color: var(--text-secondary);
+      align-self: flex-end;
+      cursor: pointer;
+      margin-bottom: 1rem;
     }
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
+    .sidebar-profile {
+      text-align: center;
+      margin-bottom: 1.8rem;
     }
-
-    /* ========== MOBILE STYLE (Drawer, sembunyikan desktop-header) ========== */
-    .mobile-header {
+    .sidebar-profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--active-color);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+    .sidebar-fullname {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    .sidebar-username {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .nav-menu-mobile {
+      list-style: none;
+      padding: 0;
+      flex: 1;
+    }
+    .nav-menu-mobile li { margin-bottom: 0.8rem; }
+    .nav-menu-mobile .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.7rem 1rem;
+      border-radius: 40px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-menu-mobile .nav-link.active-link {
+      background: var(--active-bg);
+      color: var(--active-color);
+    }
+    .theme-mobile-btn {
+      background: var(--badge-bg);
+      border-radius: 40px;
+      padding: 0.6rem;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay-bg);
+      z-index: 1040;
       display: none;
+      backdrop-filter: blur(3px);
     }
-    .sidebar {
-      display: none; /* hidden di desktop, muncul di mobile via media query */
-    }
+    .sidebar-overlay.active { display: block; }
+
+    /* Di mobile: foto hero disembunyikan, teks dibuat lebih lebar & background subtle (bukan foto utama) */
     @media (max-width: 850px) {
-      .app-wrapper {
-        padding: 0 1rem;
-      }
-      .desktop-header {
-        display: none;
-      }
-      .hero-galaxy {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .hero-right {
-        order: -1;
-        margin-bottom: 1rem;
-      }
-      .galaxy-profile {
-        width: 220px;
-        height: 220px;
-      }
-      .galaxy-profile img {
-        width: 190px;
-        height: 190px;
-      }
-      .hero-title {
-        font-size: 2rem;
-      }
-      /* mobile drawer sidebar */
-      .sidebar {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 280px;
-        height: 100%;
-        background: var(--bg-sidebar);
-        backdrop-filter: blur(20px);
-        z-index: 1050;
-        transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
-        border-right: 1px solid var(--border-color);
-        padding: 1rem 1.5rem;
-        flex-direction: column;
-        background-color: var(--bg-surface);
-      }
-      .sidebar.open {
-        left: 0;
-      }
-      .sidebar-close {
-        display: block;
-        background: transparent;
-        border: none;
-        font-size: 1.5rem;
-        align-self: flex-end;
-        color: var(--text-secondary);
-      }
-      .profile-img-container {
-        text-align: center;
-        margin: 0.5rem 0;
-      }
-      .profile-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--active-color);
-      }
-      .fullname {
-        font-size: 1.3rem;
-        text-align: center;
-      }
-      .nav-menu {
-        list-style: none;
-        padding: 0;
-        margin-top: 1.5rem;
-      }
-      .nav-menu li {
-        margin-bottom: 0.8rem;
-      }
-      .nav-link-custom {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 0.6rem 1rem;
-        border-radius: 40px;
-        text-decoration: none;
-        color: var(--text-secondary);
-      }
-      .active-link {
-        background: var(--active-bg);
-        color: var(--active-color);
-      }
-      .theme-switch-wrapper {
-        margin-top: auto;
-        padding-top: 1rem;
-      }
-      .dark-mode-btn {
-        background: var(--badge-bg);
-        border-radius: 40px;
-        padding: 0.6rem;
-        text-align: center;
-        cursor: pointer;
-      }
-      .mobile-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: var(--header-bg);
-        backdrop-filter: blur(12px);
-        padding: 0.8rem 1rem;
-        position: sticky;
-        top: 0;
-        z-index: 1020;
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 1rem;
-        border-radius: 30px;
-      }
-      .menu-icon {
-        background: var(--bg-surface);
-        width: 44px;
-        height: 44px;
-        border-radius: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-      .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--overlay-bg);
-        z-index: 1040;
-        display: none;
-      }
-      .sidebar-overlay.active {
-        display: block;
-      }
+      .app-container { padding: 0 1rem; }
+      .desktop-header { display: none; }
+      .mobile-header { display: flex; }
+      .hero-galaxy { grid-template-columns: 1fr; gap: 0; }
+      .hero-right { display: none; } /* foto profil tidak tampil di hero mobile, hanya di sidebar */
+      /* agar tetap ada elemen "background" yang halus: kita tambahkan pseudo element di hero-left */
       .hero-left {
-        padding: 1.2rem;
+        position: relative;
+        background: var(--bg-surface);
+        backdrop-filter: blur(8px);
+        overflow: hidden;
       }
+      /* Foto sebagai background samar (opacity rendah) di pojok kanan bawah hero-left */
+      .hero-left::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 140px;
+        height: 140px;
+        background-image: url('profile.jpeg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.12;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(20px, 20px);
+        filter: blur(1px);
+      }
+      body.dark .hero-left::after { opacity: 0.1; filter: blur(1px); }
+      .hero-title { font-size: 2rem; }
+      .tech-section { padding: 1.2rem; }
+      .section-title { font-size: 1.3rem; }
     }
 
-    /* desktop sidebar tidak dipakai */
-    .sidebar-close {
-      display: none;
+    /* Toast & back to top */
+    .custom-toast {
+      position: fixed; bottom: 20px; right: 20px;
+      background: var(--toast-bg); color: var(--toast-text);
+      padding: 10px 18px; border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      font-size: 0.85rem; font-weight: 500;
+      z-index: 1100; backdrop-filter: blur(8px);
+      border-left: 4px solid var(--active-color);
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; transform: translateY(20px);
+      transition: 0.25s; pointer-events: none;
     }
+    .custom-toast.show { opacity: 1; transform: translateY(0); }
+    .back-to-top {
+      position: fixed; bottom: 20px; left: 20px;
+      background: var(--active-color); color: white;
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; visibility: hidden;
+      transition: 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: none; z-index: 1000;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
   </style>
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
@@ -596,30 +499,53 @@
   </div>
 </div>
 
-<!-- OVERLAY MOBILE -->
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<!-- MAIN WRAPPER -->
-<div id="appWrapper" class="app-wrapper">
-  <!-- DESKTOP HEADER (navigasi center) -->
+<aside class="sidebar-drawer" id="mobileSidebar">
+  <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+  <div class="sidebar-profile">
+    <img src="profile.jpeg" alt="Raifal" id="sidebarProfileImg" />
+    <div class="sidebar-fullname">Raifal Fadhal Zahran</div>
+    <div class="sidebar-username">@Refal</div>
+  </div>
+  <ul class="nav-menu-mobile">
+    <li><a href="index.html" class="nav-link active-link" id="mobileNavBeranda"><i class="fas fa-home"></i> Beranda</a></li>
+    <li><a href="tentang.html" class="nav-link"><i class="fas fa-user"></i> Tentang</a></li>
+    <li><a href="project.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
+    <li><a href="kontak.html" class="nav-link"><i class="fas fa-envelope"></i> Kontak</a></li>
+    <li><a href="pengalaman.html" class="nav-link"><i class="fas fa-briefcase"></i> PKL</a></li>
+  </ul>
+  <div class="theme-mobile-btn" id="darkModeToggleMobile">
+    <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+  </div>
+</aside>
+
+<div class="app-container" id="appContainer">
+  <!-- Desktop Header -->
   <header class="desktop-header">
     <div class="logo-area"><i class="fas fa-code"></i> Raifal.dev</div>
     <div class="nav-center">
-      <a href="index.html" class="nav-link-custom active-link" id="desktop-nav-beranda"><i class="fas fa-home"></i> Beranda</a>
-      <a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a>
-      <a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a>
-      <a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a>
-      <a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> PKL</a>
+      <a href="index.html" class="nav-link active-link" id="desktopNavBeranda"><i class="fas fa-home"></i> Beranda</a>
+      <a href="tentang.html" class="nav-link"><i class="fas fa-user"></i> Tentang</a>
+      <a href="project.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyek</a>
+      <a href="kontak.html" class="nav-link"><i class="fas fa-envelope"></i> Kontak</a>
+      <a href="pengalaman.html" class="nav-link"><i class="fas fa-briefcase"></i> PKL</a>
     </div>
     <div class="desktop-dark-toggle" id="darkModeToggleDesktop">
       <i class="fas fa-moon"></i> <span>Mode Gelap</span>
     </div>
   </header>
 
-  <!-- HERO 2 KOLOM: KIRI TEKS, KANAN FOTO GALAXY -->
+  <!-- Mobile Header (burger di kanan) -->
+  <div class="mobile-header">
+    <div class="mobile-logo"><i class="fas fa-star-of-life"></i> Raifal.dev</div>
+    <div class="burger-icon" id="burgerMenuIcon"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <!-- Hero Section -->
   <div class="hero-galaxy">
     <div class="hero-left">
-      <div class="greeting-large" id="greetingTime">✨ Halo, Saya</div>
+      <div class="greeting-badge" id="greetingTime">✨ Halo, Saya</div>
       <h1 class="hero-title">Raifal <span>Fadhal Zahran</span></h1>
       <div class="info-badge">
         <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
@@ -628,14 +554,14 @@
       <div class="description-text" id="typingContainer"></div>
     </div>
     <div class="hero-right">
-      <div class="galaxy-profile">
-        <img src="profile.jpeg" alt="Raifal Profile" id="profilePhotoHero" />
+      <div class="galaxy-frame">
+        <img src="profile.jpeg" alt="Raifal Profile" id="desktopProfileImg" />
       </div>
     </div>
   </div>
 
-  <!-- Bagian Tech Stack & Info tambahan (tetap di dalam kolom kiri style namun full width) -->
-  <div style="background: var(--bg-surface); backdrop-filter: blur(8px); border-radius: 48px; padding: 1.5rem 2rem; margin: 1rem 0; border: 1px solid var(--border-color);">
+  <!-- Tech Stack & Info -->
+  <div class="tech-section">
     <h2 class="section-title">🚀 Teknologi yang saya gunakan</h2>
     <div class="tech-stack" id="techStack">
       <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
@@ -662,214 +588,173 @@
   <div class="last-updated" id="lastUpdated"></div>
 </div>
 
-<!-- MOBILE SIDEBAR (Drawer) -->
-<aside class="sidebar" id="mobileSidebar">
-  <button class="sidebar-close" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
-  <div class="profile-img-container">
-    <img src="profile.jpeg" alt="Foto Profil" class="profile-img" id="profilePhotoMobile" />
-  </div>
-  <div class="fullname">Raifal Fadhal Zahran</div>
-  <div class="username" style="text-align:center;">@Refal</div>
-  <ul class="nav-menu">
-    <li><a href="index.html" class="nav-link-custom active-link" id="mobile-nav-beranda"><i class="fas fa-home"></i> Beranda</a></li>
-    <li><a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a></li>
-    <li><a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a></li>
-    <li><a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
-  </ul>
-  <div class="theme-switch-wrapper">
-    <div class="dark-mode-btn" id="darkModeToggleMobile">
-      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
-    </div>
-  </div>
-</aside>
-
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
 <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script>
   (function() {
-    // ========== DARK MODE (UNIFIED) ==========
-    const toggleDesktop = document.getElementById('darkModeToggleDesktop');
-    const toggleMobile = document.getElementById('darkModeToggleMobile');
-    function updateDarkModeUI(isDark) {
-      const iconDesktop = toggleDesktop?.querySelector('i');
-      const spanDesktop = toggleDesktop?.querySelector('span');
-      const iconMobile = toggleMobile?.querySelector('i');
-      const spanMobile = toggleMobile?.querySelector('span');
-      if (isDark) {
-        if(iconDesktop) { iconDesktop.classList.remove('fa-moon'); iconDesktop.classList.add('fa-sun'); }
-        if(spanDesktop) spanDesktop.innerText = 'Mode Terang';
-        if(iconMobile) { iconMobile.classList.remove('fa-moon'); iconMobile.classList.add('fa-sun'); }
-        if(spanMobile) spanMobile.innerText = 'Mode Terang';
-      } else {
-        if(iconDesktop) { iconDesktop.classList.remove('fa-sun'); iconDesktop.classList.add('fa-moon'); }
-        if(spanDesktop) spanDesktop.innerText = 'Mode Gelap';
-        if(iconMobile) { iconMobile.classList.remove('fa-sun'); iconMobile.classList.add('fa-moon'); }
-        if(spanMobile) spanMobile.innerText = 'Mode Gelap';
-      }
+    // ========== DARK MODE (Unified) ==========
+    const desktopToggle = document.getElementById('darkModeToggleDesktop');
+    const mobileToggle = document.getElementById('darkModeToggleMobile');
+    function updateDarkUI(isDark) {
+      const setIcon = (el, isDark) => {
+        if(!el) return;
+        const icon = el.querySelector('i');
+        const span = el.querySelector('span');
+        if(isDark) {
+          if(icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+          if(span) span.innerText = 'Mode Terang';
+        } else {
+          if(icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+          if(span) span.innerText = 'Mode Gelap';
+        }
+      };
+      setIcon(desktopToggle, isDark);
+      setIcon(mobileToggle, isDark);
     }
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-      document.body.classList.add('dark');
-      updateDarkModeUI(true);
-    } else if (storedTheme === 'light') {
-      document.body.classList.remove('dark');
-      updateDarkModeUI(false);
-    } else {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-        updateDarkModeUI(true);
-        localStorage.setItem('theme', 'dark');
-      } else {
-        updateDarkModeUI(false);
-        localStorage.setItem('theme', 'light');
-      }
+    const stored = localStorage.getItem('theme');
+    if(stored === 'dark') { document.body.classList.add('dark'); updateDarkUI(true); }
+    else if(stored === 'light') { document.body.classList.remove('dark'); updateDarkUI(false); }
+    else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if(prefersDark) { document.body.classList.add('dark'); updateDarkUI(true); localStorage.setItem('theme','dark'); }
+      else { updateDarkUI(false); localStorage.setItem('theme','light'); }
     }
-    function toggleDark() {
+    function toggleDarkMode() {
       const isDark = document.body.classList.contains('dark');
-      if (isDark) {
+      if(isDark) {
         document.body.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-        updateDarkModeUI(false);
+        localStorage.setItem('theme','light');
+        updateDarkUI(false);
       } else {
         document.body.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-        updateDarkModeUI(true);
+        localStorage.setItem('theme','dark');
+        updateDarkUI(true);
       }
     }
-    if(toggleDesktop) toggleDesktop.addEventListener('click', toggleDark);
-    if(toggleMobile) toggleMobile.addEventListener('click', toggleDark);
+    if(desktopToggle) desktopToggle.addEventListener('click', toggleDarkMode);
+    if(mobileToggle) mobileToggle.addEventListener('click', toggleDarkMode);
     
-    // ========== MOBILE DRAWER ==========
-    const mobileSidebar = document.getElementById('mobileSidebar');
+    // ========== MOBILE DRAWER: burger di kanan, sidebar dari kiri ==========
+    const sidebar = document.getElementById('mobileSidebar');
     const overlay = document.getElementById('sidebarOverlay');
-    const menuIcon = document.querySelector('.menu-icon');
-    const closeBtn = document.getElementById('closeSidebarBtn');
-    function openSidebar() { if(window.innerWidth <= 850) { mobileSidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-    function closeSidebar() { mobileSidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    if(menuIcon) menuIcon.addEventListener('click', openSidebar);
-    if(closeBtn) closeBtn.addEventListener('click', closeSidebar);
-    if(overlay) overlay.addEventListener('click', closeSidebar);
-    document.querySelectorAll('.nav-menu .nav-link-custom').forEach(link => {
-      link.addEventListener('click', () => { if(window.innerWidth <= 850) closeSidebar(); });
+    const burgerBtn = document.getElementById('burgerMenuIcon');
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+    function openDrawer() { if(window.innerWidth <= 850) { sidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+    function closeDrawer() { sidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if(burgerBtn) burgerBtn.addEventListener('click', openDrawer);
+    if(closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeDrawer);
+    if(overlay) overlay.addEventListener('click', closeDrawer);
+    // Tutup drawer saat klik link di mobile
+    document.querySelectorAll('.nav-menu-mobile .nav-link').forEach(link => {
+      link.addEventListener('click', () => { if(window.innerWidth <= 850) closeDrawer(); });
     });
-    window.addEventListener('resize', () => { if(window.innerWidth > 850 && mobileSidebar.classList.contains('open')) closeSidebar(); });
+    window.addEventListener('resize', () => { if(window.innerWidth > 850 && sidebar.classList.contains('open')) closeDrawer(); });
     
-    // ========== ACTIVE LINK (highlight) ==========
-    const allDesktopLinks = document.querySelectorAll('.nav-center .nav-link-custom');
-    const allMobileLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+    // ========== ACTIVE LINK HIGHLIGHT ==========
+    const allDesktopLinks = document.querySelectorAll('.nav-center .nav-link');
+    const allMobileLinks = document.querySelectorAll('.nav-menu-mobile .nav-link');
     allDesktopLinks.forEach(l => l.classList.remove('active-link'));
     allMobileLinks.forEach(l => l.classList.remove('active-link'));
-    const desktopBeranda = document.getElementById('desktop-nav-beranda');
-    const mobileBeranda = document.getElementById('mobile-nav-beranda');
+    const desktopBeranda = document.getElementById('desktopNavBeranda');
+    const mobileBeranda = document.getElementById('mobileNavBeranda');
     if(desktopBeranda) desktopBeranda.classList.add('active-link');
     if(mobileBeranda) mobileBeranda.classList.add('active-link');
     
     // ========== TYPING EFFECT ==========
-    const fullText = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
-    const typingContainer = document.getElementById('typingContainer');
-    let idx = 0;
+    const fullDesc = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
+    const typingEl = document.getElementById('typingContainer');
+    let i = 0;
     function typeWriter() {
-      if (idx < fullText.length) {
-        typingContainer.innerHTML += fullText.charAt(idx);
-        idx++;
+      if(i < fullDesc.length) {
+        typingEl.innerHTML += fullDesc.charAt(i);
+        i++;
         setTimeout(typeWriter, 28);
       } else {
-        typingContainer.innerHTML += '<span class="typed-cursor">|</span>';
+        typingEl.innerHTML += '<span class="typed-cursor">|</span>';
       }
     }
-    typingContainer.innerHTML = '';
+    typingEl.innerHTML = '';
     typeWriter();
     
-    // GREETING
-    const greetingDiv = document.getElementById('greetingTime');
-    const hours = new Date().getHours();
-    let greet = '✨ Halo, Saya';
-    if (hours >= 5 && hours < 11) greet = '☀️ Selamat pagi,';
-    else if (hours >= 11 && hours < 15) greet = '🌤️ Selamat siang,';
-    else if (hours >= 15 && hours < 18) greet = '🌇 Selamat sore,';
-    else greet = '🌙 Selamat malam,';
-    if(greetingDiv) greetingDiv.innerHTML = `${greet} <span style="font-weight:600;">Saya</span>`;
+    // Greeting
+    const greetDiv = document.getElementById('greetingTime');
+    const hour = new Date().getHours();
+    let greetText = '✨ Halo, Saya';
+    if(hour>=5 && hour<11) greetText = '☀️ Selamat pagi,';
+    else if(hour>=11 && hour<15) greetText = '🌤️ Selamat siang,';
+    else if(hour>=15 && hour<18) greetText = '🌇 Selamat sore,';
+    else greetText = '🌙 Selamat malam,';
+    if(greetDiv) greetDiv.innerHTML = `${greetText} <span style="font-weight:600;">Saya</span>`;
     
-    // TOAST & TECH INFO
-    const toastEl = document.getElementById('toastMsg');
-    const toastTextSpan = document.getElementById('toastText');
-    function showToast(msg, icon='fas fa-code') {
-      toastTextSpan.innerText = msg;
-      const iconElem = toastEl.querySelector('i');
-      if(iconElem) iconElem.className = `${icon} me-2`;
-      toastEl.classList.add('show');
-      setTimeout(() => toastEl.classList.remove('show'), 2000);
+    // Toast & Tech Info
+    const toast = document.getElementById('toastMsg');
+    const toastText = document.getElementById('toastText');
+    function showToast(msg, icon='fas fa-microchip') {
+      toastText.innerText = msg;
+      const iconSpan = toast.querySelector('i');
+      if(iconSpan) iconSpan.className = `${icon} me-2`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
     }
-    const techInfo = {
-      JavaScript: 'Bahasa utama interaktivitas web modern', Bootstrap: 'Framework CSS responsive', CSS: 'Desain visual & tata letak', GitHub: 'Version control & kolaborasi', HTML: 'Struktur halaman web', 'Google Cloud': 'Cloud computing & skalabilitas', 'VS Code': 'Editor kode kaya ekstensi', MySQL: 'Database relasional', XAMPP: 'Lingkungan server lokal', Domaenesia: 'Domain & hosting Indonesia', cPanel: 'Manajemen hosting', 'Google Auth': 'OAuth otentikasi', 'Google Maps': 'Peta interaktif', Laravel: 'Framework PHP modern', 'PHP Native': 'PHP murni fleksibel'
+    const techDetails = {
+      JavaScript:'Bahasa utama interaktivitas web modern', Bootstrap:'Framework CSS responsive', CSS:'Desain visual & tata letak', GitHub:'Version control & kolaborasi', HTML:'Struktur halaman', 'Google Cloud':'Cloud computing & skalabilitas', 'VS Code':'Editor kode kaya ekstensi', MySQL:'Database relasional', XAMPP:'Lingkungan server lokal', Domaenesia:'Domain & hosting Indonesia', cPanel:'Manajemen hosting', 'Google Auth':'Otentikasi OAuth', 'Google Maps':'Peta interaktif', Laravel:'Framework PHP modern', 'PHP Native':'PHP murni fleksibel'
     };
-    document.querySelectorAll('.tech-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        const techName = item.getAttribute('data-tech') || item.innerText.trim();
-        const msg = techInfo[techName] || `${techName} dalam stack teknologi saya.`;
-        showToast(msg, 'fas fa-microchip');
+    document.querySelectorAll('.tech-item').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const tech = el.getAttribute('data-tech') || el.innerText.trim().split('\n')[0];
+        const msg = techDetails[tech] || `${tech} dalam stack teknologi saya.`;
+        showToast(msg);
       });
     });
     
-    // BACK TO TOP
+    // Back to Top
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     
-    // LAST UPDATED
+    // Last Updated
     const now = new Date();
-    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran ✨`;
+    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran ✨`;
     
-    // SPLASH SCREEN
+    // Splash Screen logic
     const splash = document.getElementById('splashScreen');
-    const wrapper = document.getElementById('appWrapper');
-    let isReload = performance?.getEntriesByType('navigation')[0]?.type === 'reload';
-    if (!isReload) {
+    const container = document.getElementById('appContainer');
+    const isReload = performance?.getEntriesByType('navigation')[0]?.type === 'reload';
+    if(!isReload) {
       if(splash) splash.style.display = 'none';
-      wrapper.classList.add('visible');
+      container.classList.add('visible');
     } else {
-      const messages = [
-        { main: 'Selamat datang', sub: 'di galaksi portfolio' },
-        { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' },
-        { main: 'Explore The Galaxy', sub: 'Code • Create • Innovate' }
+      const msgs = [
+        { main:'Selamat datang', sub:'di galaksi portfolio' },
+        { main:'Raifal Fadhal Zahran', sub:'Fullstack Developer' },
+        { main:'Kode & Kreativitas', sub:'Tanpa batas' }
       ];
       let step = 0;
       const splashMsg = document.getElementById('splashMessage');
       const splashSub = document.getElementById('splashSub');
-      function updateSplash(index) {
-        if(index >= messages.length) {
+      function updateSplash(idx) {
+        if(idx >= msgs.length) {
           splash.classList.add('fade-out');
-          setTimeout(() => { splash.style.display = 'none'; wrapper.classList.add('visible'); }, 800);
+          setTimeout(() => { splash.style.display = 'none'; container.classList.add('visible'); }, 800);
           return;
         }
         splashMsg.style.opacity = '0';
         splashSub.style.opacity = '0';
         setTimeout(() => {
-          splashMsg.innerText = messages[index].main;
-          splashSub.innerText = messages[index].sub;
+          splashMsg.innerText = msgs[idx].main;
+          splashSub.innerText = msgs[idx].sub;
           splashMsg.style.opacity = '1';
           splashSub.style.opacity = '1';
-        }, 250);
-        setTimeout(() => updateSplash(index+1), 1700);
+        }, 200);
+        setTimeout(() => updateSplash(idx+1), 1600);
       }
       updateSplash(0);
     }
-    // fallback gambar
-    const imgs = document.querySelectorAll('img[src="profile.jpeg"]');
-    imgs.forEach(img => { img.onerror = () => img.src = 'https://via.placeholder.com/200?text=Raifal'; });
     
-    // Tambahkan mobile header tombol burger secara dinamis agar sesuai DOM mobile
-    if(document.querySelector('.mobile-header') === null && window.innerWidth <= 850) {
-      const mobileHeader = document.createElement('div');
-      mobileHeader.className = 'mobile-header';
-      mobileHeader.innerHTML = `<div class="menu-icon"><i class="fas fa-bars"></i></div><div class="brand">Raifal.dev</div><div class="right-placeholder"></div>`;
-      const mainWrapper = document.querySelector('.hero-galaxy');
-      if(mainWrapper) mainWrapper.parentNode.insertBefore(mobileHeader, mainWrapper);
-      const newMenuIcon = document.querySelector('.mobile-header .menu-icon');
-      if(newMenuIcon) newMenuIcon.addEventListener('click', openSidebar);
-    }
+    // Fallback gambar jika profile.jpeg tidak ada
+    const allProfileImgs = document.querySelectorAll('img[src="profile.jpeg"]');
+    allProfileImgs.forEach(img => { img.onerror = () => img.src = 'https://via.placeholder.com/200?text=Raifal'; });
   })();
 </script>
 </body>
