@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Raifal Fadhal Zahran | Beranda</title>
+  <title>Raifal Fadhal Zahran | Galaxy Portfolio</title>
   <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -16,58 +16,63 @@
       transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* LIGHT MODE (default) */
+    /* LIGHT MODE (Galaxy Putih & Biru) */
     :root {
-      --bg-body: #f9fafb;
-      --bg-surface: #ffffff;
-      --bg-sidebar: #ffffff;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --text-muted: #6b7280;
-      --border-color: #e5e7eb;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-      --hover-bg: #f3f4f6;
-      --active-color: #2563eb;
-      --active-bg: #eff6ff;
-      --badge-bg: #f3f4f6;
-      --badge-text: #1f2937;
-      --separator: #e5e7eb;
+      --bg-body: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+      --bg-surface: rgba(255, 255, 255, 0.75);
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --text-primary: #0b2b3b;
+      --text-secondary: #1e4a6e;
+      --text-muted: #2c6289;
+      --border-color: rgba(13, 110, 253, 0.2);
+      --card-shadow: 0 20px 35px -12px rgba(0, 30, 60, 0.15);
+      --hover-bg: rgba(13, 110, 253, 0.08);
+      --active-color: #0d6efd;
+      --active-bg: rgba(13, 110, 253, 0.12);
+      --badge-bg: rgba(255, 255, 255, 0.85);
+      --badge-text: #0b3b5f;
+      --separator: rgba(13, 110, 253, 0.2);
       --toast-bg: #ffffff;
-      --toast-text: #111827;
-      --overlay-bg: rgba(0, 0, 0, 0.5);
-      --header-bg: rgba(255, 255, 255, 0.85);
+      --toast-text: #0b2b3b;
+      --overlay-bg: rgba(0, 0, 0, 0.3);
+      --header-bg: rgba(255, 255, 255, 0.7);
+      --glow-color: rgba(13, 110, 253, 0.4);
+      --galaxy-star: #ffffff;
     }
 
-    /* DARK MODE */
+    /* DARK MODE (Galaxy gelap biru) */
     body.dark {
-      --bg-body: #0f172a;
-      --bg-surface: #1e293b;
-      --bg-sidebar: #1e293b;
-      --text-primary: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-color: #334155;
-      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-      --hover-bg: #334155;
-      --active-color: #60a5fa;
-      --active-bg: #1e3a8a;
-      --badge-bg: #334155;
-      --badge-text: #e2e8f0;
-      --separator: #334155;
-      --toast-bg: #1e293b;
-      --toast-text: #f1f5f9;
-      --overlay-bg: rgba(0, 0, 0, 0.7);
-      --header-bg: rgba(30, 41, 59, 0.9);
+      --bg-body: linear-gradient(135deg, #0a1128 0%, #101f3c 100%);
+      --bg-surface: rgba(15, 25, 45, 0.7);
+      --bg-card: rgba(20, 35, 60, 0.9);
+      --text-primary: #eef5ff;
+      --text-secondary: #c9e0ff;
+      --text-muted: #9ab9e0;
+      --border-color: rgba(56, 189, 248, 0.3);
+      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
+      --hover-bg: rgba(56, 189, 248, 0.15);
+      --active-color: #38bdf8;
+      --active-bg: rgba(56, 189, 248, 0.2);
+      --badge-bg: rgba(20, 40, 65, 0.8);
+      --badge-text: #c9e0ff;
+      --separator: rgba(56, 189, 248, 0.3);
+      --toast-bg: #1e2a47;
+      --toast-text: #eef5ff;
+      --overlay-bg: rgba(0, 0, 0, 0.6);
+      --header-bg: rgba(10, 17, 40, 0.8);
+      --glow-color: rgba(56, 189, 248, 0.5);
+      --galaxy-star: #cbd5e6;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-body);
+      background: var(--bg-body);
       color: var(--text-primary);
       line-height: 1.5;
+      min-height: 100vh;
     }
 
-    h1, h2, h3, .nav-link-custom {
+    h1, h2, h3, .nav-link {
       font-family: 'Poppins', sans-serif;
     }
 
@@ -78,7 +83,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #000000;
+      background: radial-gradient(circle at center, #030b1a, #000000);
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -100,15 +105,14 @@
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      transition: opacity 0.3s ease;
-      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff, #88ccff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
     .splash-sub {
       font-size: 1.2rem;
-      opacity: 0.8;
-      margin-top: 1rem;
-      font-weight: 300;
-      transition: opacity 0.3s ease;
+      opacity: 0.9;
     }
     @media (max-width: 600px) {
       .splash-message { font-size: 1.8rem; }
@@ -123,7 +127,7 @@
     .loading-dots span {
       width: 10px;
       height: 10px;
-      background-color: white;
+      background-color: #38bdf8;
       border-radius: 50%;
       display: inline-block;
       animation: bounce 1.4s infinite ease-in-out both;
@@ -135,216 +139,166 @@
       40% { transform: scale(1); opacity: 1; }
     }
 
-    /* Layout Grid: default desktop (2 kolom) */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      min-height: 100vh;
+    /* LAYOUT UTAMA */
+    .app-wrapper {
       max-width: 1400px;
       margin: 0 auto;
-      background-color: var(--bg-body);
+      padding: 0 2rem;
       opacity: 0;
       transition: opacity 0.6s ease;
     }
-    .portfolio-grid.visible {
+    .app-wrapper.visible {
       opacity: 1;
     }
 
-    /* ========== SIDEBAR DESKTOP STYLE ========== */
-    .sidebar {
-      background-color: var(--bg-sidebar);
-      border-right: 1px solid var(--border-color);
-      padding: 2rem 1.5rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
+    /* ========== DESKTOP HEADER (Navigasi Center) ========== */
+    .desktop-header {
       display: flex;
-      flex-direction: column;
-    }
-
-    /* Tombol close di sidebar (hanya tampil mobile) */
-    .sidebar-close {
-      display: none;
-      background: transparent;
-      border: none;
-      font-size: 1.6rem;
-      color: var(--text-secondary);
-      cursor: pointer;
-      align-self: flex-end;
-      margin-bottom: 1rem;
-      padding: 0;
-      line-height: 1;
-    }
-    .sidebar-close:hover {
-      color: var(--active-color);
-    }
-
-    .profile-img-container {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--active-color);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-    }
-    .profile-img:hover { transform: scale(1.02); }
-    .greeting {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--active-color);
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    .fullname {
-      font-size: 1.5rem;
-      font-weight: 800;
-      text-align: center;
-      color: var(--text-primary);
-      margin-bottom: 0.25rem;
-    }
-    .username {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 1.8rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px dashed var(--border-color);
-      width: 100%;
-    }
-    .nav-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 0 0;
-      flex: 1;
-    }
-    .nav-menu li {
-      margin-bottom: 0.6rem;
-    }
-    .nav-link-custom {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 0.7rem 1rem;
-      border-radius: 60px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: all 0.2s;
-      font-size: 1rem;
-    }
-    .nav-link-custom i { width: 24px; font-size: 1.2rem; }
-    .nav-link-custom:hover {
-      background-color: var(--hover-bg);
-      color: var(--active-color);
-      transform: translateX(5px);
-    }
-    .active-link {
-      background-color: var(--active-bg);
-      color: var(--active-color);
-      font-weight: 600;
-    }
-    .theme-switch-wrapper {
-      margin-top: auto;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-    }
-    .dark-mode-btn {
-      background: var(--badge-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 40px;
-      padding: 0.6rem 1rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      width: 100%;
-      justify-content: center;
-    }
-
-    /* ========== KONTEN UTAMA ========== */
-    .main-content {
-      padding: 2rem 2.5rem;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    /* ========== MOBILE HEADER MODERN (hanya di mobile) ========== */
-    .mobile-header {
-      display: none;
       align-items: center;
       justify-content: space-between;
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
       background: var(--header-bg);
       backdrop-filter: blur(12px);
-      padding: 0.8rem 1.2rem;
+      border-radius: 80px;
+      margin-top: 1rem;
+      padding: 0.6rem 2rem;
       position: sticky;
-      top: 0;
-      z-index: 1020;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 1rem;
+      top: 1rem;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
-    .mobile-header .menu-icon {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 40px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .logo-area {
+      font-weight: 800;
       font-size: 1.3rem;
-      cursor: pointer;
-      color: var(--text-primary);
-      transition: 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    }
-    .mobile-header .menu-icon:hover {
-      background: var(--hover-bg);
-      transform: scale(0.97);
-    }
-    .mobile-header .brand {
-      font-weight: 700;
-      font-size: 1.1rem;
-      font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, var(--active-color), #8b5cf6);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.2px;
     }
-    .mobile-header .right-placeholder {
-      width: 44px; /* untuk keseimbangan */
+    .nav-center {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-surface);
+      padding: 0.3rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+    }
+    .nav-center .nav-link-custom {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    .nav-center .nav-link-custom i {
+      margin-right: 6px;
+    }
+    .nav-center .nav-link-custom:hover,
+    .nav-center .active-link {
+      background: var(--active-color);
+      color: white;
+      box-shadow: 0 4px 10px rgba(13,110,253,0.3);
+    }
+    .desktop-dark-toggle {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 40px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
     }
 
-    /* Overlay gelap untuk mobile drawer */
-    .sidebar-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* HERO 2 KOLOM: Kiri Teks, Kanan Foto Galaxy */
+    .hero-galaxy {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      margin: 1rem 0 2rem 0;
+    }
+    .hero-left {
+      background: var(--bg-surface);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+    }
+    .greeting-large {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--active-color);
+      letter-spacing: 1px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin: 0.5rem 0 0.5rem;
+      line-height: 1.2;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--active-color), #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .galaxy-profile {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,110,253,0.2) 0%, rgba(0,0,0,0) 70%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .galaxy-profile img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--active-color);
+      box-shadow: 0 0 40px var(--glow-color);
+      transition: transform 0.3s ease;
+      background: #0b2b3b;
+    }
+    .galaxy-profile img:hover {
+      transform: scale(1.02);
+    }
+    /* efek bintang galaxy */
+    .galaxy-profile::before {
+      content: "";
+      position: absolute;
       width: 100%;
       height: 100%;
-      background-color: var(--overlay-bg);
-      z-index: 1040;
-      display: none;
-      backdrop-filter: blur(3px);
+      background: radial-gradient(circle at 30% 40%, rgba(255,255,200,0.2) 2%, transparent 2.5%),
+                  radial-gradient(circle at 70% 85%, rgba(200,220,255,0.3) 1.5%, transparent 2%);
+      background-size: 40px 40px, 60px 60px;
+      background-repeat: repeat;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.6;
     }
-    .sidebar-overlay.active {
-      display: block;
-    }
-
     .info-badge {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1.8rem;
+      margin: 1.5rem 0 1rem;
     }
     .location-chip, .open-chip {
       display: inline-flex;
@@ -368,26 +322,15 @@
       color: #bbf7d0;
     }
     .description-text {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin: 1.5rem 0 1.8rem 0;
-      min-height: 100px;
-    }
-    .typed-cursor {
-      font-size: 1.1rem;
-      opacity: 1;
-      animation: blink 0.7s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+      margin: 1rem 0 1.5rem;
     }
     .section-title {
       font-weight: 700;
-      font-size: 1.6rem;
-      margin-top: 2rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+      margin: 1.8rem 0 1rem;
       border-left: 5px solid var(--active-color);
       padding-left: 1rem;
     }
@@ -395,7 +338,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     .tech-item {
       background: var(--badge-bg);
@@ -418,13 +361,22 @@
       color: var(--active-color);
     }
     .extra-note {
-      margin-top: 1.5rem;
+      margin: 1.5rem 0;
       padding: 1rem 1.2rem;
-      background: var(--bg-surface);
+      background: var(--bg-card);
       border-radius: 24px;
       border: 1px solid var(--border-color);
       font-size: 0.9rem;
+      backdrop-filter: blur(4px);
     }
+    .last-updated {
+      text-align: center;
+      font-size: 0.7rem;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    /* Custom Toast & Back to Top */
     .custom-toast {
       position: fixed;
       bottom: 25px;
@@ -475,59 +427,161 @@
       opacity: 1;
       visibility: visible;
     }
-    .last-updated {
-      text-align: center;
-      font-size: 0.7rem;
-      margin-top: 1rem;
-      color: var(--text-muted);
-    }
 
-    /* ========== RESPONSIVE: MOBILE DRAWER + MODERN HEADER ========== */
+    /* ========== MOBILE STYLE (Drawer, sembunyikan desktop-header) ========== */
+    .mobile-header {
+      display: none;
+    }
+    .sidebar {
+      display: none; /* hidden di desktop, muncul di mobile via media query */
+    }
     @media (max-width: 850px) {
-      .portfolio-grid {
+      .app-wrapper {
+        padding: 0 1rem;
+      }
+      .desktop-header {
+        display: none;
+      }
+      .hero-galaxy {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
-      /* Sembunyikan tombol burger di dalam main-content (pindah ke mobile header) */
-      .mobile-menu-toggle {
-        display: none !important;
+      .hero-right {
+        order: -1;
+        margin-bottom: 1rem;
       }
-      .mobile-header {
-        display: flex;
+      .galaxy-profile {
+        width: 220px;
+        height: 220px;
       }
+      .galaxy-profile img {
+        width: 190px;
+        height: 190px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      /* mobile drawer sidebar */
       .sidebar {
+        display: flex;
         position: fixed;
         top: 0;
         left: -100%;
         width: 280px;
         height: 100%;
+        background: var(--bg-sidebar);
+        backdrop-filter: blur(20px);
         z-index: 1050;
         transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
         border-right: 1px solid var(--border-color);
-        padding-top: 1rem;
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        background-color: var(--bg-surface);
       }
       .sidebar.open {
         left: 0;
       }
       .sidebar-close {
         display: block;
-        margin-right: 0.5rem;
-        margin-top: 0.2rem;
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        align-self: flex-end;
+        color: var(--text-secondary);
       }
-      .main-content {
-        padding: 0 1.2rem 2rem 1.2rem;
+      .profile-img-container {
+        text-align: center;
+        margin: 0.5rem 0;
       }
-      .back-to-top {
-        bottom: 15px;
-        left: 15px;
+      .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--active-color);
       }
-      .custom-toast {
-        bottom: 15px;
-        right: 15px;
+      .fullname {
+        font-size: 1.3rem;
+        text-align: center;
       }
-      .section-title {
-        font-size: 1.4rem;
+      .nav-menu {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
       }
+      .nav-menu li {
+        margin-bottom: 0.8rem;
+      }
+      .nav-link-custom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0.6rem 1rem;
+        border-radius: 40px;
+        text-decoration: none;
+        color: var(--text-secondary);
+      }
+      .active-link {
+        background: var(--active-bg);
+        color: var(--active-color);
+      }
+      .theme-switch-wrapper {
+        margin-top: auto;
+        padding-top: 1rem;
+      }
+      .dark-mode-btn {
+        background: var(--badge-bg);
+        border-radius: 40px;
+        padding: 0.6rem;
+        text-align: center;
+        cursor: pointer;
+      }
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--header-bg);
+        backdrop-filter: blur(12px);
+        padding: 0.8rem 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+        border-radius: 30px;
+      }
+      .menu-icon {
+        background: var(--bg-surface);
+        width: 44px;
+        height: 44px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--overlay-bg);
+        z-index: 1040;
+        display: none;
+      }
+      .sidebar-overlay.active {
+        display: block;
+      }
+      .hero-left {
+        padding: 1.2rem;
+      }
+    }
+
+    /* desktop sidebar tidak dipakai */
+    .sidebar-close {
+      display: none;
     }
   </style>
 </head>
@@ -537,60 +591,52 @@
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
-    <div id="splashSub" class="splash-sub">di portfolio saya</div>
+    <div id="splashSub" class="splash-sub">di galaksi portfolio</div>
     <div class="loading-dots"><span></span><span></span><span></span></div>
   </div>
 </div>
 
-<!-- OVERLAY (mobile) -->
+<!-- OVERLAY MOBILE -->
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<!-- KONTEN UTAMA -->
-<div id="mainContent" class="portfolio-grid">
-  <!-- SIDEBAR (drawer pada mobile) -->
-  <aside class="sidebar" id="mainSidebar">
-    <button class="sidebar-close" id="closeSidebarBtn" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
-    <div class="profile-img-container">
-      <img src="profile.jpeg" alt="Foto Profil Raifal" class="profile-img" id="profilePhoto" />
+<!-- MAIN WRAPPER -->
+<div id="appWrapper" class="app-wrapper">
+  <!-- DESKTOP HEADER (navigasi center) -->
+  <header class="desktop-header">
+    <div class="logo-area"><i class="fas fa-code"></i> Raifal.dev</div>
+    <div class="nav-center">
+      <a href="index.html" class="nav-link-custom active-link" id="desktop-nav-beranda"><i class="fas fa-home"></i> Beranda</a>
+      <a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a>
+      <a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a>
+      <a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a>
+      <a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> PKL</a>
     </div>
-    <div class="greeting">Halo, Saya</div>
-    <div class="fullname">Raifal Fadhal Zahran</div>
-    <div class="username">@Refal</div>
+    <div class="desktop-dark-toggle" id="darkModeToggleDesktop">
+      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+    </div>
+  </header>
 
-    <ul class="nav-menu">
-      <li><a href="index.html" class="nav-link-custom active-link" id="nav-beranda"><i class="fas fa-home"></i> Beranda</a></li>
-      <li><a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a></li>
-      <li><a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a></li>
-      <li><a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a></li>
-      <li><a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
-    </ul>
-
-    <div class="theme-switch-wrapper">
-      <div class="dark-mode-btn" id="darkModeToggle">
-        <i class="fas fa-moon"></i>
-        <span>Mode Gelap</span>
+  <!-- HERO 2 KOLOM: KIRI TEKS, KANAN FOTO GALAXY -->
+  <div class="hero-galaxy">
+    <div class="hero-left">
+      <div class="greeting-large" id="greetingTime">✨ Halo, Saya</div>
+      <h1 class="hero-title">Raifal <span>Fadhal Zahran</span></h1>
+      <div class="info-badge">
+        <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
+        <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
+      </div>
+      <div class="description-text" id="typingContainer"></div>
+    </div>
+    <div class="hero-right">
+      <div class="galaxy-profile">
+        <img src="profile.jpeg" alt="Raifal Profile" id="profilePhotoHero" />
       </div>
     </div>
-  </aside>
+  </div>
 
-  <main class="main-content">
-    <!-- MOBILE MODERN HEADER (muncul hanya di mobile) -->
-    <div class="mobile-header">
-      <div class="menu-icon" id="mobileMenuIcon">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="brand">Raifal.dev</div>
-      <div class="right-placeholder"></div>
-    </div>
-
-    <div class="info-badge">
-      <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
-      <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
-    </div>
-
-    <div class="description-text" id="typingContainer"></div>
-
-    <h2 class="section-title">Teknologi yang saya gunakan</h2>
+  <!-- Bagian Tech Stack & Info tambahan (tetap di dalam kolom kiri style namun full width) -->
+  <div style="background: var(--bg-surface); backdrop-filter: blur(8px); border-radius: 48px; padding: 1.5rem 2rem; margin: 1rem 0; border: 1px solid var(--border-color);">
+    <h2 class="section-title">🚀 Teknologi yang saya gunakan</h2>
     <div class="tech-stack" id="techStack">
       <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
       <span class="tech-item" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
@@ -608,77 +654,59 @@
       <span class="tech-item" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
       <span class="tech-item" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
     </div>
-
     <div class="extra-note">
       <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
       <strong>End-to-end development stack:</strong> Dari backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen database MySQL via XAMPP, version control GitHub, serta koding di VS Code.
     </div>
-    <div class="last-updated" id="lastUpdated"></div>
-  </main>
+  </div>
+  <div class="last-updated" id="lastUpdated"></div>
 </div>
+
+<!-- MOBILE SIDEBAR (Drawer) -->
+<aside class="sidebar" id="mobileSidebar">
+  <button class="sidebar-close" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+  <div class="profile-img-container">
+    <img src="profile.jpeg" alt="Foto Profil" class="profile-img" id="profilePhotoMobile" />
+  </div>
+  <div class="fullname">Raifal Fadhal Zahran</div>
+  <div class="username" style="text-align:center;">@Refal</div>
+  <ul class="nav-menu">
+    <li><a href="index.html" class="nav-link-custom active-link" id="mobile-nav-beranda"><i class="fas fa-home"></i> Beranda</a></li>
+    <li><a href="tentang.html" class="nav-link-custom"><i class="fas fa-user"></i> Tentang</a></li>
+    <li><a href="project.html" class="nav-link-custom"><i class="fas fa-folder-open"></i> Proyek</a></li>
+    <li><a href="kontak.html" class="nav-link-custom"><i class="fas fa-envelope"></i> Kontak</a></li>
+    <li><a href="pengalaman.html" class="nav-link-custom"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
+  </ul>
+  <div class="theme-switch-wrapper">
+    <div class="dark-mode-btn" id="darkModeToggleMobile">
+      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+    </div>
+  </div>
+</aside>
 
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
 <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   (function() {
-    // ========== MOBILE DRAWER MODERN ==========
-    const sidebar = document.getElementById('mainSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-    
-    function openSidebar() {
-      if (window.innerWidth <= 850) {
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    function closeSidebar() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    if (mobileMenuIcon) mobileMenuIcon.addEventListener('click', openSidebar);
-    if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
-    if (overlay) overlay.addEventListener('click', closeSidebar);
-    
-    // Resize handler: jika lebar > 850, pastikan sidebar tidak dalam keadaan open & reset
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 850) {
-        if (sidebar.classList.contains('open')) closeSidebar();
-        document.body.style.overflow = '';
-      } else {
-        // pastikan tertutup saat transisi dari desktop ke mobile
-        if (sidebar.classList.contains('open')) closeSidebar();
-      }
-    });
-    
-    // Tutup sidebar ketika salah satu link navigasi di klik pada mobile
-    const navLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 850) {
-          closeSidebar();
-        }
-      });
-    });
-    
-    // ========== DARK MODE ==========
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const iconTheme = toggleBtn.querySelector('i');
-    const textSpan = toggleBtn.querySelector('span');
+    // ========== DARK MODE (UNIFIED) ==========
+    const toggleDesktop = document.getElementById('darkModeToggleDesktop');
+    const toggleMobile = document.getElementById('darkModeToggleMobile');
     function updateDarkModeUI(isDark) {
+      const iconDesktop = toggleDesktop?.querySelector('i');
+      const spanDesktop = toggleDesktop?.querySelector('span');
+      const iconMobile = toggleMobile?.querySelector('i');
+      const spanMobile = toggleMobile?.querySelector('span');
       if (isDark) {
-        iconTheme.classList.remove('fa-moon');
-        iconTheme.classList.add('fa-sun');
-        textSpan.innerText = 'Mode Terang';
+        if(iconDesktop) { iconDesktop.classList.remove('fa-moon'); iconDesktop.classList.add('fa-sun'); }
+        if(spanDesktop) spanDesktop.innerText = 'Mode Terang';
+        if(iconMobile) { iconMobile.classList.remove('fa-moon'); iconMobile.classList.add('fa-sun'); }
+        if(spanMobile) spanMobile.innerText = 'Mode Terang';
       } else {
-        iconTheme.classList.remove('fa-sun');
-        iconTheme.classList.add('fa-moon');
-        textSpan.innerText = 'Mode Gelap';
+        if(iconDesktop) { iconDesktop.classList.remove('fa-sun'); iconDesktop.classList.add('fa-moon'); }
+        if(spanDesktop) spanDesktop.innerText = 'Mode Gelap';
+        if(iconMobile) { iconMobile.classList.remove('fa-sun'); iconMobile.classList.add('fa-moon'); }
+        if(spanMobile) spanMobile.innerText = 'Mode Gelap';
       }
     }
     const storedTheme = localStorage.getItem('theme');
@@ -694,12 +722,11 @@
         updateDarkModeUI(true);
         localStorage.setItem('theme', 'dark');
       } else {
-        document.body.classList.remove('dark');
         updateDarkModeUI(false);
         localStorage.setItem('theme', 'light');
       }
     }
-    toggleBtn.addEventListener('click', () => {
+    function toggleDark() {
       const isDark = document.body.classList.contains('dark');
       if (isDark) {
         document.body.classList.remove('dark');
@@ -710,73 +737,34 @@
         localStorage.setItem('theme', 'dark');
         updateDarkModeUI(true);
       }
-    });
-    
-    // ========== ACTIVE LINK (beranda) ==========
-    const allNavLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
-    allNavLinks.forEach(link => link.classList.remove('active-link'));
-    const berandaLink = document.getElementById('nav-beranda');
-    if (berandaLink) berandaLink.classList.add('active-link');
-    
-    // ========== TOAST & TECH INFO ==========
-    const toastEl = document.getElementById('toastMsg');
-    const toastTextSpan = document.getElementById('toastText');
-    function showToast(message, icon = 'fas fa-code') {
-      toastTextSpan.innerText = message;
-      const iconElem = toastEl.querySelector('i');
-      if (iconElem) iconElem.className = `${icon} me-2`;
-      toastEl.classList.add('show');
-      setTimeout(() => toastEl.classList.remove('show'), 2000);
     }
-    const techInfo = {
-      JavaScript: 'Bahasa pemrograman utama untuk interaktivitas web modern, DOM manipulation, dan asynchronous programming.',
-      Bootstrap: 'Framework CSS populer untuk membangun antarmuka responsif & modern.',
-      CSS: 'Style sheet untuk desain visual dan tata letak yang menarik.',
-      GitHub: 'Platform kolaborasi kode & version control menggunakan Git.',
-      HTML: 'Markup dasar struktur halaman web.',
-      'Google Cloud': 'Cloud computing untuk deployment dan skalabilitas aplikasi.',
-      'VS Code': 'Editor kode yang ringan dan kaya ekstensi.',
-      MySQL: 'Sistem manajemen basis data relasional.',
-      XAMPP: 'Lingkungan lokal server Apache, MySQL, PHP, Perl.',
-      Domaenesia: 'Penyedia domain & hosting Indonesia terpercaya.',
-      cPanel: 'Panel kontrol hosting untuk manajemen server & file.',
-      'Google Auth': 'Otentikasi pengguna menggunakan akun Google (OAuth).',
-      'Google Maps': 'Integrasi peta interaktif dan geolokasi.',
-      Laravel: 'Framework PHP modern dengan ekosistem kaya fitur.',
-      'PHP Native': 'Kode PHP murni tanpa framework, fleksibel untuk custom logic.',
-    };
-    document.querySelectorAll('.tech-item').forEach((item) => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const techName = item.getAttribute('data-tech') || item.innerText.trim();
-        const message = techInfo[techName] || `${techName} adalah bagian dari stack teknologi yang saya kuasai.`;
-        showToast(message, 'fas fa-microchip');
-      });
+    if(toggleDesktop) toggleDesktop.addEventListener('click', toggleDark);
+    if(toggleMobile) toggleMobile.addEventListener('click', toggleDark);
+    
+    // ========== MOBILE DRAWER ==========
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+    function openSidebar() { if(window.innerWidth <= 850) { mobileSidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+    function closeSidebar() { mobileSidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if(menuIcon) menuIcon.addEventListener('click', openSidebar);
+    if(closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if(overlay) overlay.addEventListener('click', closeSidebar);
+    document.querySelectorAll('.nav-menu .nav-link-custom').forEach(link => {
+      link.addEventListener('click', () => { if(window.innerWidth <= 850) closeSidebar(); });
     });
+    window.addEventListener('resize', () => { if(window.innerWidth > 850 && mobileSidebar.classList.contains('open')) closeSidebar(); });
     
-    // ========== BACK TO TOP ==========
-    const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) backBtn.classList.add('show');
-      else backBtn.classList.remove('show');
-    });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    
-    // ========== LAST UPDATED ==========
-    const lastUpdatedSpan = document.getElementById('lastUpdated');
-    const now = new Date();
-    const formattedDate = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-    lastUpdatedSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formattedDate} | Raifal Fadhal Zahran`;
-    
-    // ========== GREETING TIME ==========
-    const greetingElement = document.querySelector('.greeting');
-    const hours = new Date().getHours();
-    let timeGreeting = 'Halo, Saya';
-    if (hours >= 5 && hours < 11) timeGreeting = '☀️ Selamat pagi,';
-    else if (hours >= 11 && hours < 15) timeGreeting = '🌤️ Selamat siang,';
-    else if (hours >= 15 && hours < 18) timeGreeting = '🌇 Selamat sore,';
-    else timeGreeting = '🌙 Selamat malam,';
-    if (greetingElement) greetingElement.innerHTML = `${timeGreeting} <span style="font-weight:600;">Saya</span>`;
+    // ========== ACTIVE LINK (highlight) ==========
+    const allDesktopLinks = document.querySelectorAll('.nav-center .nav-link-custom');
+    const allMobileLinks = document.querySelectorAll('.nav-menu .nav-link-custom');
+    allDesktopLinks.forEach(l => l.classList.remove('active-link'));
+    allMobileLinks.forEach(l => l.classList.remove('active-link'));
+    const desktopBeranda = document.getElementById('desktop-nav-beranda');
+    const mobileBeranda = document.getElementById('mobile-nav-beranda');
+    if(desktopBeranda) desktopBeranda.classList.add('active-link');
+    if(mobileBeranda) mobileBeranda.classList.add('active-link');
     
     // ========== TYPING EFFECT ==========
     const fullText = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
@@ -786,7 +774,7 @@
       if (idx < fullText.length) {
         typingContainer.innerHTML += fullText.charAt(idx);
         idx++;
-        setTimeout(typeWriter, 30);
+        setTimeout(typeWriter, 28);
       } else {
         typingContainer.innerHTML += '<span class="typed-cursor">|</span>';
       }
@@ -794,63 +782,94 @@
     typingContainer.innerHTML = '';
     typeWriter();
     
-    // ========== SPLASH SCREEN (HANYA SAAT RELOAD) ==========
-    const splashEl = document.getElementById('splashScreen');
-    const mainGrid = document.getElementById('mainContent');
-    let isReload = false;
-    if (performance && performance.getEntriesByType) {
-      const navEntries = performance.getEntriesByType('navigation');
-      if (navEntries.length > 0 && navEntries[0].type === 'reload') {
-        isReload = true;
-      }
+    // GREETING
+    const greetingDiv = document.getElementById('greetingTime');
+    const hours = new Date().getHours();
+    let greet = '✨ Halo, Saya';
+    if (hours >= 5 && hours < 11) greet = '☀️ Selamat pagi,';
+    else if (hours >= 11 && hours < 15) greet = '🌤️ Selamat siang,';
+    else if (hours >= 15 && hours < 18) greet = '🌇 Selamat sore,';
+    else greet = '🌙 Selamat malam,';
+    if(greetingDiv) greetingDiv.innerHTML = `${greet} <span style="font-weight:600;">Saya</span>`;
+    
+    // TOAST & TECH INFO
+    const toastEl = document.getElementById('toastMsg');
+    const toastTextSpan = document.getElementById('toastText');
+    function showToast(msg, icon='fas fa-code') {
+      toastTextSpan.innerText = msg;
+      const iconElem = toastEl.querySelector('i');
+      if(iconElem) iconElem.className = `${icon} me-2`;
+      toastEl.classList.add('show');
+      setTimeout(() => toastEl.classList.remove('show'), 2000);
     }
+    const techInfo = {
+      JavaScript: 'Bahasa utama interaktivitas web modern', Bootstrap: 'Framework CSS responsive', CSS: 'Desain visual & tata letak', GitHub: 'Version control & kolaborasi', HTML: 'Struktur halaman web', 'Google Cloud': 'Cloud computing & skalabilitas', 'VS Code': 'Editor kode kaya ekstensi', MySQL: 'Database relasional', XAMPP: 'Lingkungan server lokal', Domaenesia: 'Domain & hosting Indonesia', cPanel: 'Manajemen hosting', 'Google Auth': 'OAuth otentikasi', 'Google Maps': 'Peta interaktif', Laravel: 'Framework PHP modern', 'PHP Native': 'PHP murni fleksibel'
+    };
+    document.querySelectorAll('.tech-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const techName = item.getAttribute('data-tech') || item.innerText.trim();
+        const msg = techInfo[techName] || `${techName} dalam stack teknologi saya.`;
+        showToast(msg, 'fas fa-microchip');
+      });
+    });
+    
+    // BACK TO TOP
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // LAST UPDATED
+    const now = new Date();
+    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran ✨`;
+    
+    // SPLASH SCREEN
+    const splash = document.getElementById('splashScreen');
+    const wrapper = document.getElementById('appWrapper');
+    let isReload = performance?.getEntriesByType('navigation')[0]?.type === 'reload';
     if (!isReload) {
-      if (splashEl) splashEl.style.display = 'none';
-      mainGrid.classList.add('visible');
+      if(splash) splash.style.display = 'none';
+      wrapper.classList.add('visible');
     } else {
-      splashEl.style.display = 'flex';
       const messages = [
-        { main: 'Selamat datang', sub: 'di portfolio saya' },
-        { main: 'Konichiwa', sub: 'こんにちは' },
+        { main: 'Selamat datang', sub: 'di galaksi portfolio' },
         { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' },
+        { main: 'Explore The Galaxy', sub: 'Code • Create • Innovate' }
       ];
       let step = 0;
       const splashMsg = document.getElementById('splashMessage');
       const splashSub = document.getElementById('splashSub');
-      function updateSplashText(index) {
-        if (index >= messages.length) {
-          splashEl.classList.add('fade-out');
-          setTimeout(() => {
-            splashEl.style.display = 'none';
-            mainGrid.classList.add('visible');
-          }, 800);
+      function updateSplash(index) {
+        if(index >= messages.length) {
+          splash.classList.add('fade-out');
+          setTimeout(() => { splash.style.display = 'none'; wrapper.classList.add('visible'); }, 800);
           return;
         }
-        const msg = messages[index];
         splashMsg.style.opacity = '0';
         splashSub.style.opacity = '0';
         setTimeout(() => {
-          splashMsg.innerText = msg.main;
-          splashSub.innerText = msg.sub;
+          splashMsg.innerText = messages[index].main;
+          splashSub.innerText = messages[index].sub;
           splashMsg.style.opacity = '1';
           splashSub.style.opacity = '1';
-        }, 300);
-        step++;
-        setTimeout(() => updateSplashText(step), 1800);
+        }, 250);
+        setTimeout(() => updateSplash(index+1), 1700);
       }
-      splashMsg.style.opacity = '1';
-      splashSub.style.opacity = '1';
-      updateSplashText(0);
+      updateSplash(0);
     }
+    // fallback gambar
+    const imgs = document.querySelectorAll('img[src="profile.jpeg"]');
+    imgs.forEach(img => { img.onerror = () => img.src = 'https://via.placeholder.com/200?text=Raifal'; });
     
-    // Fallback gambar profile
-    const profileImg = document.getElementById('profilePhoto');
-    if (profileImg) {
-      profileImg.onerror = () => {
-        profileImg.src = 'https://via.placeholder.com/120?text=Raifal';
-      };
+    // Tambahkan mobile header tombol burger secara dinamis agar sesuai DOM mobile
+    if(document.querySelector('.mobile-header') === null && window.innerWidth <= 850) {
+      const mobileHeader = document.createElement('div');
+      mobileHeader.className = 'mobile-header';
+      mobileHeader.innerHTML = `<div class="menu-icon"><i class="fas fa-bars"></i></div><div class="brand">Raifal.dev</div><div class="right-placeholder"></div>`;
+      const mainWrapper = document.querySelector('.hero-galaxy');
+      if(mainWrapper) mainWrapper.parentNode.insertBefore(mobileHeader, mainWrapper);
+      const newMenuIcon = document.querySelector('.mobile-header .menu-icon');
+      if(newMenuIcon) newMenuIcon.addEventListener('click', openSidebar);
     }
-    console.log('✅ Modern burger menu dengan mobile header siap');
   })();
 </script>
 </body>
