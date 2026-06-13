@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Raifal Fadhal Zahran | Portofolio</title>
-  <!-- Bootstrap 5 (hanya untuk grid utilitas) + Font Awesome + Google Fonts -->
+  <title>Raifal Fadhal Zahran | Portfolio</title>
+  <!-- Bootstrap 5 (utilitas) + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -16,16 +16,16 @@
       transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* LIGHT MODE (Galaxy Putih & Biru Muda) - nyaman dipandang */
+    /* LIGHT MODE (Galaxy Putih & Biru Lembut) */
     :root {
       --bg-body: linear-gradient(145deg, #f4faff 0%, #e9f2fc 100%);
       --bg-surface: rgba(255, 255, 255, 0.75);
-      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card: rgba(255, 255, 255, 0.85);
       --text-primary: #0a2a3b;
       --text-secondary: #1c5779;
       --text-muted: #2f6b8f;
       --border-color: rgba(13, 110, 253, 0.2);
-      --card-shadow: 0 20px 35px -12px rgba(0, 30, 60, 0.12);
+      --card-shadow: 0 25px 45px -12px rgba(0, 30, 60, 0.2);
       --hover-bg: rgba(13, 110, 253, 0.06);
       --active-color: #0d6efd;
       --active-bg: rgba(13, 110, 253, 0.1);
@@ -36,20 +36,20 @@
       --toast-text: #0a2a3b;
       --overlay-bg: rgba(0, 0, 0, 0.3);
       --header-bg: rgba(255, 255, 255, 0.8);
-      --glow-color: rgba(13, 110, 253, 0.35);
       --sidebar-bg: rgba(255, 255, 255, 0.96);
+      --hero-overlay: rgba(255, 255, 255, 0.65);
     }
 
-    /* DARK MODE (Galaxy gelap kebiruan) */
+    /* DARK MODE */
     body.dark {
       --bg-body: linear-gradient(135deg, #0a1128 0%, #0f1f3a 100%);
       --bg-surface: rgba(15, 25, 45, 0.7);
-      --bg-card: rgba(20, 35, 60, 0.9);
+      --bg-card: rgba(20, 35, 60, 0.85);
       --text-primary: #eef5ff;
       --text-secondary: #c9e0ff;
       --text-muted: #9ab9e0;
       --border-color: rgba(56, 189, 248, 0.3);
-      --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      --card-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
       --hover-bg: rgba(56, 189, 248, 0.12);
       --active-color: #38bdf8;
       --active-bg: rgba(56, 189, 248, 0.18);
@@ -60,8 +60,8 @@
       --toast-text: #eef5ff;
       --overlay-bg: rgba(0, 0, 0, 0.6);
       --header-bg: rgba(10, 17, 40, 0.85);
-      --glow-color: rgba(56, 189, 248, 0.5);
       --sidebar-bg: rgba(20, 35, 65, 0.96);
+      --hero-overlay: rgba(10, 20, 40, 0.7);
     }
 
     body {
@@ -72,7 +72,7 @@
       min-height: 100vh;
     }
 
-    /* Splash screen (sama seperti sebelumnya) */
+    /* Splash screen */
     .splash-screen {
       position: fixed;
       top: 0;
@@ -108,7 +108,7 @@
     .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%,80%,100% { transform: scale(0); opacity: 0.3; } 40% { transform: scale(1); opacity: 1; } }
 
-    /* Main container */
+    /* Container utama */
     .app-container {
       max-width: 1300px;
       margin: 0 auto;
@@ -118,14 +118,14 @@
     }
     .app-container.visible { opacity: 1; }
 
-    /* ========== DESKTOP HEADER (Navigasi Center) ========== */
+    /* Desktop header (navigasi center) */
     .desktop-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.6rem 2rem;
       margin-top: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       background: var(--header-bg);
       backdrop-filter: blur(12px);
       border-radius: 80px;
@@ -146,7 +146,6 @@
       align-items: center;
       gap: 6px;
     }
-    .nav-center .nav-link i { font-size: 0.9rem; }
     .nav-center .nav-link:hover, .nav-center .active-link {
       background: var(--active-color);
       color: white;
@@ -166,26 +165,57 @@
       color: var(--text-primary);
     }
 
-    /* Hero: dua kolom desktop */
-    .hero-galaxy {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 2.5rem;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    .hero-left {
-      background: var(--bg-surface);
-      backdrop-filter: blur(8px);
+    /* ========== HERO: FOTO SEBAGAI BACKGROUND, CARD DI ATASNYA ========== */
+    .hero-bg {
+      position: relative;
       border-radius: 48px;
-      padding: 2rem;
-      border: 1px solid var(--border-color);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
       box-shadow: var(--card-shadow);
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Background image akan di-set via JS/dynamic atau inline style, fallback */
     }
-    .greeting-badge { font-size: 0.9rem; font-weight: 500; color: var(--active-color); letter-spacing: 1px; margin-bottom: 0.5rem; }
-    .hero-title { font-size: 2.6rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.2; }
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--hero-overlay);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border-radius: 40px;
+      padding: 2.2rem 2.5rem;
+      width: 90%;
+      max-width: 700px;
+      margin: 2rem auto;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .hero-card:hover { transform: scale(1.01); }
+    .greeting-badge { font-size: 1rem; font-weight: 500; color: var(--active-color); letter-spacing: 1px; margin-bottom: 0.75rem; }
+    .hero-title { font-size: 2.5rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.2; }
     .hero-title span { background: linear-gradient(135deg, var(--active-color), #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .info-badge { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.2rem 0 1rem; }
+    .info-badge-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0 1.2rem;
+    }
     .location-chip, .open-chip {
       display: inline-flex; align-items: center; gap: 8px; background: var(--badge-bg);
       padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500;
@@ -193,55 +223,22 @@
     }
     .open-chip { background: #dcfce7; color: #15803d; border: none; }
     body.dark .open-chip { background: #14532d; color: #bbf7d0; }
-    .description-text { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin: 1.2rem 0 0.5rem; }
+    .description-text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+    .typed-cursor { font-size: 1rem; opacity: 1; animation: blink 0.7s infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
 
-    /* Foto profil kanan dengan efek galaxy */
-    .hero-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .galaxy-frame {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(13,110,253,0.15) 0%, transparent 70%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .galaxy-frame img {
-      width: 270px;
-      height: 270px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--active-color);
-      box-shadow: 0 0 35px var(--glow-color);
-      transition: transform 0.3s;
-      background: #0b2b3b;
-    }
-    .galaxy-frame img:hover { transform: scale(1.02); }
-    .galaxy-frame::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 25% 35%, rgba(255,245,200,0.2) 2%, transparent 2.5%),
-                  radial-gradient(circle at 70% 80%, rgba(200,220,255,0.2) 1.8%, transparent 2%);
-      background-size: 45px 45px, 60px 60px;
-      background-repeat: repeat;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    /* Section teknologi */
+    /* Tech Section */
     .tech-section {
       background: var(--bg-surface);
       backdrop-filter: blur(8px);
       border-radius: 48px;
       padding: 1.6rem 2rem;
-      margin: 1.5rem 0;
+      margin: 1.8rem 0;
       border: 1px solid var(--border-color);
     }
     .section-title {
@@ -291,7 +288,7 @@
       color: var(--text-muted);
     }
 
-    /* ========== MOBILE STYLE (burger menu di kanan, sidebar kiri, foto jadi background subtle) ========== */
+    /* ========== MOBILE STYLE ========== */
     .mobile-header {
       display: none;
       align-items: center;
@@ -303,7 +300,7 @@
       top: 0;
       z-index: 1020;
       border-radius: 30px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       border: 1px solid var(--border-color);
     }
     .mobile-logo {
@@ -326,9 +323,8 @@
       cursor: pointer;
       font-size: 1.3rem;
       color: var(--text-primary);
-      transition: 0.2s;
     }
-    /* Sidebar drawer dari kiri */
+    /* Sidebar drawer kiri */
     .sidebar-drawer {
       position: fixed;
       top: 0;
@@ -372,13 +368,6 @@
       font-size: 1.3rem;
       font-weight: 700;
       margin-top: 0.5rem;
-      text-align: center;
-    }
-    .sidebar-username {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 1.5rem;
     }
     .nav-menu-mobile {
       list-style: none;
@@ -395,7 +384,6 @@
       text-decoration: none;
       color: var(--text-secondary);
       font-weight: 500;
-      transition: 0.2s;
     }
     .nav-menu-mobile .nav-link.active-link {
       background: var(--active-bg);
@@ -426,41 +414,16 @@
     }
     .sidebar-overlay.active { display: block; }
 
-    /* Di mobile: foto hero disembunyikan, teks dibuat lebih lebar & background subtle (bukan foto utama) */
     @media (max-width: 850px) {
       .app-container { padding: 0 1rem; }
       .desktop-header { display: none; }
       .mobile-header { display: flex; }
-      .hero-galaxy { grid-template-columns: 1fr; gap: 0; }
-      .hero-right { display: none; } /* foto profil tidak tampil di hero mobile, hanya di sidebar */
-      /* agar tetap ada elemen "background" yang halus: kita tambahkan pseudo element di hero-left */
-      .hero-left {
-        position: relative;
-        background: var(--bg-surface);
-        backdrop-filter: blur(8px);
-        overflow: hidden;
-      }
-      /* Foto sebagai background samar (opacity rendah) di pojok kanan bawah hero-left */
-      .hero-left::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 140px;
-        height: 140px;
-        background-image: url('profile.jpeg');
-        background-size: cover;
-        background-position: center;
-        opacity: 0.12;
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(20px, 20px);
-        filter: blur(1px);
-      }
-      body.dark .hero-left::after { opacity: 0.1; filter: blur(1px); }
-      .hero-title { font-size: 2rem; }
+      .hero-card { padding: 1.5rem; width: 95%; margin: 1.5rem auto; }
+      .hero-title { font-size: 1.8rem; }
+      .info-badge-hero { gap: 0.7rem; }
       .tech-section { padding: 1.2rem; }
       .section-title { font-size: 1.3rem; }
+      .hero-bg { min-height: 400px; }
     }
 
     /* Toast & back to top */
@@ -506,7 +469,7 @@
   <div class="sidebar-profile">
     <img src="profile.jpeg" alt="Raifal" id="sidebarProfileImg" />
     <div class="sidebar-fullname">Raifal Fadhal Zahran</div>
-    <div class="sidebar-username">@Refal</div>
+    <div class="text-muted" style="font-size:0.8rem; text-align:center;">@Refal</div>
   </div>
   <ul class="nav-menu-mobile">
     <li><a href="index.html" class="nav-link active-link" id="mobileNavBeranda"><i class="fas fa-home"></i> Beranda</a></li>
@@ -536,31 +499,26 @@
     </div>
   </header>
 
-  <!-- Mobile Header (burger di kanan) -->
+  <!-- Mobile Header (burger kanan) -->
   <div class="mobile-header">
     <div class="mobile-logo"><i class="fas fa-star-of-life"></i> Raifal.dev</div>
     <div class="burger-icon" id="burgerMenuIcon"><i class="fas fa-bars"></i></div>
   </div>
 
-  <!-- Hero Section -->
-  <div class="hero-galaxy">
-    <div class="hero-left">
-      <div class="greeting-badge" id="greetingTime">✨ Halo, Saya</div>
+  <!-- HERO: Background foto profil, card teks di atas -->
+  <div class="hero-bg" id="heroBackground">
+    <div class="hero-card">
+      <div class="greeting-badge" id="greetingTime">☀️ Selamat pagi,</div>
       <h1 class="hero-title">Raifal <span>Fadhal Zahran</span></h1>
-      <div class="info-badge">
+      <div class="info-badge-hero">
         <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
         <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
       </div>
       <div class="description-text" id="typingContainer"></div>
     </div>
-    <div class="hero-right">
-      <div class="galaxy-frame">
-        <img src="profile.jpeg" alt="Raifal Profile" id="desktopProfileImg" />
-      </div>
-    </div>
   </div>
 
-  <!-- Tech Stack & Info -->
+  <!-- Tech Stack Section -->
   <div class="tech-section">
     <h2 class="section-title">🚀 Teknologi yang saya gunakan</h2>
     <div class="tech-stack" id="techStack">
@@ -593,15 +551,31 @@
 
 <script>
   (function() {
-    // ========== DARK MODE (Unified) ==========
+    // ========== SET BACKGROUND FOTO ==========
+    const heroBg = document.getElementById('heroBackground');
+    const profileImgUrl = 'profile.jpeg'; // fallback jika gagal nanti via onerror
+    function setHeroBackground(url) {
+      heroBg.style.backgroundImage = `url('${url}')`;
+      heroBg.style.backgroundSize = 'cover';
+      heroBg.style.backgroundPosition = 'center 30%';
+    }
+    setHeroBackground(profileImgUrl);
+    // Fallback jika gambar gagal load
+    const testImg = new Image();
+    testImg.onerror = () => {
+      setHeroBackground('https://via.placeholder.com/1200x600?text=Raifal+Galaxy');
+    };
+    testImg.src = profileImgUrl;
+
+    // ========== DARK MODE ==========
     const desktopToggle = document.getElementById('darkModeToggleDesktop');
     const mobileToggle = document.getElementById('darkModeToggleMobile');
     function updateDarkUI(isDark) {
-      const setIcon = (el, isDark) => {
+      const setIcon = (el, dark) => {
         if(!el) return;
         const icon = el.querySelector('i');
         const span = el.querySelector('span');
-        if(isDark) {
+        if(dark) {
           if(icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
           if(span) span.innerText = 'Mode Terang';
         } else {
@@ -634,41 +608,40 @@
     }
     if(desktopToggle) desktopToggle.addEventListener('click', toggleDarkMode);
     if(mobileToggle) mobileToggle.addEventListener('click', toggleDarkMode);
-    
-    // ========== MOBILE DRAWER: burger di kanan, sidebar dari kiri ==========
+
+    // ========== MOBILE DRAWER ==========
     const sidebar = document.getElementById('mobileSidebar');
     const overlay = document.getElementById('sidebarOverlay');
     const burgerBtn = document.getElementById('burgerMenuIcon');
-    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
     function openDrawer() { if(window.innerWidth <= 850) { sidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
     function closeDrawer() { sidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
     if(burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if(closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeDrawer);
+    if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
     if(overlay) overlay.addEventListener('click', closeDrawer);
-    // Tutup drawer saat klik link di mobile
     document.querySelectorAll('.nav-menu-mobile .nav-link').forEach(link => {
       link.addEventListener('click', () => { if(window.innerWidth <= 850) closeDrawer(); });
     });
     window.addEventListener('resize', () => { if(window.innerWidth > 850 && sidebar.classList.contains('open')) closeDrawer(); });
-    
-    // ========== ACTIVE LINK HIGHLIGHT ==========
-    const allDesktopLinks = document.querySelectorAll('.nav-center .nav-link');
-    const allMobileLinks = document.querySelectorAll('.nav-menu-mobile .nav-link');
-    allDesktopLinks.forEach(l => l.classList.remove('active-link'));
-    allMobileLinks.forEach(l => l.classList.remove('active-link'));
-    const desktopBeranda = document.getElementById('desktopNavBeranda');
-    const mobileBeranda = document.getElementById('mobileNavBeranda');
-    if(desktopBeranda) desktopBeranda.classList.add('active-link');
-    if(mobileBeranda) mobileBeranda.classList.add('active-link');
-    
-    // ========== TYPING EFFECT ==========
+
+    // ========== ACTIVE LINK ==========
+    const allDesktop = document.querySelectorAll('.nav-center .nav-link');
+    const allMobile = document.querySelectorAll('.nav-menu-mobile .nav-link');
+    allDesktop.forEach(l => l.classList.remove('active-link'));
+    allMobile.forEach(l => l.classList.remove('active-link'));
+    const deskBeranda = document.getElementById('desktopNavBeranda');
+    const mobBeranda = document.getElementById('mobileNavBeranda');
+    if(deskBeranda) deskBeranda.classList.add('active-link');
+    if(mobBeranda) mobBeranda.classList.add('active-link');
+
+    // ========== TYPING EFFECT (teks deskripsi) ==========
     const fullDesc = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const typingEl = document.getElementById('typingContainer');
-    let i = 0;
+    let idx = 0;
     function typeWriter() {
-      if(i < fullDesc.length) {
-        typingEl.innerHTML += fullDesc.charAt(i);
-        i++;
+      if(idx < fullDesc.length) {
+        typingEl.innerHTML += fullDesc.charAt(idx);
+        idx++;
         setTimeout(typeWriter, 28);
       } else {
         typingEl.innerHTML += '<span class="typed-cursor">|</span>';
@@ -676,24 +649,24 @@
     }
     typingEl.innerHTML = '';
     typeWriter();
-    
-    // Greeting
-    const greetDiv = document.getElementById('greetingTime');
+
+    // ========== GREETING TIME ==========
+    const greetSpan = document.getElementById('greetingTime');
     const hour = new Date().getHours();
-    let greetText = '✨ Halo, Saya';
-    if(hour>=5 && hour<11) greetText = '☀️ Selamat pagi,';
-    else if(hour>=11 && hour<15) greetText = '🌤️ Selamat siang,';
-    else if(hour>=15 && hour<18) greetText = '🌇 Selamat sore,';
+    let greetText = '☀️ Selamat pagi,';
+    if(hour >= 5 && hour < 11) greetText = '☀️ Selamat pagi,';
+    else if(hour >= 11 && hour < 15) greetText = '🌤️ Selamat siang,';
+    else if(hour >= 15 && hour < 18) greetText = '🌇 Selamat sore,';
     else greetText = '🌙 Selamat malam,';
-    if(greetDiv) greetDiv.innerHTML = `${greetText} <span style="font-weight:600;">Saya</span>`;
-    
-    // Toast & Tech Info
+    if(greetSpan) greetSpan.innerHTML = `${greetText} <span style="font-weight:600;">Saya</span>`;
+
+    // ========== TOAST & TECH INFO ==========
     const toast = document.getElementById('toastMsg');
-    const toastText = document.getElementById('toastText');
+    const toastTextSpan = document.getElementById('toastText');
     function showToast(msg, icon='fas fa-microchip') {
-      toastText.innerText = msg;
-      const iconSpan = toast.querySelector('i');
-      if(iconSpan) iconSpan.className = `${icon} me-2`;
+      toastTextSpan.innerText = msg;
+      const iconElem = toast.querySelector('i');
+      if(iconElem) iconElem.className = `${icon} me-2`;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2000);
     }
@@ -707,17 +680,17 @@
         showToast(msg);
       });
     });
-    
+
     // Back to Top
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    
+
     // Last Updated
     const now = new Date();
     document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran ✨`;
-    
-    // Splash Screen logic
+
+    // Splash Screen
     const splash = document.getElementById('splashScreen');
     const container = document.getElementById('appContainer');
     const isReload = performance?.getEntriesByType('navigation')[0]?.type === 'reload';
@@ -751,10 +724,10 @@
       }
       updateSplash(0);
     }
-    
-    // Fallback gambar jika profile.jpeg tidak ada
-    const allProfileImgs = document.querySelectorAll('img[src="profile.jpeg"]');
-    allProfileImgs.forEach(img => { img.onerror = () => img.src = 'https://via.placeholder.com/200?text=Raifal'; });
+
+    // Fallback gambar sidebar
+    const sidebarImg = document.getElementById('sidebarProfileImg');
+    if(sidebarImg) sidebarImg.onerror = () => sidebarImg.src = 'https://via.placeholder.com/100?text=RF';
   })();
 </script>
 </body>
