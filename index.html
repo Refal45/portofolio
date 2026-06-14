@@ -39,7 +39,7 @@
       --gradient-start: #4f46e5;
       --gradient-end: #7c3aed;
       --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.03) 100%);
-      --footer-bg: rgba(255, 255, 255, 0.95);
+      --footer-bg: rgba(255, 255, 255, 0.96);
     }
 
     /* DARK MODE */
@@ -456,53 +456,64 @@
       transform: translateY(0);
     }
     
-    /* ===== TECH STACK AWAL (PILL STYLE) ===== */
+    /* ===== RAPIH CARD TEKNOLOGI (GRID + CARD MODERN) ===== */
     .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
       margin: 0 2rem 2rem 2rem;
     }
     .tech-item {
-      background: var(--badge-bg);
-      padding: 0.6rem 1.3rem;
-      border-radius: 60px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      display: inline-flex;
+      background: var(--bg-card);
+      padding: 0.9rem 0.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 12px;
       border: 1px solid var(--border-color);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
       color: var(--text-secondary);
+      text-align: center;
+      backdrop-filter: blur(2px);
     }
     .tech-item i {
-      font-size: 1rem;
+      font-size: 1.5rem;
+      width: 32px;
+      text-align: center;
+      transition: transform 0.2s;
     }
     .tech-item:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px) scale(1.02);
       border-color: var(--active-color);
-      background: var(--hover-bg);
+      background: var(--bg-surface);
+      box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.2);
       color: var(--active-color);
     }
+    .tech-item:hover i {
+      transform: scale(1.1);
+    }
     
+    /* Extra note card lebih rapi */
     .extra-note {
-      margin: 0 2rem 1.8rem 2rem;
-      padding: 1.2rem 1.5rem;
+      margin: 0 2rem 2rem 2rem;
+      padding: 1.3rem 1.8rem;
       background: var(--bg-card);
       border-radius: 28px;
       border: 1px solid var(--border-color);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       box-shadow: var(--card-shadow);
       transition: all 0.35s ease;
       cursor: default;
       position: relative;
       overflow: hidden;
-      min-height: 100px;
     }
     .extra-note:hover {
-      transform: scale(1.01) translateY(-3px);
+      transform: translateY(-3px);
       border-color: var(--active-color);
       box-shadow: 0 25px 35px -16px rgba(0, 0, 0, 0.2);
     }
@@ -511,13 +522,13 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 5px;
+      width: 6px;
       height: 100%;
       background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
       transition: width 0.3s;
     }
     .extra-note:hover::before {
-      width: 8px;
+      width: 10px;
     }
     .extra-note .typed-cursor {
       margin-left: 2px;
@@ -536,7 +547,7 @@
       padding-left: 1rem;
     }
     
-    /* ========== FOOTER FULL EDGE TO EDGE ========== */
+    /* ========== FOOTER FULL WIDTH + MENU RAPI ========== */
     .full-width-footer {
       width: 100vw;
       position: relative;
@@ -556,7 +567,7 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
     }
     .footer-col h4 {
@@ -567,11 +578,38 @@
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      display: inline-block;
+    }
+    .footer-quick-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-quick-links li {
+      margin-bottom: 0.7rem;
+    }
+    .footer-quick-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .footer-quick-links a i {
+      font-size: 0.85rem;
+      width: 20px;
+    }
+    .footer-quick-links a:hover {
+      color: var(--active-color);
+      transform: translateX(6px);
     }
     .social-links {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 1rem;
     }
     .social-link {
       display: inline-flex;
@@ -596,7 +634,7 @@
     }
     .footer-map iframe {
       width: 100%;
-      height: 200px;
+      height: 180px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background-color: #eef2f5;
@@ -659,7 +697,7 @@
       opacity: 1;
       visibility: visible;
     }
-    /* ===== MOBILE ===== */
+    /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -711,7 +749,12 @@
       }
       .tech-stack {
         margin: 0 1rem 1.5rem 1rem;
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
+      }
+      .tech-item {
+        padding: 0.7rem 0.3rem;
+        font-size: 0.8rem;
       }
       .extra-note {
         margin: 0 1rem 1.5rem 1rem;
@@ -724,7 +767,7 @@
         gap: 1.5rem;
       }
       .footer-map iframe {
-        height: 180px;
+        height: 160px;
       }
     }
     @media (min-width: 901px) {
@@ -835,35 +878,49 @@
   </div>
 </div>
 
-<!-- FOOTER FULL UJUNG KE UJUNG (dengan Maps interaktif + marker) -->
+<!-- FOOTER FULL WIDTH + MENU CEPAT (rapih) -->
 <footer class="full-width-footer">
   <div class="footer-inner">
     <div class="footer-grid">
+      <!-- Kolom Brand & Sosial -->
       <div class="footer-col">
-        <h4><i class="fas fa-paper-plane"></i> Raifal.dev</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Fullstack Developer berdedikasi menciptakan solusi digital modern & performa tinggi.</p>
+        <h4><i class="fas fa-terminal"></i> Raifal.dev</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fullstack Developer berdedikasi menciptakan solusi digital modern & performa tinggi.</p>
         <div class="social-links">
           <a href="https://www.instagram.com/refal_3434" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
           <a href="https://github.com/Refal45" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i> GitHub</a>
         </div>
       </div>
+
+      <!-- Kolom Menu Cepat -->
+      <div class="footer-col">
+        <h4><i class="fas fa-compass"></i> Menu Cepat</h4>
+        <ul class="footer-quick-links">
+          <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="tentang.html"><i class="fas fa-user"></i> Tentang</a></li>
+          <li><a href="project.html"><i class="fas fa-folder-open"></i> Proyek</a></li>
+          <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+          <li><a href="pengalaman.html"><i class="fas fa-briefcase"></i> Pengalaman PKL</a></li>
+        </ul>
+      </div>
+
+      <!-- Kolom Lokasi & Maps interaktif -->
       <div class="footer-col">
         <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
         <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Depok, Jawa Barat, Indonesia</p>
         <div class="footer-map">
-          <!-- Google Maps embed interaktif + marker (bisa digeser & di-zoom) -->
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.451954601568!2d106.79376575!3d-6.40438925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5b8b7e6f7b9%3A0x3d2f4b3a1c2b4a0!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sen!2sid!4v1711023456789!5m2!1sen!2sid" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
-            style="border:0; width:100%; height:200px; border-radius:20px;">
+            style="border:0; width:100%; height:180px; border-radius:20px;">
           </iframe>
         </div>
       </div>
     </div>
     <div class="copyright">
-      <i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Fullstack Portfolio
+      <i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Fullstack Portfolio | Dibangun dengan <i class="fas fa-heart" style="color: #ef4444;"></i> & Bootstrap
     </div>
   </div>
 </footer>
@@ -1002,7 +1059,7 @@
       }
     }
     
-    // SPLASH SCREEN DAN MULAI TYPING SETELAH SPLASH
+    // SPLASH SCREEN & MULAI TYPING SETELAH SPLASH HILANG
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
