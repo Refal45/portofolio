@@ -337,7 +337,7 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* HERO SECTION (foto kanan + navigasi center sudah selesai) */
+    /* HERO SECTION (foto kanan + teks rapi) */
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
@@ -349,7 +349,7 @@
       margin: 1.5rem 2rem;
     }
     .hero-left .greeting-hero {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--active-color);
       letter-spacing: 1px;
@@ -522,22 +522,47 @@
       opacity: 1;
       visibility: visible;
     }
+    /* ===== MOBILE IMPROVEMENTS: teks rapi, tidak menurun ===== */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        text-align: center;
+        text-align: left;
         margin: 1rem;
         padding: 1.5rem;
+        gap: 1.5rem;
       }
-      .hero-left .info-badge {
-        justify-content: center;
+      .hero-left {
+        text-align: left;
+        padding: 0;
+      }
+      .hero-left .fullname-hero {
+        font-size: 1.8rem;
+      }
+      .hero-left .tagline {
+        font-size: 0.9rem;
+        padding-left: 0.8rem;
+      }
+      .info-badge {
+        justify-content: flex-start;
+        gap: 0.6rem;
+      }
+      .location-chip, .open-chip {
+        font-size: 0.75rem;
+        padding: 0.35rem 1rem;
+      }
+      .description-text {
+        font-size: 0.9rem;
+        margin: 0.8rem 0 1rem 0;
+        line-height: 1.5;
+        word-break: break-word;
       }
       .hero-right {
         order: -1;
+        margin-bottom: 0.5rem;
       }
       .profile-img-large {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
       }
       .top-nav {
         display: none;
@@ -545,9 +570,21 @@
       .mobile-header {
         display: flex;
       }
-      .section-title, .tech-stack, .extra-note {
-        margin-left: 1rem;
-        margin-right: 1rem;
+      .section-title {
+        font-size: 1.5rem;
+        margin: 1rem 1rem 0.8rem 1rem;
+      }
+      .tech-stack {
+        margin: 0 1rem 1.5rem 1rem;
+        gap: 10px;
+      }
+      .extra-note {
+        margin: 0 1rem 1.5rem 1rem;
+        padding: 1rem;
+      }
+      .tech-item {
+        padding: 0.45rem 1rem;
+        font-size: 0.75rem;
       }
     }
     @media (min-width: 901px) {
@@ -578,7 +615,7 @@
     <small class="text-muted">@Refal</small>
   </div>
   <ul class="drawer-nav">
-    <li><a href="index.html" class="drawer-link active" id="drawerBeranda"><i class="fas fa-home"></i> Beranda</a></li>
+    <li><a href="index.html" class="drawer-link" id="drawerBeranda"><i class="fas fa-home"></i> Beranda</a></li>
     <li><a href="tentang.html" class="drawer-link"><i class="fas fa-user"></i> Tentang</a></li>
     <li><a href="project.html" class="drawer-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
     <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
@@ -594,7 +631,7 @@
   <div class="top-nav">
     <div class="logo">Raifal.dev</div>
     <div class="nav-links">
-      <a href="index.html" class="nav-link-center active" id="desktopNavBeranda"><i class="fas fa-home"></i> Beranda</a>
+      <a href="index.html" class="nav-link-center" id="desktopNavBeranda"><i class="fas fa-home"></i> Beranda</a>
       <a href="tentang.html" class="nav-link-center"><i class="fas fa-user"></i> Tentang</a>
       <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
       <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
@@ -612,7 +649,7 @@
     <div style="width:44px;"></div>
   </div>
 
-  <!-- HERO SECTION: kiri teks, kanan foto sebagai background / visual utama -->
+  <!-- HERO SECTION: teks kiri rapi, foto kanan -->
   <div class="hero-grid">
     <div class="hero-left">
       <div class="greeting-hero" id="dynamicGreeting">Halo, Saya</div>
@@ -661,21 +698,53 @@
 
 <script>
   (function() {
-    // MOBILE DRAWER LOGIC
+    // ========== ACTIVE NAVIGATION (BERANDA AKTIF DI INDEX.HTML) ==========
+    // Pastikan hanya link 'Beranda' yang aktif pada halaman ini
+    const setActiveLinks = () => {
+      // Desktop nav
+      document.querySelectorAll('.nav-link-center').forEach(link => link.classList.remove('active'));
+      const desktopBeranda = document.getElementById('desktopNavBeranda');
+      if (desktopBeranda) desktopBeranda.classList.add('active');
+      
+      // Drawer nav
+      document.querySelectorAll('.drawer-link').forEach(link => link.classList.remove('active'));
+      const drawerBeranda = document.getElementById('drawerBeranda');
+      if (drawerBeranda) drawerBeranda.classList.add('active');
+    };
+    setActiveLinks();
+
+    // ========== MOBILE DRAWER LOGIC ==========
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('sidebarOverlay');
     const menuIcon = document.getElementById('mobileMenuIcon');
     const closeDrawer = document.getElementById('closeDrawerBtn');
-    function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-    function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    function openDrawer() { 
+      if (window.innerWidth <= 900) { 
+        drawer.classList.add('open'); 
+        overlay.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+      } 
+    }
+    function closeDrawerFunc() { 
+      drawer.classList.remove('open'); 
+      overlay.classList.remove('active'); 
+      document.body.style.overflow = ''; 
+    }
     if (menuIcon) menuIcon.addEventListener('click', openDrawer);
     if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
     if (overlay) overlay.addEventListener('click', closeDrawerFunc);
-    window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
+    window.addEventListener('resize', () => { 
+      if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); 
+    });
+    // Tutup drawer saat klik link di mobile
     const drawerLinks = document.querySelectorAll('.drawer-link');
-    drawerLinks.forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); }); });
+    drawerLinks.forEach(link => { 
+      link.addEventListener('click', () => { 
+        if (window.innerWidth <= 900) closeDrawerFunc(); 
+      }); 
+    });
 
-    // DARK MODE (dual toggle)
+    // ========== DARK MODE (DUAL TOGGLE) ==========
     const body = document.body;
     const desktopToggle = document.getElementById('desktopThemeToggle');
     const drawerToggle = document.getElementById('drawerDarkToggle');
@@ -709,17 +778,7 @@
     if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
     if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // ACTIVE LINK (index)
-    const setActive = () => {
-      document.querySelectorAll('.nav-link-center, .drawer-link').forEach(l => l.classList.remove('active'));
-      const desktopActive = document.getElementById('desktopNavBeranda');
-      const drawerActive = document.getElementById('drawerBeranda');
-      if (desktopActive) desktopActive.classList.add('active');
-      if (drawerActive) drawerActive.classList.add('active');
-    };
-    setActive();
-
-    // TOAST + TECH INFO
+    // ========== TOAST & TECH INFO ==========
     const toastEl = document.getElementById('toastMsg');
     const toastTextSpan = document.getElementById('toastText');
     function showToast(msg, icon = 'fas fa-code') {
@@ -754,7 +813,7 @@
       });
     });
 
-    // BACK TO TOP
+    // ========== BACK TO TOP ==========
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) backBtn.classList.add('show');
@@ -762,13 +821,13 @@
     });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // LAST UPDATED
+    // ========== LAST UPDATED ==========
     const lastSpan = document.getElementById('lastUpdated');
     const nowDate = new Date();
     const formatted = nowDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
     lastSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formatted} | Raifal Fadhal Zahran`;
 
-    // GREETING DYNAMIC
+    // ========== GREETING DINAMIS ==========
     const hour = new Date().getHours();
     let greet = 'Halo, Saya';
     if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
@@ -778,7 +837,7 @@
     const greetSpan = document.getElementById('dynamicGreeting');
     if (greetSpan) greetSpan.innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // TYPING EFFECT
+    // ========== TYPING EFFECT ==========
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idx = 0;
@@ -794,7 +853,7 @@
     }
     typeWriter();
 
-    // SPLASH SCREEN
+    // ========== SPLASH SCREEN (RELOAD ONLY) ==========
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     let isReload = false;
@@ -833,12 +892,11 @@
       }
       updateSplash(0);
     }
-    // FALLBACK IMAGE
+    // FALLBACK IMAGE jika profile.jpeg tidak ada
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
     profileImgs.forEach(img => {
       if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; };
     });
-    console.log('✅ Modern redesign with centered nav & right image background ready');
   })();
 </script>
 </body>
