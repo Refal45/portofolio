@@ -144,7 +144,7 @@
       40% { transform: scale(1); opacity: 1; }
     }
 
-    /* ========== FULL WIDTH TOP NAV (edge-to-edge) - navigasi CENTER ========== */
+    /* ========== FULL WIDTH TOP NAV (edge-to-edge) - CENTERED NAV + DARK MODE ========== */
     .full-width-nav {
       width: 100vw;
       position: relative;
@@ -187,6 +187,8 @@
       border-radius: 60px;
       border: 1px solid var(--border-color);
       backdrop-filter: blur(4px);
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .nav-link-center {
       padding: 0.5rem 1.2rem;
@@ -197,9 +199,11 @@
       transition: all 0.2s;
       font-size: 0.9rem;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .nav-link-center i {
-      margin-right: 6px;
       font-size: 0.9rem;
     }
     .nav-link-center:hover {
@@ -211,21 +215,17 @@
       color: white;
       box-shadow: 0 4px 12px var(--active-glow);
     }
-    .theme-toggle-desktop {
-      justify-self: end;
+    /* dark toggle button inside nav-links (center) */
+    .nav-dark-toggle {
+      cursor: pointer;
       background: var(--badge-bg);
       border: 1px solid var(--border-color);
       border-radius: 40px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    /* mobile header & drawer */
+    .nav-dark-toggle i {
+      font-size: 0.9rem;
+    }
+    /* mobile header & drawer unchanged */
     .mobile-header {
       display: none;
       align-items: center;
@@ -860,7 +860,7 @@
   </div>
 </div>
 
-<!-- FULL WIDTH TOP NAV (edge-to-edge) - navigasi CENTER sempurna -->
+<!-- FULL WIDTH TOP NAV (edge-to-edge) - ALL NAVIGATION + MODE GELAP DI CENTER -->
 <div class="full-width-nav">
   <div class="nav-inner">
     <div class="logo">Raifal.dev</div>
@@ -870,10 +870,13 @@
       <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
       <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
       <a href="pengalaman.html" class="nav-link-center"><i class="fas fa-briefcase"></i> PKL</a>
+      <!-- Dark mode toggle di tengah, bukan di kanan -->
+      <div class="nav-link-center nav-dark-toggle" id="centralDarkToggle">
+        <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+      </div>
     </div>
-    <div class="theme-toggle-desktop" id="desktopThemeToggle">
-      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
-    </div>
+    <!-- sisi kanan kosong agar centering sempurna -->
+    <div></div>
   </div>
 </div>
 
@@ -944,7 +947,6 @@
 <footer class="full-width-footer">
   <div class="footer-inner">
     <div class="footer-grid">
-      <!-- Kolom Brand & Sosial + Email -->
       <div class="footer-col">
         <h4><i class="fas fa-terminal"></i> Raifal.dev</h4>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fullstack Developer berdedikasi menciptakan solusi digital modern & performa tinggi.</p>
@@ -955,7 +957,6 @@
         </div>
       </div>
 
-      <!-- Kolom Menu Cepat -->
       <div class="footer-col">
         <h4><i class="fas fa-compass"></i> Menu Cepat</h4>
         <ul class="footer-quick-links">
@@ -967,7 +968,6 @@
         </ul>
       </div>
 
-      <!-- Kolom Lokasi & Maps interaktif (bisa digeser & zoom) -->
       <div class="footer-col">
         <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
         <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Depok, Jawa Barat, Indonesia</p>
@@ -1017,28 +1017,54 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
     document.querySelectorAll('.drawer-link').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); }); });
 
-    // DARK MODE
+    // DARK MODE (central toggle + drawer toggle)
     const body = document.body;
-    const desktopToggle = document.getElementById('desktopThemeToggle');
+    const centralToggle = document.getElementById('centralDarkToggle');
     const drawerToggle = document.getElementById('drawerDarkToggle');
+    
     const updateDarkUI = (isDark) => {
-      [desktopToggle, drawerToggle].forEach(t => {
-        if (!t) return;
-        const icon = t.querySelector('i'), span = t.querySelector('span');
-        if (isDark) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = 'Mode Terang'; }
-        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = 'Mode Gelap'; }
-      });
+      // update central toggle
+      if (centralToggle) {
+        const icon = centralToggle.querySelector('i');
+        const span = centralToggle.querySelector('span');
+        if (isDark) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+          span.innerText = 'Mode Terang';
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+          span.innerText = 'Mode Gelap';
+        }
+      }
+      // update drawer toggle
+      if (drawerToggle) {
+        const icon = drawerToggle.querySelector('i');
+        const span = drawerToggle.querySelector('span');
+        if (isDark) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+          span.innerText = 'Mode Terang';
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+          span.innerText = 'Mode Gelap';
+        }
+      }
     };
+    
     const setTheme = (theme) => {
       if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
       else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
     };
+    
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme === 'dark') setTheme('dark');
     else if (storedTheme === 'light') setTheme('light');
     else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
     const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
-    if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
+    if (centralToggle) centralToggle.addEventListener('click', toggleDark);
     if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
     // TOAST & TECH INFO
@@ -1088,7 +1114,7 @@
     else greet = '🌙 Selamat malam,';
     document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // TYPING ANIMATION BIO (~15 detik)
+    // TYPING ANIMATION BIO
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idxBio = 0;
@@ -1122,7 +1148,7 @@
       }
     }
     
-    // SPLASH SCREEN & MULAI TYPING SETELAH SPLASH HILANG
+    // SPLASH SCREEN
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
@@ -1164,7 +1190,7 @@
     mainCtn.classList.remove('visible');
     runSplashSequence();
 
-    // SCROLL REVEAL ANIMATION
+    // SCROLL REVEAL
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
