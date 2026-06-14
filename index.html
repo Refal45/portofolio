@@ -39,6 +39,7 @@
       --gradient-start: #4f46e5;
       --gradient-end: #7c3aed;
       --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.03) 100%);
+      --footer-bg: rgba(255, 255, 255, 0.9);
     }
 
     /* DARK MODE */
@@ -62,6 +63,7 @@
       --overlay-bg: rgba(0, 0, 0, 0.7);
       --header-bg: rgba(17, 24, 39, 0.9);
       --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+      --footer-bg: rgba(17, 24, 39, 0.95);
     }
 
     body {
@@ -337,7 +339,7 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* ========== FULL WIDTH HERO (edge to edge) ========== */
+    /* ========== FULL WIDTH HERO ========== */
     .hero-fullwidth {
       width: 100vw;
       position: relative;
@@ -454,7 +456,6 @@
       transform: translateY(0);
     }
     
-    /* TECH CARD - GRID & CARD DESIGN */
     .tech-stack {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, auto));
@@ -494,7 +495,6 @@
     .tech-item:hover i {
       transform: scale(1.05);
     }
-    /* animated card highlight for extra note */
     .extra-note {
       margin: 0 2rem 1.8rem 2rem;
       padding: 1.3rem 1.8rem;
@@ -507,6 +507,7 @@
       cursor: default;
       position: relative;
       overflow: hidden;
+      min-height: 100px;
     }
     .extra-note:hover {
       transform: scale(1.01) translateY(-3px);
@@ -526,6 +527,10 @@
     .extra-note:hover::before {
       width: 8px;
     }
+    .extra-note .typed-cursor {
+      display: inline-block;
+      margin-left: 2px;
+    }
     
     .section-title {
       font-weight: 700;
@@ -539,11 +544,75 @@
       border-left: 5px solid var(--active-color);
       padding-left: 1rem;
     }
-    .last-updated {
+    
+    /* ========== FOOTER STYLES ========== */
+    .professional-footer {
+      background: var(--footer-bg);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+      padding: 2rem 2rem 1rem;
+      border-radius: 30px 30px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .footer-col h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--badge-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid var(--border-color);
+    }
+    .social-link i {
+      font-size: 1.1rem;
+    }
+    .social-link:hover {
+      background: var(--active-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .footer-map iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      filter: brightness(0.95) contrast(1.05);
+    }
+    body.dark .footer-map iframe {
+      filter: brightness(0.7) contrast(1.1);
+    }
+    .copyright {
       text-align: center;
-      font-size: 0.7rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.75rem;
       color: var(--text-muted);
-      padding-bottom: 2rem;
     }
     .custom-toast {
       position: fixed;
@@ -651,9 +720,11 @@
         margin: 0 1rem 1.5rem 1rem;
         padding: 1rem;
       }
-      .tech-item {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem;
+      .professional-footer {
+        padding: 1.5rem 1rem 0.8rem;
+      }
+      .footer-grid {
+        gap: 1.5rem;
       }
     }
     @media (min-width: 901px) {
@@ -758,11 +829,37 @@
     <span class="tech-item fade-up" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
   </div>
 
-  <div class="extra-note fade-up">
+  <div class="extra-note fade-up" id="extraNoteContainer">
     <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
-    <strong>End-to-end development stack:</strong> Backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen MySQL via XAMPP, version control GitHub, serta koding di VS Code.
+    <strong>End-to-end development stack:</strong> <span id="extraNoteText"></span>
   </div>
-  <div class="last-updated" id="lastUpdated"></div>
+
+  <!-- FOOTER PROFESIONAL -->
+  <footer class="professional-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><i class="fas fa-paper-plane"></i> Raifal.dev</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Fullstack Developer berdedikasi menciptakan solusi digital modern & performa tinggi.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/refal_3434" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://github.com/Refal45" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
+        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Depok, Jawa Barat, Indonesia</p>
+        <div class="footer-map">
+          <iframe 
+            src="https://maps.google.com/maps?q=Depok%2C%20Indonesia&t=&z=12&ie=UTF8&iwloc=&output=embed" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Fullstack Portfolio
+    </div>
+  </footer>
 </div>
 
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
@@ -856,10 +953,6 @@
     window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // LAST UPDATED
-    const now = new Date();
-    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran`;
-
     // GREETING
     const hour = new Date().getHours();
     let greet = 'Halo, Saya';
@@ -869,35 +962,42 @@
     else greet = '🌙 Selamat malam,';
     document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // TYPING ANIMATION (Mesin Tik)
+    // ========== TYPING ANIMATION BIO (15 detik) ==========
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
-    let idx = 0;
+    let idxBio = 0;
     container.innerHTML = '';
-    function typeWriter() {
-      if (idx < fullBio.length) {
-        container.innerHTML += fullBio.charAt(idx);
-        idx++;
-        setTimeout(typeWriter, 32);
+    // total duration ~15 seconds for 160 chars -> ~94ms per char
+    const bioSpeed = 92; 
+    function typeBio() {
+      if (idxBio < fullBio.length) {
+        container.innerHTML += fullBio.charAt(idxBio);
+        idxBio++;
+        setTimeout(typeBio, bioSpeed);
       } else {
         container.innerHTML += '<span class="typed-cursor">|</span>';
       }
     }
-    typeWriter();
-
-    // SCROLL REVEAL ANIMATION (fade-up untuk semua kartu)
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });
-    fadeElements.forEach(el => observer.observe(el));
-
-    // SPLASH SCREEN
+    
+    // ========== TYPING ANIMATION EXTRA NOTE ==========
+    const extraFull = 'Backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen MySQL via XAMPP, version control GitHub, serta koding di VS Code.';
+    const extraSpan = document.getElementById('extraNoteText');
+    let idxExtra = 0;
+    extraSpan.innerHTML = '';
+    function typeExtra() {
+      if (idxExtra < extraFull.length) {
+        extraSpan.innerHTML += extraFull.charAt(idxExtra);
+        idxExtra++;
+        setTimeout(typeExtra, 38); // kecepatan normal agar tidak terlalu lama
+      } else {
+        const cursorSpan = document.createElement('span');
+        cursorSpan.className = 'typed-cursor';
+        cursorSpan.innerText = '|';
+        extraSpan.appendChild(cursorSpan);
+      }
+    }
+    
+    // Mulai typing setelah splash screen selesai (main container visible)
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
@@ -908,12 +1008,18 @@
       { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' }
     ];
     let step = 0;
+    let typingStarted = false;
     function runSplashSequence() {
       if (step >= messages.length) {
         splash.classList.add('fade-out');
         setTimeout(() => {
           splash.style.display = 'none';
           mainCtn.classList.add('visible');
+          if (!typingStarted) {
+            typingStarted = true;
+            typeBio();
+            typeExtra();
+          }
         }, 800);
         return;
       }
@@ -932,6 +1038,18 @@
     splash.style.display = 'flex';
     mainCtn.classList.remove('visible');
     runSplashSequence();
+
+    // SCROLL REVEAL ANIMATION
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });
+    fadeElements.forEach(el => observer.observe(el));
 
     // FALLBACK IMAGE
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
