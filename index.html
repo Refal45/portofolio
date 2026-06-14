@@ -152,7 +152,7 @@
       opacity: 1;
     }
 
-    /* ========== DESKTOP TOP NAV (centered) ========== */
+    /* ========== DESKTOP TOP NAV ========== */
     .top-nav {
       display: flex;
       align-items: center;
@@ -292,12 +292,6 @@
       border: 3px solid var(--active-color);
       margin-bottom: 0.5rem;
     }
-    .drawer-profile small {
-      color: white !important;
-      font-weight: 500;
-      opacity: 0.9;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
     .drawer-nav {
       list-style: none;
       padding: 0;
@@ -317,7 +311,7 @@
       font-weight: 500;
     }
     .drawer-link.active, .drawer-link:hover {
-      background: var(--active-bg);
+      background: var(--hover-bg);
       color: var(--active-color);
     }
     .drawer-dark-toggle {
@@ -413,6 +407,16 @@
       color: var(--text-secondary);
       line-height: 1.6;
       margin: 1rem 0 1.2rem 0;
+      min-height: 90px;
+    }
+    .typed-cursor {
+      font-weight: 300;
+      animation: blink 1s step-end infinite;
+      color: var(--active-color);
+    }
+    @keyframes blink {
+      from, to { opacity: 1; }
+      50% { opacity: 0; }
     }
     .hero-right {
       display: flex;
@@ -439,38 +443,94 @@
       50% { transform: translateY(-12px); }
       100% { transform: translateY(0px); }
     }
-    /* ========== ANIMASI SCROLL REVEAL (tech & extra note) ========== */
+    /* ========== ANIMASI SCROLL REVEAL & CARD STYLE ========== */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     .fade-up.revealed {
       opacity: 1;
       transform: translateY(0);
     }
-    .tech-item, .extra-note {
-      transition-delay: 0.05s;
+    
+    /* TECH CARD - GRID & CARD DESIGN */
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, auto));
+      gap: 1.2rem;
+      margin: 0 2rem 2rem 2rem;
     }
-    .tech-stack .tech-item:nth-child(1) { transition-delay: 0.05s; }
-    .tech-stack .tech-item:nth-child(2) { transition-delay: 0.1s; }
-    .tech-stack .tech-item:nth-child(3) { transition-delay: 0.15s; }
-    .tech-stack .tech-item:nth-child(4) { transition-delay: 0.2s; }
-    .tech-stack .tech-item:nth-child(5) { transition-delay: 0.25s; }
-    .tech-stack .tech-item:nth-child(6) { transition-delay: 0.3s; }
-    .tech-stack .tech-item:nth-child(7) { transition-delay: 0.35s; }
-    .tech-stack .tech-item:nth-child(8) { transition-delay: 0.4s; }
-    .tech-stack .tech-item:nth-child(9) { transition-delay: 0.45s; }
-    .tech-stack .tech-item:nth-child(10) { transition-delay: 0.5s; }
-    .tech-stack .tech-item:nth-child(11) { transition-delay: 0.55s; }
-    .tech-stack .tech-item:nth-child(12) { transition-delay: 0.6s; }
-    .tech-stack .tech-item:nth-child(13) { transition-delay: 0.65s; }
-    .tech-stack .tech-item:nth-child(14) { transition-delay: 0.7s; }
+    .tech-item {
+      background: var(--bg-card);
+      padding: 0.85rem 1rem;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(2px);
+      color: var(--text-secondary);
+    }
+    .tech-item i {
+      font-size: 1.4rem;
+      width: 28px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .tech-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--active-color);
+      background: var(--bg-surface);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--active-glow);
+      color: var(--active-color);
+    }
+    .tech-item:hover i {
+      transform: scale(1.05);
+    }
+    /* animated card highlight for extra note */
+    .extra-note {
+      margin: 0 2rem 1.8rem 2rem;
+      padding: 1.3rem 1.8rem;
+      background: var(--bg-card);
+      border-radius: 32px;
+      border: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.35s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .extra-note:hover {
+      transform: scale(1.01) translateY(-3px);
+      border-color: var(--active-color);
+      box-shadow: 0 25px 35px -16px rgba(0, 0, 0, 0.2);
+    }
+    .extra-note::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+      transition: width 0.3s;
+    }
+    .extra-note:hover::before {
+      width: 8px;
+    }
     
     .section-title {
       font-weight: 700;
       font-size: 1.8rem;
-      margin: 2rem 2rem 1rem 2rem;
+      margin: 2rem 2rem 1.2rem 2rem;
       display: inline-block;
       background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
       background-clip: text;
@@ -478,40 +538,6 @@
       color: transparent;
       border-left: 5px solid var(--active-color);
       padding-left: 1rem;
-    }
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 0 2rem 2rem 2rem;
-    }
-    .tech-item {
-      background: var(--badge-bg);
-      padding: 0.6rem 1.3rem;
-      border-radius: 60px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tech-item:hover {
-      transform: translateY(-3px);
-      border-color: var(--active-color);
-      background: var(--active-bg);
-      color: var(--active-color);
-    }
-    .extra-note {
-      margin: 0 2rem 1.5rem 2rem;
-      padding: 1.2rem 1.5rem;
-      background: var(--bg-card);
-      border-radius: 28px;
-      border: 1px solid var(--border-color);
-      font-size: 0.9rem;
-      box-shadow: var(--card-shadow);
     }
     .last-updated {
       text-align: center;
@@ -597,7 +623,6 @@
         font-size: 0.9rem;
         margin: 0.8rem 0 1rem 0;
         line-height: 1.5;
-        word-break: break-word;
       }
       .hero-right {
         order: -1;
@@ -619,15 +644,16 @@
       }
       .tech-stack {
         margin: 0 1rem 1.5rem 1rem;
-        gap: 10px;
+        gap: 0.8rem;
+        grid-template-columns: repeat(auto-fill, minmax(130px, auto));
       }
       .extra-note {
         margin: 0 1rem 1.5rem 1rem;
         padding: 1rem;
       }
       .tech-item {
-        padding: 0.45rem 1rem;
-        font-size: 0.75rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
       }
     }
     @media (min-width: 901px) {
@@ -639,7 +665,7 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN (muncul di setiap load, tanpa pengecualian refresh) -->
+<!-- SPLASH SCREEN -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
@@ -693,7 +719,7 @@
     <div style="width:44px;"></div>
   </div>
 
-  <!-- FULL WIDTH HERO SECTION (edge to edge) -->
+  <!-- FULL WIDTH HERO SECTION -->
   <div class="hero-fullwidth">
     <div class="hero-grid">
       <div class="hero-left">
@@ -794,7 +820,7 @@
 
     // TOAST & TECH INFO
     const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
-    function showToast(msg, icon = 'fas fa-code') {
+    function showToast(msg, icon = 'fas fa-microchip') {
       toastTextSpan.innerText = msg;
       const iconElem = toastEl.querySelector('i');
       if (iconElem) iconElem.className = `${icon} me-2`;
@@ -843,7 +869,7 @@
     else greet = '🌙 Selamat malam,';
     document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // TYPING EFFECT
+    // TYPING ANIMATION (Mesin Tik)
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idx = 0;
@@ -852,14 +878,14 @@
       if (idx < fullBio.length) {
         container.innerHTML += fullBio.charAt(idx);
         idx++;
-        setTimeout(typeWriter, 28);
+        setTimeout(typeWriter, 32);
       } else {
         container.innerHTML += '<span class="typed-cursor">|</span>';
       }
     }
     typeWriter();
 
-    // SCROLL REVEAL ANIMATION (fade-up)
+    // SCROLL REVEAL ANIMATION (fade-up untuk semua kartu)
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -868,10 +894,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });
     fadeElements.forEach(el => observer.observe(el));
 
-    // SPLASH SCREEN: tampilkan di setiap load (refresh atau kunjungan baru)
+    // SPLASH SCREEN
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
@@ -901,16 +927,15 @@
         splashSub.style.opacity = '1';
       }, 200);
       step++;
-      setTimeout(runSplashSequence, 1700);
+      setTimeout(runSplashSequence, 1500);
     }
-    // Pastikan splash selalu tampil (tanpa pengecekan reload)
     splash.style.display = 'flex';
     mainCtn.classList.remove('visible');
     runSplashSequence();
 
     // FALLBACK IMAGE
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
-    profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; }; });
+    profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
   })();
 </script>
 </body>
