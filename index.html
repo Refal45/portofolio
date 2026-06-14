@@ -292,6 +292,13 @@
       border: 3px solid var(--active-color);
       margin-bottom: 0.5rem;
     }
+    /* ----- @Refal font color PUTIH (white) ----- */
+    .drawer-profile small {
+      color: white !important;
+      font-weight: 500;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
     .drawer-nav {
       list-style: none;
       padding: 0;
@@ -337,7 +344,7 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* HERO SECTION (foto kanan + teks rapi) */
+    /* HERO SECTION */
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
@@ -522,7 +529,7 @@
       opacity: 1;
       visibility: visible;
     }
-    /* ===== MOBILE IMPROVEMENTS: teks rapi, tidak menurun ===== */
+    /* ===== MOBILE IMPROVEMENTS ===== */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -596,6 +603,7 @@
 </head>
 <body>
 
+<!-- SPLASH SCREEN - Sekarang muncul di setiap load (termasuk klik link langsung) -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
@@ -612,7 +620,7 @@
   <div class="drawer-profile">
     <img src="profile.jpeg" alt="Raifal" class="drawer-img" id="drawerProfileImg" />
     <div class="fw-bold mt-2">Raifal Fadhal Zahran</div>
-    <small class="text-muted">@Refal</small>
+    <small>@Refal</small> <!-- font colour sudah putih via CSS -->
   </div>
   <ul class="drawer-nav">
     <li><a href="index.html" class="drawer-link" id="drawerBeranda"><i class="fas fa-home"></i> Beranda</a></li>
@@ -649,7 +657,7 @@
     <div style="width:44px;"></div>
   </div>
 
-  <!-- HERO SECTION: teks kiri rapi, foto kanan -->
+  <!-- HERO SECTION -->
   <div class="hero-grid">
     <div class="hero-left">
       <div class="greeting-hero" id="dynamicGreeting">Halo, Saya</div>
@@ -698,89 +706,56 @@
 
 <script>
   (function() {
-    // ========== ACTIVE NAVIGATION (BERANDA AKTIF DI INDEX.HTML) ==========
-    // Pastikan hanya link 'Beranda' yang aktif pada halaman ini
+    // ========== AKTIFKAN NAVIGASI (BERANDA) ==========
     const setActiveLinks = () => {
-      // Desktop nav
       document.querySelectorAll('.nav-link-center').forEach(link => link.classList.remove('active'));
       const desktopBeranda = document.getElementById('desktopNavBeranda');
       if (desktopBeranda) desktopBeranda.classList.add('active');
-      
-      // Drawer nav
       document.querySelectorAll('.drawer-link').forEach(link => link.classList.remove('active'));
       const drawerBeranda = document.getElementById('drawerBeranda');
       if (drawerBeranda) drawerBeranda.classList.add('active');
     };
     setActiveLinks();
 
-    // ========== MOBILE DRAWER LOGIC ==========
+    // ========== MOBILE DRAWER ==========
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('sidebarOverlay');
     const menuIcon = document.getElementById('mobileMenuIcon');
     const closeDrawer = document.getElementById('closeDrawerBtn');
-    function openDrawer() { 
-      if (window.innerWidth <= 900) { 
-        drawer.classList.add('open'); 
-        overlay.classList.add('active'); 
-        document.body.style.overflow = 'hidden'; 
-      } 
-    }
-    function closeDrawerFunc() { 
-      drawer.classList.remove('open'); 
-      overlay.classList.remove('active'); 
-      document.body.style.overflow = ''; 
-    }
+    function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+    function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
     if (menuIcon) menuIcon.addEventListener('click', openDrawer);
     if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
     if (overlay) overlay.addEventListener('click', closeDrawerFunc);
-    window.addEventListener('resize', () => { 
-      if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); 
-    });
-    // Tutup drawer saat klik link di mobile
-    const drawerLinks = document.querySelectorAll('.drawer-link');
-    drawerLinks.forEach(link => { 
-      link.addEventListener('click', () => { 
-        if (window.innerWidth <= 900) closeDrawerFunc(); 
-      }); 
-    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
+    document.querySelectorAll('.drawer-link').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); }); });
 
-    // ========== DARK MODE (DUAL TOGGLE) ==========
+    // ========== DARK MODE ==========
     const body = document.body;
     const desktopToggle = document.getElementById('desktopThemeToggle');
     const drawerToggle = document.getElementById('drawerDarkToggle');
     const updateDarkUI = (isDark) => {
-      const toggles = [desktopToggle, drawerToggle];
-      toggles.forEach(t => {
+      [desktopToggle, drawerToggle].forEach(t => {
         if (!t) return;
-        const icon = t.querySelector('i');
-        const span = t.querySelector('span');
-        if (isDark) {
-          icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
-          span.innerText = 'Mode Terang';
-        } else {
-          icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
-          span.innerText = 'Mode Gelap';
-        }
+        const icon = t.querySelector('i'), span = t.querySelector('span');
+        if (isDark) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = 'Mode Terang'; }
+        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = 'Mode Gelap'; }
       });
     };
     const setTheme = (theme) => {
       if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
       else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
     };
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark') setTheme('dark');
-    else if (stored === 'light') setTheme('light');
-    else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
-    }
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') setTheme('dark');
+    else if (storedTheme === 'light') setTheme('light');
+    else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
     if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
     if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // ========== TOAST & TECH INFO ==========
-    const toastEl = document.getElementById('toastMsg');
-    const toastTextSpan = document.getElementById('toastText');
+    // ========== TOAST & TECH ==========
+    const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
     function showToast(msg, icon = 'fas fa-code') {
       toastTextSpan.innerText = msg;
       const iconElem = toastEl.querySelector('i');
@@ -808,36 +783,29 @@
       el.addEventListener('click', (e) => {
         e.stopPropagation();
         const tech = el.getAttribute('data-tech') || el.innerText.trim();
-        const msg = techMap[tech] || `${tech} merupakan bagian dari stack teknologi yang saya kuasai.`;
-        showToast(msg, 'fas fa-microchip');
+        showToast(techMap[tech] || `${tech} merupakan bagian dari stack teknologi yang saya kuasai.`, 'fas fa-microchip');
       });
     });
 
     // ========== BACK TO TOP ==========
     const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) backBtn.classList.add('show');
-      else backBtn.classList.remove('show');
-    });
+    window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     // ========== LAST UPDATED ==========
-    const lastSpan = document.getElementById('lastUpdated');
-    const nowDate = new Date();
-    const formatted = nowDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-    lastSpan.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${formatted} | Raifal Fadhal Zahran`;
+    const now = new Date();
+    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran`;
 
-    // ========== GREETING DINAMIS ==========
+    // ========== GREETING ==========
     const hour = new Date().getHours();
     let greet = 'Halo, Saya';
     if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
     else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
     else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
     else greet = '🌙 Selamat malam,';
-    const greetSpan = document.getElementById('dynamicGreeting');
-    if (greetSpan) greetSpan.innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
+    document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // ========== TYPING EFFECT ==========
+    // ========== TYPING EFFECT (mesin tik) ==========
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idx = 0;
@@ -853,50 +821,47 @@
     }
     typeWriter();
 
-    // ========== SPLASH SCREEN (RELOAD ONLY) ==========
+    // ========== SPLASH SCREEN (muncul di setiap load, bukan hanya refresh) ==========
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
-    let isReload = false;
-    if (performance && performance.getEntriesByType) {
-      const nav = performance.getEntriesByType('navigation');
-      if (nav.length && nav[0].type === 'reload') isReload = true;
-    }
-    if (!isReload) {
-      if (splash) splash.style.display = 'none';
-      mainCtn.classList.add('visible');
-    } else {
-      splash.style.display = 'flex';
-      const msgs = [
-        { main: 'Selamat datang', sub: 'di portfolio saya' },
-        { main: 'Konichiwa', sub: 'こんにちは' },
-        { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' }
-      ];
-      let step = 0;
-      const splashMsg = document.getElementById('splashMessage');
-      const splashSub = document.getElementById('splashSub');
-      function updateSplash(index) {
-        if (index >= msgs.length) {
-          splash.classList.add('fade-out');
-          setTimeout(() => { splash.style.display = 'none'; mainCtn.classList.add('visible'); }, 800);
-          return;
-        }
-        splashMsg.style.opacity = '0';
-        splashSub.style.opacity = '0';
+    const splashMsg = document.getElementById('splashMessage');
+    const splashSub = document.getElementById('splashSub');
+    // Pesan berurutan: Selamat datang, Konichiwa, Raifal Fadhal Zahran
+    const messages = [
+      { main: 'Selamat datang', sub: 'di portfolio saya' },
+      { main: 'Konichiwa', sub: 'こんにちは' },
+      { main: 'Raifal Fadhal Zahran', sub: 'Fullstack Developer' }
+    ];
+    let step = 0;
+    function runSplashSequence() {
+      if (step >= messages.length) {
+        splash.classList.add('fade-out');
         setTimeout(() => {
-          splashMsg.innerText = msgs[index].main;
-          splashSub.innerText = msgs[index].sub;
-          splashMsg.style.opacity = '1';
-          splashSub.style.opacity = '1';
-        }, 200);
-        setTimeout(() => updateSplash(index+1), 1700);
+          splash.style.display = 'none';
+          mainCtn.classList.add('visible');
+        }, 800);
+        return;
       }
-      updateSplash(0);
+      const msg = messages[step];
+      splashMsg.style.opacity = '0';
+      splashSub.style.opacity = '0';
+      setTimeout(() => {
+        splashMsg.innerText = msg.main;
+        splashSub.innerText = msg.sub;
+        splashMsg.style.opacity = '1';
+        splashSub.style.opacity = '1';
+      }, 200);
+      step++;
+      setTimeout(runSplashSequence, 1700);
     }
-    // FALLBACK IMAGE jika profile.jpeg tidak ada
+    // Pastikan splash selalu tampil, tidak ada pengecekan reload
+    splash.style.display = 'flex';
+    mainCtn.classList.remove('visible');
+    runSplashSequence();
+
+    // Fallback gambar profile jika tidak ditemukan
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
-    profileImgs.forEach(img => {
-      if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; };
-    });
+    profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; }; });
   })();
 </script>
 </body>
