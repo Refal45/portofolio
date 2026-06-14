@@ -39,7 +39,7 @@
       --gradient-start: #4f46e5;
       --gradient-end: #7c3aed;
       --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.03) 100%);
-      --footer-bg: rgba(255, 255, 255, 0.9);
+      --footer-bg: rgba(255, 255, 255, 0.95);
     }
 
     /* DARK MODE */
@@ -63,7 +63,7 @@
       --overlay-bg: rgba(0, 0, 0, 0.7);
       --header-bg: rgba(17, 24, 39, 0.9);
       --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
-      --footer-bg: rgba(17, 24, 39, 0.95);
+      --footer-bg: rgba(17, 24, 39, 0.98);
     }
 
     body {
@@ -445,7 +445,7 @@
       50% { transform: translateY(-12px); }
       100% { transform: translateY(0px); }
     }
-    /* ========== ANIMASI SCROLL REVEAL & CARD STYLE ========== */
+    /* ========== ANIMASI SCROLL REVEAL ========== */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -456,52 +456,44 @@
       transform: translateY(0);
     }
     
+    /* ===== TECH STACK AWAL (PILL STYLE) ===== */
     .tech-stack {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, auto));
-      gap: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
       margin: 0 2rem 2rem 2rem;
     }
     .tech-item {
-      background: var(--bg-card);
-      padding: 0.85rem 1rem;
-      border-radius: 24px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
+      background: var(--badge-bg);
+      padding: 0.6rem 1.3rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
+      gap: 8px;
       border: 1px solid var(--border-color);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-      box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(2px);
+      transition: all 0.2s ease;
       color: var(--text-secondary);
     }
     .tech-item i {
-      font-size: 1.4rem;
-      width: 28px;
-      text-align: center;
-      transition: transform 0.2s;
+      font-size: 1rem;
     }
     .tech-item:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-3px);
       border-color: var(--active-color);
-      background: var(--bg-surface);
-      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--active-glow);
+      background: var(--hover-bg);
       color: var(--active-color);
     }
-    .tech-item:hover i {
-      transform: scale(1.05);
-    }
+    
     .extra-note {
       margin: 0 2rem 1.8rem 2rem;
-      padding: 1.3rem 1.8rem;
+      padding: 1.2rem 1.5rem;
       background: var(--bg-card);
-      border-radius: 32px;
+      border-radius: 28px;
       border: 1px solid var(--border-color);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       box-shadow: var(--card-shadow);
       transition: all 0.35s ease;
       cursor: default;
@@ -528,7 +520,6 @@
       width: 8px;
     }
     .extra-note .typed-cursor {
-      display: inline-block;
       margin-left: 2px;
     }
     
@@ -545,21 +536,28 @@
       padding-left: 1rem;
     }
     
-    /* ========== FOOTER STYLES ========== */
-    .professional-footer {
+    /* ========== FOOTER FULL EDGE TO EDGE ========== */
+    .full-width-footer {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
       background: var(--footer-bg);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border-color);
       margin-top: 2rem;
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
       padding: 2rem 2rem 1rem;
-      border-radius: 30px 30px 0 0;
     }
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      max-width: 1300px;
-      margin: 0 auto;
     }
     .footer-col h4 {
       font-size: 1.2rem;
@@ -598,10 +596,10 @@
     }
     .footer-map iframe {
       width: 100%;
-      height: 180px;
+      height: 200px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
-      filter: brightness(0.95) contrast(1.05);
+      background-color: #eef2f5;
     }
     body.dark .footer-map iframe {
       filter: brightness(0.7) contrast(1.1);
@@ -713,18 +711,20 @@
       }
       .tech-stack {
         margin: 0 1rem 1.5rem 1rem;
-        gap: 0.8rem;
-        grid-template-columns: repeat(auto-fill, minmax(130px, auto));
+        gap: 10px;
       }
       .extra-note {
         margin: 0 1rem 1.5rem 1rem;
         padding: 1rem;
       }
-      .professional-footer {
+      .footer-inner {
         padding: 1.5rem 1rem 0.8rem;
       }
       .footer-grid {
         gap: 1.5rem;
+      }
+      .footer-map iframe {
+        height: 180px;
       }
     }
     @media (min-width: 901px) {
@@ -833,9 +833,11 @@
     <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
     <strong>End-to-end development stack:</strong> <span id="extraNoteText"></span>
   </div>
+</div>
 
-  <!-- FOOTER PROFESIONAL -->
-  <footer class="professional-footer">
+<!-- FOOTER FULL UJUNG KE UJUNG (dengan Maps interaktif + marker) -->
+<footer class="full-width-footer">
+  <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col">
         <h4><i class="fas fa-paper-plane"></i> Raifal.dev</h4>
@@ -849,9 +851,13 @@
         <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
         <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Depok, Jawa Barat, Indonesia</p>
         <div class="footer-map">
+          <!-- Google Maps embed interaktif + marker (bisa digeser & di-zoom) -->
           <iframe 
-            src="https://maps.google.com/maps?q=Depok%2C%20Indonesia&t=&z=12&ie=UTF8&iwloc=&output=embed" 
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.451954601568!2d106.79376575!3d-6.40438925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5b8b7e6f7b9%3A0x3d2f4b3a1c2b4a0!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sen!2sid!4v1711023456789!5m2!1sen!2sid" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            style="border:0; width:100%; height:200px; border-radius:20px;">
           </iframe>
         </div>
       </div>
@@ -859,8 +865,8 @@
     <div class="copyright">
       <i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Fullstack Portfolio
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
 
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
 <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
@@ -962,13 +968,12 @@
     else greet = '🌙 Selamat malam,';
     document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // ========== TYPING ANIMATION BIO (15 detik) ==========
+    // TYPING ANIMATION BIO (~15 detik)
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idxBio = 0;
     container.innerHTML = '';
-    // total duration ~15 seconds for 160 chars -> ~94ms per char
-    const bioSpeed = 92; 
+    const bioSpeed = 92;
     function typeBio() {
       if (idxBio < fullBio.length) {
         container.innerHTML += fullBio.charAt(idxBio);
@@ -979,7 +984,7 @@
       }
     }
     
-    // ========== TYPING ANIMATION EXTRA NOTE ==========
+    // TYPING ANIMATION EXTRA NOTE
     const extraFull = 'Backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen MySQL via XAMPP, version control GitHub, serta koding di VS Code.';
     const extraSpan = document.getElementById('extraNoteText');
     let idxExtra = 0;
@@ -988,7 +993,7 @@
       if (idxExtra < extraFull.length) {
         extraSpan.innerHTML += extraFull.charAt(idxExtra);
         idxExtra++;
-        setTimeout(typeExtra, 38); // kecepatan normal agar tidak terlalu lama
+        setTimeout(typeExtra, 38);
       } else {
         const cursorSpan = document.createElement('span');
         cursorSpan.className = 'typed-cursor';
@@ -997,7 +1002,7 @@
       }
     }
     
-    // Mulai typing setelah splash screen selesai (main container visible)
+    // SPLASH SCREEN DAN MULAI TYPING SETELAH SPLASH
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
