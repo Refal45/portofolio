@@ -38,7 +38,7 @@
       --header-bg: rgba(255, 255, 255, 0.85);
       --gradient-start: #4f46e5;
       --gradient-end: #7c3aed;
-      --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, rgba(124, 58, 237, 0.02) 100%);
+      --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.03) 100%);
     }
 
     /* DARK MODE */
@@ -61,7 +61,7 @@
       --toast-text: #f1f5f9;
       --overlay-bg: rgba(0, 0, 0, 0.7);
       --header-bg: rgba(17, 24, 39, 0.9);
-      --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.05) 0%, rgba(139, 92, 246, 0.03) 100%);
+      --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
     }
 
     body {
@@ -292,7 +292,6 @@
       border: 3px solid var(--active-color);
       margin-bottom: 0.5rem;
     }
-    /* ----- @Refal font color PUTIH (white) ----- */
     .drawer-profile small {
       color: white !important;
       font-weight: 500;
@@ -344,16 +343,26 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* HERO SECTION */
+    /* ========== FULL WIDTH HERO (edge to edge) ========== */
+    .hero-fullwidth {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: var(--hero-bg);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
       gap: 3rem;
       align-items: center;
-      padding: 2.5rem 2rem 1rem 2rem;
-      background: var(--hero-bg);
-      border-radius: 2rem;
-      margin: 1.5rem 2rem;
+      padding: 2.5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
     .hero-left .greeting-hero {
       font-size: 0.95rem;
@@ -430,6 +439,34 @@
       50% { transform: translateY(-12px); }
       100% { transform: translateY(0px); }
     }
+    /* ========== ANIMASI SCROLL REVEAL (tech & extra note) ========== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tech-item, .extra-note {
+      transition-delay: 0.05s;
+    }
+    .tech-stack .tech-item:nth-child(1) { transition-delay: 0.05s; }
+    .tech-stack .tech-item:nth-child(2) { transition-delay: 0.1s; }
+    .tech-stack .tech-item:nth-child(3) { transition-delay: 0.15s; }
+    .tech-stack .tech-item:nth-child(4) { transition-delay: 0.2s; }
+    .tech-stack .tech-item:nth-child(5) { transition-delay: 0.25s; }
+    .tech-stack .tech-item:nth-child(6) { transition-delay: 0.3s; }
+    .tech-stack .tech-item:nth-child(7) { transition-delay: 0.35s; }
+    .tech-stack .tech-item:nth-child(8) { transition-delay: 0.4s; }
+    .tech-stack .tech-item:nth-child(9) { transition-delay: 0.45s; }
+    .tech-stack .tech-item:nth-child(10) { transition-delay: 0.5s; }
+    .tech-stack .tech-item:nth-child(11) { transition-delay: 0.55s; }
+    .tech-stack .tech-item:nth-child(12) { transition-delay: 0.6s; }
+    .tech-stack .tech-item:nth-child(13) { transition-delay: 0.65s; }
+    .tech-stack .tech-item:nth-child(14) { transition-delay: 0.7s; }
+    
     .section-title {
       font-weight: 700;
       font-size: 1.8rem;
@@ -529,12 +566,11 @@
       opacity: 1;
       visibility: visible;
     }
-    /* ===== MOBILE IMPROVEMENTS ===== */
+    /* ===== MOBILE ===== */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: left;
-        margin: 1rem;
         padding: 1.5rem;
         gap: 1.5rem;
       }
@@ -603,7 +639,7 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN - Sekarang muncul di setiap load (termasuk klik link langsung) -->
+<!-- SPLASH SCREEN (setiap load) -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
@@ -620,7 +656,7 @@
   <div class="drawer-profile">
     <img src="profile.jpeg" alt="Raifal" class="drawer-img" id="drawerProfileImg" />
     <div class="fw-bold mt-2">Raifal Fadhal Zahran</div>
-    <small>@Refal</small> <!-- font colour sudah putih via CSS -->
+    <small>@Refal</small>
   </div>
   <ul class="drawer-nav">
     <li><a href="index.html" class="drawer-link" id="drawerBeranda"><i class="fas fa-home"></i> Beranda</a></li>
@@ -635,7 +671,7 @@
 </div>
 
 <div class="main-container" id="mainContainer">
-  <!-- DESKTOP TOP NAV (centered) -->
+  <!-- DESKTOP TOP NAV -->
   <div class="top-nav">
     <div class="logo">Raifal.dev</div>
     <div class="nav-links">
@@ -657,44 +693,46 @@
     <div style="width:44px;"></div>
   </div>
 
-  <!-- HERO SECTION -->
-  <div class="hero-grid">
-    <div class="hero-left">
-      <div class="greeting-hero" id="dynamicGreeting">Halo, Saya</div>
-      <div class="fullname-hero">Raifal Fadhal Zahran</div>
-      <div class="tagline">Fullstack Developer & Tech Enthusiast</div>
-      <div class="info-badge">
-        <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
-        <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
+  <!-- FULL WIDTH HERO SECTION (edge to edge) -->
+  <div class="hero-fullwidth">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="greeting-hero" id="dynamicGreeting">Halo, Saya</div>
+        <div class="fullname-hero">Raifal Fadhal Zahran</div>
+        <div class="tagline">Fullstack Developer & Tech Enthusiast</div>
+        <div class="info-badge">
+          <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
+          <div class="open-chip"><i class="fas fa-briefcase"></i> Open To Work</div>
+        </div>
+        <div class="description-text" id="typingContainer"></div>
       </div>
-      <div class="description-text" id="typingContainer"></div>
-    </div>
-    <div class="hero-right">
-      <div class="profile-bg-card">
-        <img src="profile.jpeg" alt="Raifal Fadhal Zahran" class="profile-img-large" id="heroProfileImg" />
+      <div class="hero-right">
+        <div class="profile-bg-card">
+          <img src="profile.jpeg" alt="Raifal Fadhal Zahran" class="profile-img-large" id="heroProfileImg" />
+        </div>
       </div>
     </div>
   </div>
 
-  <h2 class="section-title">⚙️ Teknologi yang saya gunakan</h2>
+  <h2 class="section-title fade-up">⚙️ Teknologi yang saya gunakan</h2>
   <div class="tech-stack" id="techStack">
-    <span class="tech-item" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
-    <span class="tech-item" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
-    <span class="tech-item" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
-    <span class="tech-item" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
-    <span class="tech-item" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
-    <span class="tech-item" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
-    <span class="tech-item" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
-    <span class="tech-item" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
-    <span class="tech-item" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
-    <span class="tech-item" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
-    <span class="tech-item" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
-    <span class="tech-item" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
-    <span class="tech-item" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
-    <span class="tech-item" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
+    <span class="tech-item fade-up" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+    <span class="tech-item fade-up" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+    <span class="tech-item fade-up" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+    <span class="tech-item fade-up" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
+    <span class="tech-item fade-up" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
+    <span class="tech-item fade-up" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
+    <span class="tech-item fade-up" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
+    <span class="tech-item fade-up" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
+    <span class="tech-item fade-up" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
+    <span class="tech-item fade-up" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+    <span class="tech-item fade-up" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
+    <span class="tech-item fade-up" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
+    <span class="tech-item fade-up" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
+    <span class="tech-item fade-up" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
   </div>
 
-  <div class="extra-note">
+  <div class="extra-note fade-up">
     <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
     <strong>End-to-end development stack:</strong> Backend PHP Native & Laravel, integrasi Google OAuth + Maps API, deployment ke hosting cPanel/Domaenesia, manajemen MySQL via XAMPP, version control GitHub, serta koding di VS Code.
   </div>
@@ -706,7 +744,7 @@
 
 <script>
   (function() {
-    // ========== AKTIFKAN NAVIGASI (BERANDA) ==========
+    // ACTIVE NAVIGATION (BERANDA)
     const setActiveLinks = () => {
       document.querySelectorAll('.nav-link-center').forEach(link => link.classList.remove('active'));
       const desktopBeranda = document.getElementById('desktopNavBeranda');
@@ -717,7 +755,7 @@
     };
     setActiveLinks();
 
-    // ========== MOBILE DRAWER ==========
+    // MOBILE DRAWER
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('sidebarOverlay');
     const menuIcon = document.getElementById('mobileMenuIcon');
@@ -730,7 +768,7 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
     document.querySelectorAll('.drawer-link').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); }); });
 
-    // ========== DARK MODE ==========
+    // DARK MODE
     const body = document.body;
     const desktopToggle = document.getElementById('desktopThemeToggle');
     const drawerToggle = document.getElementById('drawerDarkToggle');
@@ -754,7 +792,7 @@
     if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
     if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // ========== TOAST & TECH ==========
+    // TOAST & TECH INFO
     const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
     function showToast(msg, icon = 'fas fa-code') {
       toastTextSpan.innerText = msg;
@@ -787,16 +825,16 @@
       });
     });
 
-    // ========== BACK TO TOP ==========
+    // BACK TO TOP
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // ========== LAST UPDATED ==========
+    // LAST UPDATED
     const now = new Date();
     document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran`;
 
-    // ========== GREETING ==========
+    // GREETING
     const hour = new Date().getHours();
     let greet = 'Halo, Saya';
     if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
@@ -805,7 +843,7 @@
     else greet = '🌙 Selamat malam,';
     document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Saya</span>`;
 
-    // ========== TYPING EFFECT (mesin tik) ==========
+    // TYPING EFFECT
     const fullBio = 'Memadukan logika sistem yang solid dengan antarmuka UI yang interaktif. Saya berfokus merancang solusi teknologi end-to-end yang berperforma tinggi, aman, dan mudah dikembangkan.';
     const container = document.getElementById('typingContainer');
     let idx = 0;
@@ -821,12 +859,23 @@
     }
     typeWriter();
 
-    // ========== SPLASH SCREEN (muncul di setiap load, bukan hanya refresh) ==========
+    // SCROLL REVEAL ANIMATION (fade-up)
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // SPLASH SCREEN (muncul di setiap load, bukan hanya refresh)
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
     const splashSub = document.getElementById('splashSub');
-    // Pesan berurutan: Selamat datang, Konichiwa, Raifal Fadhal Zahran
     const messages = [
       { main: 'Selamat datang', sub: 'di portfolio saya' },
       { main: 'Konichiwa', sub: 'こんにちは' },
@@ -854,12 +903,11 @@
       step++;
       setTimeout(runSplashSequence, 1700);
     }
-    // Pastikan splash selalu tampil, tidak ada pengecekan reload
     splash.style.display = 'flex';
     mainCtn.classList.remove('visible');
     runSplashSequence();
 
-    // Fallback gambar profile jika tidak ditemukan
+    // FALLBACK IMAGE
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
     profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://via.placeholder.com/300?text=Raifal'; }; });
   })();
