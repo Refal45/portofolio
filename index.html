@@ -40,6 +40,7 @@
       --gradient-end: #7c3aed;
       --hero-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.03) 100%);
       --footer-bg: rgba(255, 255, 255, 0.96);
+      --tech-section-bg: rgba(79, 70, 229, 0.02);
     }
 
     /* DARK MODE */
@@ -64,6 +65,7 @@
       --header-bg: rgba(17, 24, 39, 0.9);
       --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
       --footer-bg: rgba(17, 24, 39, 0.98);
+      --tech-section-bg: rgba(129, 140, 248, 0.04);
     }
 
     body {
@@ -456,12 +458,41 @@
       transform: translateY(0);
     }
     
-    /* ===== RAPIH CARD TEKNOLOGI (GRID + CARD MODERN) ===== */
+    /* ===== FULL WIDTH TECH SECTION (edge-to-edge) ===== */
+    .full-width-tech {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: var(--tech-section-bg);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0 1.5rem 0;
+    }
+    .full-width-extra {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: var(--bg-body);
+      padding: 1rem 0 1rem 0;
+    }
+    .tech-inner, .extra-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Tech Cards Grid Rapi */
     .tech-stack {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 1rem;
-      margin: 0 2rem 2rem 2rem;
+      margin: 0;
     }
     .tech-item {
       background: var(--bg-card);
@@ -498,9 +529,9 @@
       transform: scale(1.1);
     }
     
-    /* Extra note card lebih rapi */
+    /* Extra note card */
     .extra-note {
-      margin: 0 2rem 2rem 2rem;
+      margin: 0;
       padding: 1.3rem 1.8rem;
       background: var(--bg-card);
       border-radius: 28px;
@@ -545,6 +576,11 @@
       color: transparent;
       border-left: 5px solid var(--active-color);
       padding-left: 1rem;
+    }
+    /* Jika di dalam full-width kita tetap ingin title mengikuti alur */
+    .full-width-tech .section-title {
+      margin-left: 0;
+      margin-right: 0;
     }
     
     /* ========== FOOTER FULL WIDTH + MENU RAPI ========== */
@@ -747,8 +783,10 @@
         font-size: 1.5rem;
         margin: 1rem 1rem 0.8rem 1rem;
       }
+      .tech-inner, .extra-inner {
+        padding: 0 1rem;
+      }
       .tech-stack {
-        margin: 0 1rem 1.5rem 1rem;
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 0.8rem;
       }
@@ -757,7 +795,6 @@
         font-size: 0.8rem;
       }
       .extra-note {
-        margin: 0 1rem 1.5rem 1rem;
         padding: 1rem;
       }
       .footer-inner {
@@ -854,31 +891,41 @@
     </div>
   </div>
 
-  <h2 class="section-title fade-up">⚙️ Teknologi yang saya gunakan</h2>
-  <div class="tech-stack" id="techStack">
-    <span class="tech-item fade-up" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
-    <span class="tech-item fade-up" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
-    <span class="tech-item fade-up" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
-    <span class="tech-item fade-up" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
-    <span class="tech-item fade-up" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
-    <span class="tech-item fade-up" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
-    <span class="tech-item fade-up" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
-    <span class="tech-item fade-up" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
-    <span class="tech-item fade-up" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
-    <span class="tech-item fade-up" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
-    <span class="tech-item fade-up" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
-    <span class="tech-item fade-up" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
-    <span class="tech-item fade-up" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
-    <span class="tech-item fade-up" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
+  <!-- FULL WIDTH TECH SECTION (edge-to-edge) -->
+  <div class="full-width-tech">
+    <div class="tech-inner">
+      <h2 class="section-title fade-up">⚙️ Teknologi yang saya gunakan</h2>
+      <div class="tech-stack" id="techStack">
+        <span class="tech-item fade-up" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="tech-item fade-up" data-tech="Bootstrap"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        <span class="tech-item fade-up" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+        <span class="tech-item fade-up" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
+        <span class="tech-item fade-up" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
+        <span class="tech-item fade-up" data-tech="Google Cloud"><i class="fab fa-google"></i> Google Cloud</span>
+        <span class="tech-item fade-up" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
+        <span class="tech-item fade-up" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
+        <span class="tech-item fade-up" data-tech="XAMPP"><i class="fas fa-server"></i> XAMPP</span>
+        <span class="tech-item fade-up" data-tech="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+        <span class="tech-item fade-up" data-tech="PHP Native"><i class="fab fa-php"></i> PHP Native</span>
+        <span class="tech-item fade-up" data-tech="Google Auth"><i class="fas fa-user-shield"></i> Google Auth</span>
+        <span class="tech-item fade-up" data-tech="Google Maps"><i class="fas fa-map-marked-alt"></i> Google Maps</span>
+        <span class="tech-item fade-up" data-tech="cPanel"><i class="fas fa-chart-line"></i> cPanel</span>
+      </div>
+    </div>
   </div>
 
-  <div class="extra-note fade-up" id="extraNoteContainer">
-    <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
-    <strong>End-to-end development stack:</strong> <span id="extraNoteText"></span>
+  <!-- FULL WIDTH EXTRA NOTE (edge-to-edge) -->
+  <div class="full-width-extra">
+    <div class="extra-inner">
+      <div class="extra-note fade-up" id="extraNoteContainer">
+        <i class="fas fa-cogs me-2" style="color: var(--active-color)"></i>
+        <strong>End-to-end development stack:</strong> <span id="extraNoteText"></span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- FOOTER FULL WIDTH + MENU CEPAT (rapih) -->
+<!-- FOOTER FULL WIDTH + MENU CEPAT -->
 <footer class="full-width-footer">
   <div class="footer-inner">
     <div class="footer-grid">
