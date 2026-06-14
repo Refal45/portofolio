@@ -639,7 +639,7 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN (setiap load) -->
+<!-- SPLASH SCREEN (muncul di setiap load, tanpa pengecualian refresh) -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <div id="splashMessage" class="splash-message">Selamat datang</div>
@@ -871,7 +871,7 @@
     }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
     fadeElements.forEach(el => observer.observe(el));
 
-    // SPLASH SCREEN (muncul di setiap load, bukan hanya refresh)
+    // SPLASH SCREEN: tampilkan di setiap load (refresh atau kunjungan baru)
     const splash = document.getElementById('splashScreen');
     const mainCtn = document.getElementById('mainContainer');
     const splashMsg = document.getElementById('splashMessage');
@@ -903,6 +903,7 @@
       step++;
       setTimeout(runSplashSequence, 1700);
     }
+    // Pastikan splash selalu tampil (tanpa pengecekan reload)
     splash.style.display = 'flex';
     mainCtn.classList.remove('visible');
     runSplashSequence();
