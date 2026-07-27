@@ -52,6 +52,10 @@
             --role-devops: #ef4444;
             --role-cloud: #06b6d4;
             --role-hosting: #10b981;
+            /* arrow button colors */
+            --arrow-bg: rgba(255, 255, 255, 0.8);
+            --arrow-color: #1e293b;
+            --arrow-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         body.dark {
@@ -76,6 +80,9 @@
             --hero-bg: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
             --footer-bg: rgba(17, 24, 39, 0.98);
             --tech-section-bg: rgba(129, 140, 248, 0.04);
+            --arrow-bg: rgba(30, 41, 59, 0.8);
+            --arrow-color: #e2e8f0;
+            --arrow-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -556,6 +563,7 @@
             margin: 0 -0.5rem;
             padding-left: 0.5rem;
             padding-right: 0.5rem;
+            scroll-behavior: smooth;
         }
         .role-cards-wrapper::-webkit-scrollbar {
             height: 6px;
@@ -567,6 +575,42 @@
         .role-cards-wrapper::-webkit-scrollbar-thumb {
             background: var(--active-color);
             border-radius: 10px;
+        }
+
+        /* Arrow buttons container */
+        .tech-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tech-arrow-btn {
+            background: var(--arrow-bg);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--arrow-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--arrow-shadow);
+            user-select: none;
+        }
+        .tech-arrow-btn:hover {
+            background: var(--active-color);
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .tech-arrow-btn:active {
+            transform: scale(0.95);
+        }
+        .tech-arrow-btn i {
+            pointer-events: none;
         }
 
         .role-card {
@@ -734,6 +778,11 @@
             .role-badge-sm {
                 font-size: 0.5rem;
                 padding: 0.1rem 0.5rem;
+            }
+            .tech-arrow-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
             }
         }
 
@@ -1109,7 +1158,7 @@
             <div class="tech-inner">
                 <h2 class="section-title fade-up">⚙️ Teknologi yang saya gunakan</h2>
 
-                <div class="role-cards-wrapper fade-up">
+                <div class="role-cards-wrapper fade-up" id="techCardsWrapper">
 
                     <!-- Card: Frontend -->
                     <div class="role-card">
@@ -1194,6 +1243,17 @@
                     </div>
 
                 </div><!-- end role-cards-wrapper -->
+
+                <!-- ===== TOMBOL PANAH KANAN KIRI ===== -->
+                <div class="tech-arrows fade-up">
+                    <button class="tech-arrow-btn" id="techArrowLeft" aria-label="Geser ke kiri">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="tech-arrow-btn" id="techArrowRight" aria-label="Geser ke kanan">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
             </div>
         </div>
 
@@ -1467,6 +1527,39 @@
             const imgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
             imgs.forEach(img => { if (img) img.onerror = () => { img.src =
                         'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
+
+            // ============================================================
+            // TOMBOL PANAH UNTUK SCROLL KARTU TEKNOLOGI
+            // ============================================================
+            const wrapper = document.getElementById('techCardsWrapper');
+            const leftBtn = document.getElementById('techArrowLeft');
+            const rightBtn = document.getElementById('techArrowRight');
+
+            if (wrapper && leftBtn && rightBtn) {
+                const scrollAmount = 300; // jarak scroll per klik
+
+                leftBtn.addEventListener('click', () => {
+                    wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                rightBtn.addEventListener('click', () => {
+                    wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                // Sembunyikan tombol jika konten tidak overflow (opsional)
+                function checkOverflow() {
+                    const hasOverflow = wrapper.scrollWidth > wrapper.clientWidth;
+                    leftBtn.style.display = hasOverflow ? 'inline-flex' : 'none';
+                    rightBtn.style.display = hasOverflow ? 'inline-flex' : 'none';
+                }
+                checkOverflow();
+                window.addEventListener('resize', checkOverflow);
+                // observer perubahan ukuran (misal setelah font load)
+                if (window.ResizeObserver) {
+                    const ro = new ResizeObserver(checkOverflow);
+                    ro.observe(wrapper);
+                }
+            }
 
         })();
     </script>
