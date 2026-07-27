@@ -4,10 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Kontak | Raifal Fadhal Zahran</title>
+
+  <!-- Favicon (ikon tab) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='60' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
+
   <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     * {
       margin: 0;
@@ -154,6 +159,7 @@
       align-items: center;
       gap: 8px;
     }
+
     /* mobile header & drawer */
     .mobile-header {
       display: none;
@@ -185,6 +191,7 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     /* DRAWER (mobile) */
     .drawer {
       position: fixed;
@@ -270,7 +277,8 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* ========== FULL WIDTH HERO (sama persis dengan tentang) ========== */
+
+    /* ========== HERO ========== */
     .hero-fullwidth {
       width: 100vw;
       position: relative;
@@ -373,7 +381,7 @@
       padding-left: 1rem;
     }
 
-    /* Kontak spesifik */
+    /* ========== KONTAK SPESIFIK ========== */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -387,16 +395,17 @@
       overflow: hidden;
       transition: transform 0.2s, border-color 0.2s;
       box-shadow: var(--card-shadow);
+      cursor: pointer;
     }
     .contact-card:hover {
       transform: translateY(-4px);
       border-color: var(--active-color);
     }
     .contact-header {
-      background: var(--active-bg);
       padding: 1rem;
       text-align: center;
       border-bottom: 1px solid var(--border-color);
+      background: var(--badge-bg);
     }
     .contact-header i {
       font-size: 2rem;
@@ -425,18 +434,22 @@
     .contact-value a:hover {
       text-decoration: underline;
     }
+
+    /* MAP */
     .map-container {
       border-radius: 28px;
       overflow: hidden;
       border: 1px solid var(--border-color);
       margin: 1rem 0;
     }
-    iframe {
+    .map-container iframe {
       width: 100%;
       height: 320px;
       border: 0;
       display: block;
     }
+
+    /* SOSIAL MEDIA LANGSUNG */
     .social-links-full {
       display: flex;
       flex-wrap: wrap;
@@ -461,12 +474,15 @@
       color: var(--active-color);
     }
     .social-icon-btn:hover {
-      background: var(--active-bg);
-      color: var(--active-color);
+      background: var(--active-color);
+      color: #fff;
       transform: translateY(-2px);
     }
+    .social-icon-btn:hover i {
+      color: #fff;
+    }
 
-    /* FOOTER (sama persis tentang.html) */
+    /* ========== FOOTER ========== */
     .full-width-footer {
       width: 100vw;
       position: relative;
@@ -587,6 +603,7 @@
       color: var(--text-muted);
     }
 
+    /* ========== TOAST & BACK TO TOP ========== */
     .custom-toast {
       position: fixed;
       bottom: 25px;
@@ -628,11 +645,14 @@
       visibility: hidden;
       transition: 0.2s;
       z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
     }
+
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -646,20 +666,16 @@
       .mobile-header { display: flex; }
       .section-title { font-size: 1.5rem; }
       .contact-grid { gap: 1rem; }
+      .map-container iframe { height: 220px; }
     }
     @media (min-width: 901px) {
       .drawer, .sidebar-overlay, .mobile-header { display: none; }
-    }
-    .last-updated {
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin: 2rem 0 1rem;
     }
   </style>
 </head>
 <body>
 
+<!-- ===== OVERLAY & DRAWER ===== -->
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 <div id="mobileDrawer" class="drawer">
   <button class="drawer-close" id="closeDrawerBtn"><i class="fas fa-times"></i></button>
@@ -680,7 +696,9 @@
   </div>
 </div>
 
+<!-- ===== MAIN CONTAINER ===== -->
 <div class="main-container">
+
   <!-- DESKTOP TOP NAV -->
   <div class="top-nav">
     <div class="logo">Raifal.dev</div>
@@ -703,7 +721,7 @@
     <div style="width:44px;"></div>
   </div>
 
-  <!-- HERO SECTION (sama persis dengan tentang) -->
+  <!-- ===== HERO ===== -->
   <div class="hero-fullwidth">
     <div class="hero-grid">
       <div class="hero-left">
@@ -724,7 +742,9 @@
     </div>
   </div>
 
+  <!-- ===== KONTEN UTAMA ===== -->
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+
     <!-- KONTAK GRID -->
     <h2 class="section-title"><i class="fas fa-address-card me-2"></i> Informasi Kontak</h2>
     <div class="contact-grid">
@@ -777,11 +797,10 @@
       <a href="mailto:raifalzahran@gmail.com" class="social-icon-btn"><i class="fas fa-envelope"></i> Email Langsung</a>
     </div>
 
-    <div class="last-updated" id="lastUpdated"></div>
   </div>
 </div>
 
-<!-- FOOTER (sama persis dengan tentang.html) -->
+<!-- ===== FOOTER ===== -->
 <footer class="full-width-footer">
   <div class="footer-inner">
     <div class="footer-grid">
@@ -813,93 +832,149 @@
         </div>
       </div>
     </div>
-    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Kontak & Kolaborasi</i> </div>
+    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Kontak & Kolaborasi</div>
   </div>
 </footer>
 
+<!-- ===== TOAST & BACK TO TOP ===== -->
 <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
 <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script>
   (function() {
-    // DRAWER MOBILE
+
+    // ===== DRAWER MOBILE =====
     const drawer = document.getElementById('mobileDrawer');
     const overlay = document.getElementById('sidebarOverlay');
     const menuIcon = document.getElementById('mobileMenuIcon');
-    const closeDrawer = document.getElementById('closeDrawerBtn');
-    function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-    function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    if (menuIcon) menuIcon.addEventListener('click', openDrawer);
-    if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
-    if (overlay) overlay.addEventListener('click', closeDrawerFunc);
-    window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 
-    // DARK MODE
+    function openDrawer() {
+      if (window.innerWidth <= 900) {
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDrawerFunc() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (menuIcon) menuIcon.addEventListener('click', openDrawer);
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawerFunc);
+    if (overlay) overlay.addEventListener('click', closeDrawerFunc);
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc();
+    });
+    document.querySelectorAll('.drawer-link').forEach(l => {
+      l.addEventListener('click', () => { if (window.innerWidth <= 900) closeDrawerFunc(); });
+    });
+
+    // ===== DARK MODE =====
     const body = document.body;
     const desktopToggle = document.getElementById('desktopThemeToggle');
     const drawerToggle = document.getElementById('drawerDarkToggle');
-    const updateDarkUI = (isDark) => {
+
+    function updateDarkUI(isDark) {
       [desktopToggle, drawerToggle].forEach(t => {
         if (!t) return;
-        const icon = t.querySelector('i'), span = t.querySelector('span');
-        if (isDark) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = 'Mode Terang'; }
-        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = 'Mode Gelap'; }
+        const icon = t.querySelector('i'),
+          span = t.querySelector('span');
+        if (isDark) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+          span.innerText = 'Mode Terang';
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+          span.innerText = 'Mode Gelap';
+        }
       });
-    };
-    const setTheme = (theme) => {
-      if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
-      else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
-    };
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        updateDarkUI(true);
+      } else {
+        body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        updateDarkUI(false);
+      }
+    }
+
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme === 'dark') setTheme('dark');
     else if (storedTheme === 'light') setTheme('light');
     else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
+
+    function toggleDark() {
+      body.classList.contains('dark') ? setTheme('light') : setTheme('dark');
+    }
     if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
     if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // TOAST
-    const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
+    // ===== TOAST =====
+    const toastEl = document.getElementById('toastMsg');
+    const toastTextSpan = document.getElementById('toastText');
+
     function showToast(msg, icon = 'fas fa-info-circle') {
       toastTextSpan.innerText = msg;
       const iconElem = toastEl.querySelector('i');
-      if (iconElem) iconElem.className = `${icon} me-2`;
+      if (iconElem) iconElem.className = icon + ' me-2';
       toastEl.classList.add('show');
       setTimeout(() => toastEl.classList.remove('show'), 2500);
     }
 
-    // BACK TO TOP
+    // ===== BACK TO TOP =====
     const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
+    window.addEventListener('scroll', () => {
+      window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show');
+    });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // LAST UPDATED & GREETING
-    const now = new Date();
-    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · Kontak & Kolaborasi`;
+    // ===== GREETING =====
     const hour = new Date().getHours();
     let greet = 'Hubungi Saya';
     if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
     else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
     else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
     else greet = '🌙 Selamat malam,';
-    document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Kenali Saya</span>`;
+    document.getElementById('dynamicGreeting').innerHTML = greet + ' <span style="font-weight:700;">Kenali Saya</span>';
 
-    // FALLBACK IMAGES
+    // ===== FALLBACK IMAGES =====
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
-    profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
+    profileImgs.forEach(img => {
+      if (img) {
+        img.onerror = () => {
+          img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal';
+        };
+      }
+    });
 
-    // Interaksi kartu kontak (toast)
+    // ===== INTERAKSI KARTU KONTAK =====
     document.querySelectorAll('.contact-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('a')) return;
         const label = card.querySelector('.contact-label')?.innerText || 'Kontak';
-        showToast(`📋 ${label} — klik tautan untuk detail`, 'fas fa-address-card');
+        showToast('📋 ' + label + ' — klik tautan untuk detail', 'fas fa-address-card');
       });
     });
+
+    // ===== INTERAKSI TOMBOL SOSIAL =====
     document.querySelectorAll('.social-icon-btn').forEach(btn => {
-      btn.addEventListener('click', () => showToast(`🔗 Membuka ${btn.innerText.trim()}...`, 'fab fa-internet-explorer'));
+      btn.addEventListener('click', () => {
+        const label = btn.innerText.trim();
+        showToast('🔗 Membuka ' + label + '...', 'fab fa-internet-explorer');
+      });
     });
+
   })();
 </script>
+
 </body>
 </html>
