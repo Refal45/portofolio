@@ -4,10 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Raifal Fadhal Zahran | Galeri Proyek</title>
+
+  <!-- Favicon (ikon tab) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='60' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
+
   <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     * {
       margin: 0;
@@ -655,6 +660,7 @@
       transform: translateY(20px);
       transition: opacity 0.3s, transform 0.3s;
       pointer-events: none;
+      max-width: 90vw;
     }
     .custom-toast.show {
       opacity: 1;
@@ -758,7 +764,7 @@
       <div class="hero-left">
         <div class="greeting-hero" id="dynamicGreeting">Portofolio Karya</div>
         <div class="fullname-hero">Raifal Fadhal Zahran</div>
-        <div class="tagline">Fullstack Developer & Problem Solver</div>
+        <div class="tagline">Fullstack Developer &amp; Problem Solver</div>
         <div class="info-badge">
           <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
           <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Enthusiast</div>
@@ -794,8 +800,8 @@
         <h4><i class="fas fa-terminal"></i> Raifal.dev</h4>
         <p style="font-size: 0.85rem; color: var(--text-muted);">Fullstack Developer berdedikasi menciptakan solusi digital modern.</p>
         <div class="social-links">
-          <a href="https://www.instagram.com/refal_3434" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://github.com/Refal45" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.instagram.com/refal_3434" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://github.com/Refal45" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i> GitHub</a>
           <a href="mailto:raifalzahran@gmail.com" class="social-link"><i class="fas fa-envelope"></i> Email</a>
         </div>
         <div class="email-direct"><i class="far fa-envelope"></i> <a href="mailto:raifalzahran@gmail.com">raifalzahran@gmail.com</a></div>
@@ -814,11 +820,11 @@
         <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
         <p style="font-size: 0.85rem;">Depok, Jawa Barat, Indonesia</p>
         <div class="footer-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6451247341326!2d106.79122927494921!3d-6.375170493590673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5aa9bf14d7f%3A0x114c0ee2f576f917!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1711023456789!5m2!1sid!2sid" allowfullscreen="" loading="lazy" style="border:0; width:100%; height:180px; border-radius:20px;"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6451247341326!2d106.79122927494921!3d-6.375170493590673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5aa9bf14d7f%3A0x114c0ee2f576f917!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1711023456789!5m2!1sid!2sid" allowfullscreen="" loading="lazy" style="border:0; width:100%; height:180px; border-radius:20px;" title="Google Maps interaktif - Depok"></iframe>
         </div>
       </div>
     </div>
-    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Galeri Proyek</i> </div>
+    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Galeri Proyek</div>
   </div>
 </footer>
 
@@ -870,7 +876,8 @@
       const iconElem = toastEl.querySelector('i');
       if (iconElem) iconElem.className = `${icon} me-2`;
       toastEl.classList.add('show');
-      setTimeout(() => toastEl.classList.remove('show'), 2500);
+      clearTimeout(toastEl._t);
+      toastEl._t = setTimeout(() => toastEl.classList.remove('show'), 2500);
     }
 
     // MODAL ZOOM GAMBAR
