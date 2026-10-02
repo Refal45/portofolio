@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Pengalaman PKL | Raifal Fadhal Zahran</title>
+  <title>Tentang | Raifal Fadhal Zahran</title>
 
   <!-- Favicon (ikon tab) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='60' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
@@ -351,7 +351,7 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* ========== FULL WIDTH HERO (sama persis dengan tentang) ========== */
+    /* ========== FULL WIDTH HERO ========== */
     .hero-fullwidth {
       width: 100vw;
       position: relative;
@@ -870,10 +870,10 @@
   </div>
   <ul class="drawer-nav">
     <li><a href="index.html" class="drawer-link"><i class="fas fa-home"></i> Beranda</a></li>
-    <li><a href="tentang.html" class="drawer-link"><i class="fas fa-user"></i> Tentang</a></li>
+    <li><a href="tentang.html" class="drawer-link active"><i class="fas fa-user"></i> Tentang</a></li>
     <li><a href="project.html" class="drawer-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
     <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="pengalaman.html" class="drawer-link active"><i class="fas fa-briefcase"></i> PKL</a></li>
+    <li><a href="pengalaman.html" class="drawer-link"><i class="fas fa-briefcase"></i> PKL</a></li>
   </ul>
   <!-- TOMBOL DOWNLOAD CV (MOBILE DRAWER) -->
   <button type="button" class="drawer-cv-btn cv-trigger">
@@ -890,10 +890,10 @@
     <div class="logo">Raifal.dev</div>
     <div class="nav-links">
       <a href="index.html" class="nav-link-center"><i class="fas fa-home"></i> Beranda</a>
-      <a href="tentang.html" class="nav-link-center"><i class="fas fa-user"></i> Tentang</a>
+      <a href="tentang.html" class="nav-link-center active"><i class="fas fa-user"></i> Tentang</a>
       <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
       <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
-      <a href="pengalaman.html" class="nav-link-center active"><i class="fas fa-briefcase"></i> PKL</a>
+      <a href="pengalaman.html" class="nav-link-center"><i class="fas fa-briefcase"></i> PKL</a>
     </div>
 
     <!-- ====== CV + DARK MODE ====== -->
@@ -1148,7 +1148,7 @@ $results = $stmt->fetchAll();</code></pre>
         </div>
       </div>
     </div>
-    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Pengalaman PKL </div>
+    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Tentang </div>
   </div>
 </footer>
 
@@ -1220,12 +1220,7 @@ $results = $stmt->fetchAll();</code></pre>
     }
 
     /* =========================================================
-       ============ FITUR DOWNLOAD CV (BARU) ====================
-       =========================================================
-       1) Jika file PDF "CV-Raifal-Fadhal-Zahran.pdf" ada di folder
-          yang sama → otomatis diunduh.
-       2) Jika tidak ada (atau dibuka lewat file://) → otomatis
-          membuat versi CV berbasis HTML yang siap dicetak ke PDF.
+       ============ FITUR DOWNLOAD CV ====================
        ========================================================= */
     const CV_PDF = 'CV-Raifal-Fadhal-Zahran.pdf';
     const CV_HTML_NAME = 'CV-Raifal-Fadhal-Zahran.html';
@@ -1353,7 +1348,6 @@ $results = $stmt->fetchAll();</code></pre>
       try {
         const res = await fetch(CV_PDF, { cache: 'no-store' });
         const ctype = (res.headers.get('content-type') || '').toLowerCase();
-        // Pastikan bukan halaman 404 HTML
         if (res.ok && !ctype.includes('text/html')) {
           const blob = await res.blob();
           saveBlob(blob, CV_PDF);
@@ -1366,13 +1360,11 @@ $results = $stmt->fetchAll();</code></pre>
       if (pdfFound) {
         showToast('✅ CV berhasil diunduh', 'fas fa-check-circle');
       } else {
-        // Fallback: buat CV HTML yang siap dicetak ke PDF
         saveBlob(new Blob([buildCVHtml()], { type: 'text/html;charset=utf-8' }), CV_HTML_NAME);
         showToast('📄 CV versi web diunduh — buka & cetak ke PDF', 'fas fa-file-alt');
       }
     }
 
-    // Pasang ke semua tombol CV (desktop, mobile header, drawer, CTA)
     document.querySelectorAll('.cv-trigger').forEach(btn => {
       btn.addEventListener('click', downloadCV);
     });
@@ -1405,7 +1397,7 @@ $results = $stmt->fetchAll();</code></pre>
     const now = new Date();
     const lastUpdatedEl = document.getElementById('lastUpdated');
     if (lastUpdatedEl) {
-      lastUpdatedEl.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · PKL Domaenesia, cPanel & Google Cloud API`;
+      lastUpdatedEl.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · Tentang`;
     }
     const hour = new Date().getHours();
     let greet = 'Perjalanan PKL';
@@ -1414,13 +1406,13 @@ $results = $stmt->fetchAll();</code></pre>
     else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
     else greet = '🌙 Selamat malam,';
     const greetEl = document.getElementById('dynamicGreeting');
-    if (greetEl) greetEl.innerHTML = `${greet} <span style="font-weight:700;">Pengalaman PKL</span>`;
+    if (greetEl) greetEl.innerHTML = `${greet} <span style="font-weight:700;">Tentang</span>`;
 
     /* ================= FALLBACK IMAGES ================= */
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
     profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
 
-    setTimeout(() => showToast('✨ Selamat datang di halaman PKL', 'fas fa-briefcase'), 800);
+    setTimeout(() => showToast('✨ Selamat datang di halaman Tentang', 'fas fa-user'), 800);
   })();
 </script>
 </body>
