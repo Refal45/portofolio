@@ -208,6 +208,7 @@
       display: flex;
       flex-direction: column;
       border-right: 1px solid var(--border-color);
+      overflow-y: auto;
     }
     .drawer.open {
       left: 0;
@@ -278,7 +279,107 @@
     .sidebar-overlay.active {
       display: block;
     }
-    /* ========== FULL WIDTH HERO (sama persis dengan tentang) ========== */
+
+    /* ========== BUTTON DOWNLOAD CV ========== */
+    .btn-download-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #ffffff !important;
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -8px var(--active-glow), 0 4px 10px rgba(79, 70, 229, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      margin-top: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-download-cv::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+    .btn-download-cv:hover::before {
+      left: 125%;
+    }
+    .btn-download-cv:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -8px var(--active-glow), 0 6px 15px rgba(79, 70, 229, 0.35);
+      filter: brightness(1.08);
+      color: #ffffff !important;
+    }
+    .btn-download-cv:active {
+      transform: translateY(-1px);
+    }
+    .btn-download-cv i {
+      font-size: 1rem;
+    }
+    .btn-download-cv.loading i {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Tombol CV varian kecil (untuk nav & drawer) */
+    .btn-cv-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff !important;
+      padding: 0.45rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--active-glow);
+      transition: transform 0.2s, filter 0.2s;
+      white-space: nowrap;
+    }
+    .btn-cv-nav:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      color: #fff !important;
+    }
+    .drawer-cv-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff !important;
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      box-shadow: 0 6px 18px var(--active-glow);
+      margin-top: 0.6rem;
+      transition: transform 0.2s, filter 0.2s;
+    }
+    .drawer-cv-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      color: #fff !important;
+    }
+
+    /* ========== FULL WIDTH HERO ========== */
     .hero-fullwidth {
       width: 100vw;
       position: relative;
@@ -769,6 +870,7 @@
       .tech-cat-card { padding: 0.9rem 0.9rem 0.8rem; }
       .tech-cat-header { font-size: 0.85rem; }
       .tech-cat-items span { font-size: 0.72rem; padding: 0.2rem 0.6rem; }
+      .btn-download-cv { padding: 0.65rem 1.4rem; font-size: 0.85rem; }
     }
     @media (max-width: 500px) {
       .tech-grid-cat { grid-template-columns: 1fr 1fr; }
@@ -801,6 +903,10 @@
     <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
     <li><a href="pengalaman.html" class="drawer-link active"><i class="fas fa-briefcase"></i> PKL</a></li>
   </ul>
+  <!-- TOMBOL DOWNLOAD CV (drawer mobile) -->
+  <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="drawer-cv-btn">
+    <i class="fas fa-file-arrow-down"></i> Download CV
+  </a>
   <div class="drawer-dark-toggle" id="drawerDarkToggle">
     <i class="fas fa-moon"></i> <span>Mode Gelap</span>
   </div>
@@ -817,8 +923,14 @@
       <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
       <a href="pengalaman.html" class="nav-link-center active"><i class="fas fa-briefcase"></i> PKL</a>
     </div>
-    <div class="theme-toggle-desktop" id="desktopThemeToggle">
-      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+    <div style="display:flex; gap:0.7rem; align-items:center;">
+      <!-- TOMBOL DOWNLOAD CV (navbar desktop) -->
+      <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-cv-nav">
+        <i class="fas fa-file-arrow-down"></i> Download CV
+      </a>
+      <div class="theme-toggle-desktop" id="desktopThemeToggle">
+        <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+      </div>
     </div>
   </div>
 
@@ -841,6 +953,11 @@
           <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web & Cloud</div>
         </div>
         <p style="color: var(--text-secondary); margin-top: 1rem;">Pengalaman Praktek Kerja Lapangan di UBSI Margonda: mengelola domain, hosting cPanel, integrasi Google Maps API & OAuth, serta pengembangan web UMKM.</p>
+
+        <!-- TOMBOL DOWNLOAD CV (hero utama) -->
+        <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-download-cv" id="downloadCvHero">
+          <i class="fas fa-file-arrow-down"></i> Download CV
+        </a>
       </div>
       <div class="hero-right">
         <div class="profile-bg-card">
@@ -960,7 +1077,7 @@ $results = $stmt->fetchAll();</code></pre>
       </ul>
     </div>
 
-    <!-- ===== TEKNOLOGI YANG DIGUNAKAN (tambahan baru) ===== -->
+    <!-- ===== TEKNOLOGI YANG DIGUNAKAN ===== -->
     <div class="exp-card">
       <div class="exp-title"><i class="fas fa-microchip"></i> Teknologi & Tools Selama PKL</div>
       <p>Berikut adalah stack teknologi dan perangkat yang saya gunakan dan pelajari selama menjalani Praktek Kerja Lapangan di UBSI Margonda:</p>
@@ -1011,13 +1128,25 @@ $results = $stmt->fetchAll();</code></pre>
             <span><i class="fab fa-cpanel"></i> cPanel</span>
             <span><i class="fas fa-globe"></i> Domaenesia</span>
             <span><i class="fas fa-folder-tree"></i> File Manager</span>
-          
           </div>
         </div>
       </div>
     </div>
 
-   
+    <!-- CTA DOWNLOAD CV -->
+    <div class="exp-card" style="text-align:center; background: var(--hero-bg);">
+      <h3 style="font-weight:700; margin-bottom:0.6rem;">
+        <i class="fas fa-file-alt" style="color: var(--active-color);"></i> Tertarik bekerja sama?
+      </h3>
+      <p style="color: var(--text-secondary); margin-bottom: 0.4rem;">
+        Unduh CV lengkap saya untuk melihat riwayat pendidikan, pengalaman, dan keahlian secara detail.
+      </p>
+      <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-download-cv" style="margin-top: 0.8rem;">
+        <i class="fas fa-download"></i> Download CV Lengkap
+      </a>
+    </div>
+
+    <div class="last-updated" id="lastUpdated"></div>
   </div>
 </div>
 
@@ -1043,6 +1172,7 @@ $results = $stmt->fetchAll();</code></pre>
           <li><a href="project.html"><i class="fas fa-folder-open"></i> Proyek</a></li>
           <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
           <li><a href="pengalaman.html"><i class="fas fa-briefcase"></i> PKL</a></li>
+          <li><a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf"><i class="fas fa-file-arrow-down"></i> Download CV</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1053,7 +1183,7 @@ $results = $stmt->fetchAll();</code></pre>
         </div>
       </div>
     </div>
-    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Pengalaman PKL </i></div>
+    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Pengalaman PKL</div>
   </div>
 </footer>
 
@@ -1148,18 +1278,44 @@ $results = $stmt->fetchAll();</code></pre>
 
     // LAST UPDATED & GREETING
     const now = new Date();
-    document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · PKL Domaenesia, cPanel & Google Cloud API`;
+    const lastUpd = document.getElementById('lastUpdated');
+    if (lastUpd) {
+      lastUpd.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · PKL Domaenesia, cPanel & Google Cloud API`;
+    }
     const hour = new Date().getHours();
     let greet = 'Perjalanan PKL';
     if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
     else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
     else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
     else greet = '🌙 Selamat malam,';
-    document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Pengalaman PKL</span>`;
+    const greetEl = document.getElementById('dynamicGreeting');
+    if (greetEl) greetEl.innerHTML = `${greet} <span style="font-weight:700;">Pengalaman PKL</span>`;
 
     // FALLBACK IMAGES
     const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
     profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
+
+    // ===== HANDLER DOWNLOAD CV =====
+    // Menampilkan toast saat user klik tombol Download CV
+    document.querySelectorAll('a[href$=".pdf"][download]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const fileName = btn.getAttribute('download') || 'CV';
+        showToast(`📄 Mengunduh ${fileName}...`, 'fas fa-file-arrow-down');
+        // Animasi loading singkat pada tombol hero
+        const icon = btn.querySelector('i');
+        if (icon && btn.classList.contains('btn-download-cv')) {
+          const originalClass = icon.className;
+          icon.className = 'fas fa-spinner';
+          btn.classList.add('loading');
+          setTimeout(() => {
+            btn.classList.remove('loading');
+            icon.className = originalClass;
+          }, 1200);
+        }
+      });
+    });
+
+    // Toast selamat datang
     setTimeout(() => showToast('✨ Selamat datang di halaman PKL', 'fas fa-briefcase'), 800);
   })();
 </script>
