@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Pengalaman PKL | Raifal Fadhal Zahran</title>
 
   <!-- Favicon (ikon tab) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='60' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='60' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E" />
 
   <!-- Bootstrap 5 + Font Awesome + Google Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -86,7 +90,10 @@
       line-height: 1.5;
     }
 
-    h1, h2, h3, .nav-link-custom {
+    h1,
+    h2,
+    h3,
+    .nav-link-custom {
       font-family: 'Poppins', sans-serif;
     }
 
@@ -108,6 +115,7 @@
       border-bottom: 1px solid var(--border-color);
       z-index: 1030;
     }
+
     .logo {
       font-weight: 800;
       font-size: 1.5rem;
@@ -117,6 +125,7 @@
       color: transparent;
       letter-spacing: -0.5px;
     }
+
     .nav-links {
       display: flex;
       gap: 1rem;
@@ -127,6 +136,7 @@
       border: 1px solid var(--border-color);
       backdrop-filter: blur(4px);
     }
+
     .nav-link-center {
       padding: 0.5rem 1.2rem;
       font-weight: 600;
@@ -136,19 +146,23 @@
       transition: all 0.2s;
       font-size: 0.9rem;
     }
+
     .nav-link-center i {
       margin-right: 6px;
       font-size: 0.9rem;
     }
+
     .nav-link-center:hover {
       background: var(--hover-bg);
       color: var(--active-color);
     }
+
     .nav-link-center.active {
       background: var(--active-color);
       color: white;
       box-shadow: 0 4px 12px var(--active-glow);
     }
+
     .theme-toggle-desktop {
       background: var(--badge-bg);
       border: 1px solid var(--border-color);
@@ -162,6 +176,7 @@
       align-items: center;
       gap: 8px;
     }
+
     /* mobile header & drawer */
     .mobile-header {
       display: none;
@@ -173,6 +188,7 @@
       z-index: 1020;
       border-bottom: 1px solid var(--border-color);
     }
+
     .menu-icon {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
@@ -185,6 +201,7 @@
       cursor: pointer;
       color: var(--text-primary);
     }
+
     .brand-mobile {
       font-weight: 700;
       font-size: 1.1rem;
@@ -193,6 +210,7 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     /* DRAWER (mobile) */
     .drawer {
       position: fixed;
@@ -208,11 +226,12 @@
       display: flex;
       flex-direction: column;
       border-right: 1px solid var(--border-color);
-      overflow-y: auto;
     }
+
     .drawer.open {
       left: 0;
     }
+
     .drawer-close {
       background: none;
       border: none;
@@ -222,10 +241,12 @@
       cursor: pointer;
       margin-bottom: 1rem;
     }
+
     .drawer-profile {
       text-align: center;
       margin-bottom: 1.5rem;
     }
+
     .drawer-img {
       width: 80px;
       height: 80px;
@@ -234,14 +255,17 @@
       border: 3px solid var(--active-color);
       margin-bottom: 0.5rem;
     }
+
     .drawer-nav {
       list-style: none;
       padding: 0;
       flex: 1;
     }
+
     .drawer-nav li {
       margin-bottom: 0.8rem;
     }
+
     .drawer-link {
       display: flex;
       align-items: center;
@@ -252,10 +276,13 @@
       text-decoration: none;
       font-weight: 500;
     }
-    .drawer-link.active, .drawer-link:hover {
+
+    .drawer-link.active,
+    .drawer-link:hover {
       background: var(--hover-bg);
       color: var(--active-color);
     }
+
     .drawer-dark-toggle {
       background: var(--badge-bg);
       border: 1px solid var(--border-color);
@@ -265,6 +292,7 @@
       cursor: pointer;
       margin-top: 1rem;
     }
+
     .sidebar-overlay {
       position: fixed;
       top: 0;
@@ -276,110 +304,12 @@
       display: none;
       backdrop-filter: blur(3px);
     }
+
     .sidebar-overlay.active {
       display: block;
     }
 
-    /* ========== BUTTON DOWNLOAD CV ========== */
-    .btn-download-cv {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #ffffff !important;
-      padding: 0.75rem 1.8rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 10px 25px -8px var(--active-glow), 0 4px 10px rgba(79, 70, 229, 0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-      margin-top: 1.2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-download-cv::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-      transform: skewX(-20deg);
-      transition: left 0.6s ease;
-    }
-    .btn-download-cv:hover::before {
-      left: 125%;
-    }
-    .btn-download-cv:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px -8px var(--active-glow), 0 6px 15px rgba(79, 70, 229, 0.35);
-      filter: brightness(1.08);
-      color: #ffffff !important;
-    }
-    .btn-download-cv:active {
-      transform: translateY(-1px);
-    }
-    .btn-download-cv i {
-      font-size: 1rem;
-    }
-    .btn-download-cv.loading i {
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Tombol CV varian kecil (untuk nav & drawer) */
-    .btn-cv-nav {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #fff !important;
-      padding: 0.45rem 1rem;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.82rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px var(--active-glow);
-      transition: transform 0.2s, filter 0.2s;
-      white-space: nowrap;
-    }
-    .btn-cv-nav:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-      color: #fff !important;
-    }
-    .drawer-cv-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #fff !important;
-      padding: 0.75rem 1rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      box-shadow: 0 6px 18px var(--active-glow);
-      margin-top: 0.6rem;
-      transition: transform 0.2s, filter 0.2s;
-    }
-    .drawer-cv-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-      color: #fff !important;
-    }
-
-    /* ========== FULL WIDTH HERO ========== */
+    /* ========== FULL WIDTH HERO (sama persis dengan tentang) ========== */
     .hero-fullwidth {
       width: 100vw;
       position: relative;
@@ -391,6 +321,7 @@
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
     }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 0.9fr;
@@ -400,6 +331,7 @@
       max-width: 1400px;
       margin: 0 auto;
     }
+
     .hero-left .greeting-hero {
       font-size: 0.95rem;
       font-weight: 600;
@@ -407,12 +339,14 @@
       letter-spacing: 1px;
       margin-bottom: 0.5rem;
     }
+
     .hero-left .fullname-hero {
       font-size: 2.5rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 0.5rem;
     }
+
     .hero-left .tagline {
       font-size: 1rem;
       color: var(--text-muted);
@@ -420,13 +354,16 @@
       border-left: 3px solid var(--active-color);
       padding-left: 1rem;
     }
+
     .info-badge {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
       margin: 1rem 0;
     }
-    .location-chip, .open-chip {
+
+    .location-chip,
+    .open-chip {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -436,37 +373,51 @@
       font-size: 0.85rem;
       font-weight: 500;
     }
+
     .open-chip {
       background: #dcfce7;
       color: #15803d;
     }
+
     body.dark .open-chip {
       background: #14532d;
       color: #bbf7d0;
     }
+
     .hero-right {
       display: flex;
       justify-content: center;
       position: relative;
     }
+
     .profile-bg-card {
       background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
       border-radius: 40% 60% 50% 50% / 45% 40% 60% 55%;
       padding: 0.8rem;
       animation: float 6s ease-in-out infinite;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.3);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.3);
     }
+
     .profile-img-large {
       width: 260px;
       height: 260px;
       object-fit: cover;
       border-radius: 35% 65% 40% 60% / 45% 40% 60% 55%;
-      border: 4px solid rgba(255,255,255,0.3);
+      border: 4px solid rgba(255, 255, 255, 0.3);
     }
+
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-      100% { transform: translateY(0px); }
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
 
     /* ========== SECTION TITLE ========== */
@@ -492,9 +443,11 @@
       margin-bottom: 2rem;
       transition: transform 0.2s;
     }
+
     .exp-card:hover {
       transform: translateY(-3px);
     }
+
     .exp-title {
       font-size: 1.4rem;
       font-weight: 700;
@@ -504,18 +457,21 @@
       gap: 12px;
       color: var(--active-color);
     }
+
     .exp-date {
       font-size: 0.8rem;
       color: var(--text-muted);
       margin-bottom: 1rem;
       display: block;
     }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
       margin: 1.8rem 0;
     }
+
     .gallery-item {
       background: var(--badge-bg);
       border-radius: 20px;
@@ -524,12 +480,14 @@
       transition: all 0.2s;
       cursor: pointer;
     }
+
     .gallery-item img {
       width: 100%;
       height: 160px;
       object-fit: cover;
       display: block;
     }
+
     .gallery-caption {
       padding: 0.8rem;
       text-align: center;
@@ -537,12 +495,14 @@
       font-weight: 500;
       color: var(--text-primary);
     }
+
     .team-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
     }
+
     .team-member {
       background: var(--active-bg);
       border-radius: 60px;
@@ -553,10 +513,12 @@
       font-weight: 500;
       color: var(--active-color);
     }
+
     .team-member a {
       color: var(--active-color);
       text-decoration: none;
     }
+
     .tech-note {
       background: var(--hover-bg);
       border-left: 4px solid var(--active-color);
@@ -565,6 +527,7 @@
       margin: 1rem 0;
       font-size: 0.95rem;
     }
+
     .custom-table {
       width: 100%;
       border-collapse: collapse;
@@ -573,6 +536,7 @@
       margin-bottom: 1rem;
       background: var(--bg-surface);
     }
+
     .custom-table th,
     .custom-table td {
       border: 1px solid var(--table-border);
@@ -580,10 +544,12 @@
       vertical-align: top;
       color: var(--text-primary);
     }
+
     .custom-table th {
       background-color: var(--table-header-bg);
       font-weight: 600;
     }
+
     pre {
       background: var(--badge-bg);
       padding: 12px;
@@ -593,6 +559,7 @@
       color: var(--text-primary);
       border: 1px solid var(--border-color);
     }
+
     code {
       color: var(--active-color);
     }
@@ -604,6 +571,7 @@
       gap: 1.2rem;
       margin-top: 0.5rem;
     }
+
     .tech-cat-card {
       background: var(--bg-body);
       border-radius: 20px;
@@ -613,11 +581,13 @@
       transition: all 0.3s ease;
       cursor: default;
     }
+
     .tech-cat-card:hover {
       transform: translateY(-4px);
       border-color: var(--active-color);
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
     }
+
     .tech-cat-header {
       display: flex;
       align-items: center;
@@ -629,17 +599,20 @@
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.5rem;
     }
+
     .tech-cat-header i {
       font-size: 1.2rem;
       width: 28px;
       color: var(--active-color);
     }
+
     .tech-cat-items {
       display: flex;
       flex-wrap: wrap;
       gap: 6px 10px;
       padding-top: 0.2rem;
     }
+
     .tech-cat-items span {
       font-size: 0.82rem;
       background: var(--badge-bg);
@@ -650,11 +623,13 @@
       border: 1px solid transparent;
       transition: all 0.2s;
     }
+
     .tech-cat-items span:hover {
       border-color: var(--active-color);
       color: var(--active-color);
       transform: scale(1.04);
     }
+
     .tech-cat-items span i {
       margin-right: 4px;
       font-size: 0.7rem;
@@ -674,16 +649,19 @@
       border-top: 1px solid var(--border-color);
       margin-top: 2rem;
     }
+
     .footer-inner {
       max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 2rem 1rem;
     }
+
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
     }
+
     .footer-col h4 {
       font-size: 1.2rem;
       font-weight: 700;
@@ -694,14 +672,17 @@
       color: transparent;
       display: inline-block;
     }
+
     .footer-quick-links {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .footer-quick-links li {
       margin-bottom: 0.7rem;
     }
+
     .footer-quick-links a {
       color: var(--text-secondary);
       text-decoration: none;
@@ -711,14 +692,17 @@
       gap: 8px;
       transition: all 0.2s;
     }
+
     .footer-quick-links a i {
       font-size: 0.85rem;
       width: 20px;
     }
+
     .footer-quick-links a:hover {
       color: var(--active-color);
       transform: translateX(6px);
     }
+
     .social-links {
       display: flex;
       gap: 1rem;
@@ -726,6 +710,7 @@
       margin-top: 0.5rem;
       margin-bottom: 0.8rem;
     }
+
     .social-link {
       display: inline-flex;
       align-items: center;
@@ -739,14 +724,17 @@
       transition: all 0.2s;
       border: 1px solid var(--border-color);
     }
+
     .social-link i {
       font-size: 1.1rem;
     }
+
     .social-link:hover {
       background: var(--active-color);
       color: white;
       transform: translateY(-2px);
     }
+
     .email-direct {
       margin-top: 12px;
       background: var(--badge-bg);
@@ -758,14 +746,17 @@
       font-size: 0.85rem;
       border: 1px solid var(--border-color);
     }
+
     .email-direct a {
       color: var(--text-primary);
       text-decoration: none;
       font-weight: 500;
     }
+
     .email-direct a:hover {
       color: var(--active-color);
     }
+
     .footer-map iframe {
       width: 100%;
       height: 180px;
@@ -773,6 +764,7 @@
       border: 1px solid var(--border-color);
       pointer-events: auto;
     }
+
     .copyright {
       text-align: center;
       margin-top: 2rem;
@@ -802,10 +794,12 @@
       transition: opacity 0.3s, transform 0.3s;
       pointer-events: none;
     }
+
     .custom-toast.show {
       opacity: 1;
       transform: translateY(0);
     }
+
     .back-to-top {
       position: fixed;
       bottom: 25px;
@@ -824,22 +818,27 @@
       transition: 0.2s;
       z-index: 1000;
     }
+
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
     }
+
     .image-modal .modal-dialog {
       max-width: 95vw;
       margin: 1.75rem auto;
     }
+
     .image-modal .modal-content {
       background: transparent;
       border: none;
     }
+
     .image-modal .modal-body {
       padding: 0;
       text-align: center;
     }
+
     .image-modal img {
       max-width: 100%;
       max-height: 90vh;
@@ -856,28 +855,68 @@
         padding: 1.5rem;
         gap: 1.5rem;
       }
-      .hero-left .fullname-hero { font-size: 1.8rem; }
-      .profile-img-large { width: 180px; height: 180px; }
-      .top-nav { display: none; }
-      .mobile-header { display: flex; }
-      .section-title { font-size: 1.5rem; }
+
+      .hero-left .fullname-hero {
+        font-size: 1.8rem;
+      }
+
+      .profile-img-large {
+        width: 180px;
+        height: 180px;
+      }
+
+      .top-nav {
+        display: none;
+      }
+
+      .mobile-header {
+        display: flex;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
       .custom-table th,
       .custom-table td {
         padding: 8px 10px;
         font-size: 0.85rem;
       }
-      .tech-grid-cat { grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 0.8rem; }
-      .tech-cat-card { padding: 0.9rem 0.9rem 0.8rem; }
-      .tech-cat-header { font-size: 0.85rem; }
-      .tech-cat-items span { font-size: 0.72rem; padding: 0.2rem 0.6rem; }
-      .btn-download-cv { padding: 0.65rem 1.4rem; font-size: 0.85rem; }
+
+      .tech-grid-cat {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .tech-cat-card {
+        padding: 0.9rem 0.9rem 0.8rem;
+      }
+
+      .tech-cat-header {
+        font-size: 0.85rem;
+      }
+
+      .tech-cat-items span {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.6rem;
+      }
     }
+
     @media (max-width: 500px) {
-      .tech-grid-cat { grid-template-columns: 1fr 1fr; }
+      .tech-grid-cat {
+        grid-template-columns: 1fr 1fr;
+      }
     }
+
     @media (min-width: 901px) {
-      .drawer, .sidebar-overlay, .mobile-header { display: none; }
+
+      .drawer,
+      .sidebar-overlay,
+      .mobile-header {
+        display: none;
+      }
     }
+
     .last-updated {
       text-align: center;
       font-size: 0.7rem;
@@ -886,438 +925,445 @@
     }
   </style>
 </head>
+
 <body>
 
-<div id="sidebarOverlay" class="sidebar-overlay"></div>
-<div id="mobileDrawer" class="drawer">
-  <button class="drawer-close" id="closeDrawerBtn"><i class="fas fa-times"></i></button>
-  <div class="drawer-profile">
-    <img src="profile.jpeg" alt="Raifal" class="drawer-img" id="drawerProfileImg" />
-    <div class="fw-bold mt-2">Raifal Fadhal Zahran</div>
-    <small>@Refal</small>
-  </div>
-  <ul class="drawer-nav">
-    <li><a href="index.html" class="drawer-link"><i class="fas fa-home"></i> Beranda</a></li>
-    <li><a href="tentang.html" class="drawer-link"><i class="fas fa-user"></i> Tentang</a></li>
-    <li><a href="project.html" class="drawer-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
-    <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="pengalaman.html" class="drawer-link active"><i class="fas fa-briefcase"></i> PKL</a></li>
-  </ul>
-  <!-- TOMBOL DOWNLOAD CV (drawer mobile) -->
-  <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="drawer-cv-btn">
-    <i class="fas fa-file-arrow-down"></i> Download CV
-  </a>
-  <div class="drawer-dark-toggle" id="drawerDarkToggle">
-    <i class="fas fa-moon"></i> <span>Mode Gelap</span>
-  </div>
-</div>
-
-<div class="main-container">
-  <!-- DESKTOP TOP NAV -->
-  <div class="top-nav">
-    <div class="logo">Raifal.dev</div>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link-center"><i class="fas fa-home"></i> Beranda</a>
-      <a href="tentang.html" class="nav-link-center"><i class="fas fa-user"></i> Tentang</a>
-      <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
-      <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
-      <a href="pengalaman.html" class="nav-link-center active"><i class="fas fa-briefcase"></i> PKL</a>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  <div id="mobileDrawer" class="drawer">
+    <button class="drawer-close" id="closeDrawerBtn"><i class="fas fa-times"></i></button>
+    <div class="drawer-profile">
+      <img src="profile.jpeg" alt="Raifal" class="drawer-img" id="drawerProfileImg" />
+      <div class="fw-bold mt-2">Raifal Fadhal Zahran</div>
+      <small>@Refal</small>
     </div>
-    <div style="display:flex; gap:0.7rem; align-items:center;">
-      <!-- TOMBOL DOWNLOAD CV (navbar desktop) -->
-      <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-cv-nav">
-        <i class="fas fa-file-arrow-down"></i> Download CV
-      </a>
+    <ul class="drawer-nav">
+      <li><a href="index.html" class="drawer-link"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="tentang.html" class="drawer-link"><i class="fas fa-user"></i> Tentang</a></li>
+      <li><a href="project.html" class="drawer-link"><i class="fas fa-folder-open"></i> Proyek</a></li>
+      <li><a href="kontak.html" class="drawer-link"><i class="fas fa-envelope"></i> Kontak</a></li>
+      <li><a href="pengalaman.html" class="drawer-link active"><i class="fas fa-briefcase"></i> PKL</a></li>
+    </ul>
+    <div class="drawer-dark-toggle" id="drawerDarkToggle">
+      <i class="fas fa-moon"></i> <span>Mode Gelap</span>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <!-- DESKTOP TOP NAV -->
+    <div class="top-nav">
+      <div class="logo">Raifal.dev</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link-center"><i class="fas fa-home"></i> Beranda</a>
+        <a href="tentang.html" class="nav-link-center"><i class="fas fa-user"></i> Tentang</a>
+        <a href="project.html" class="nav-link-center"><i class="fas fa-folder-open"></i> Proyek</a>
+        <a href="kontak.html" class="nav-link-center"><i class="fas fa-envelope"></i> Kontak</a>
+        <a href="pengalaman.html" class="nav-link-center active"><i class="fas fa-briefcase"></i> PKL</a>
+      </div>
       <div class="theme-toggle-desktop" id="desktopThemeToggle">
         <i class="fas fa-moon"></i> <span>Mode Gelap</span>
       </div>
     </div>
-  </div>
 
-  <!-- MOBILE HEADER -->
-  <div class="mobile-header">
-    <div class="menu-icon" id="mobileMenuIcon"><i class="fas fa-bars"></i></div>
-    <div class="brand-mobile">Raifal.dev</div>
-    <div style="width:44px;"></div>
-  </div>
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header">
+      <div class="menu-icon" id="mobileMenuIcon"><i class="fas fa-bars"></i></div>
+      <div class="brand-mobile">Raifal.dev</div>
+      <div style="width:44px;"></div>
+    </div>
 
-  <!-- HERO SECTION -->
-  <div class="hero-fullwidth">
-    <div class="hero-grid">
-      <div class="hero-left">
-        <div class="greeting-hero" id="dynamicGreeting">Perjalanan PKL</div>
-        <div class="fullname-hero">Raifal Fadhal Zahran</div>
-        <div class="tagline">Fullstack Developer & Cloud Enthusiast</div>
-        <div class="info-badge">
-          <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
-          <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web & Cloud</div>
+    <!-- HERO SECTION -->
+    <div class="hero-fullwidth">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="greeting-hero" id="dynamicGreeting">Perjalanan PKL</div>
+          <div class="fullname-hero">Raifal Fadhal Zahran</div>
+          <div class="tagline">Fullstack Developer & Cloud Enthusiast</div>
+          <div class="info-badge">
+            <div class="location-chip"><i class="fas fa-map-marker-alt"></i> Depok, Indonesia</div>
+            <div class="open-chip"><i class="fas fa-laptop-code"></i> Fullstack Web & Cloud</div>
+          </div>
+          <p style="color: var(--text-secondary); margin-top: 1rem;">Pengalaman Praktek Kerja Lapangan di UBSI Margonda:
+            mengelola domain, hosting cPanel, integrasi Google Maps API & OAuth, serta pengembangan web UMKM.</p>
         </div>
-        <p style="color: var(--text-secondary); margin-top: 1rem;">Pengalaman Praktek Kerja Lapangan di UBSI Margonda: mengelola domain, hosting cPanel, integrasi Google Maps API & OAuth, serta pengembangan web UMKM.</p>
-
-        <!-- TOMBOL DOWNLOAD CV (hero utama) -->
-        <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-download-cv" id="downloadCvHero">
-          <i class="fas fa-file-arrow-down"></i> Download CV
-        </a>
-      </div>
-      <div class="hero-right">
-        <div class="profile-bg-card">
-          <img src="profile.jpeg" alt="Raifal" class="profile-img-large" id="heroProfileImg" />
+        <div class="hero-right">
+          <div class="profile-bg-card">
+            <img src="profile.jpeg" alt="Raifal" class="profile-img-large" id="heroProfileImg" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
-    <!-- Pengalaman Domaenesia & cPanel -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fas fa-cloud-upload-alt"></i> Domaenesia - Domain & cPanel Hosting</div>
-      <div class="exp-date"><i class="far fa-calendar-alt"></i> Periode PKL: 2025 | UBSI Margonda, Depok</div>
-      <p>
-        Selama Praktek Kerja Lapangan (PKL) di <strong>Universitas Bina Sarana Informatika (Margonda)</strong>, saya mendapatkan pengalaman langsung dalam mengelola <strong>domain</strong> dan <strong>hosting berbasis cPanel</strong>.
-        Saya belajar mengatur zona DNS, pembelian domain, konfigurasi nameserver, serta mengelola file dan folder melalui cPanel File Manager. Selain itu, saya juga mempelajari manajemen database MySQL, backup otomatis, dan keamanan dasar hosting.
-      </p>
-      <div class="gallery-grid">
-        <div class="gallery-item" data-img="domain.jpeg" data-title="Manajemen Domain Domaenesia" data-tech="DNS, Nameserver, Zone Editor">
-          <img src="domain.jpeg" alt="Konfigurasi Domain" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Domain+Management&font=montserrat';" />
-          <div class="gallery-caption"><i class="fas fa-globe"></i> Konfigurasi Domain (Domaenesia)</div>
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+      <!-- Pengalaman Domaenesia & cPanel -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fas fa-cloud-upload-alt"></i> Domaenesia - Domain & cPanel Hosting</div>
+        <div class="exp-date"><i class="far fa-calendar-alt"></i> Periode PKL: 2025 | UBSI Margonda, Depok</div>
+        <p>
+          Selama Praktek Kerja Lapangan (PKL) di <strong>Universitas Bina Sarana Informatika (Margonda)</strong>, saya
+          mendapatkan pengalaman langsung dalam mengelola <strong>domain</strong> dan <strong>hosting berbasis
+            cPanel</strong>.
+          Saya belajar mengatur zona DNS, pembelian domain, konfigurasi nameserver, serta mengelola file dan folder
+          melalui cPanel File Manager. Selain itu, saya juga mempelajari manajemen database MySQL, backup otomatis, dan
+          keamanan dasar hosting.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-img="domain.jpeg" data-title="Manajemen Domain Domaenesia"
+            data-tech="DNS, Nameserver, Zone Editor">
+            <img src="domain.jpeg" alt="Konfigurasi Domain"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Domain+Management&font=montserrat';" />
+            <div class="gallery-caption"><i class="fas fa-globe"></i> Konfigurasi Domain (Domaenesia)</div>
+          </div>
+          <div class="gallery-item" data-img="cpanel.jpeg" data-title="cPanel Dashboard"
+            data-tech="File Manager, Database, Cron Job">
+            <img src="cpanel.jpeg" alt="cPanel Dashboard"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=cPanel+Dashboard&font=montserrat';" />
+            <div class="gallery-caption"><i class="fab fa-cpanel"></i> cPanel: File Manager & Database</div>
+          </div>
+          <div class="gallery-item" data-img="foto5.jpg" data-title="Website UMKM Desa Serang, Tasikmalaya"
+            data-tech="HTML, CSS, JS, PHP, MySQL, Hosting">
+            <img src="foto5.jpg" alt="Screenshot Project UMKM"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=UMKM+Web+Preview&font=montserrat';" />
+            <div class="gallery-caption"><i class="fas fa-code-branch"></i> Tampilan Web UMKM Desa Serang, Tasikmalaya
+            </div>
+          </div>
         </div>
-        <div class="gallery-item" data-img="cpanel.jpeg" data-title="cPanel Dashboard" data-tech="File Manager, Database, Cron Job">
-          <img src="cpanel.jpeg" alt="cPanel Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=cPanel+Dashboard&font=montserrat';" />
-          <div class="gallery-caption"><i class="fab fa-cpanel"></i> cPanel: File Manager & Database</div>
-        </div>
-        <div class="gallery-item" data-img="foto5.jpg" data-title="Website UMKM Desa Serang, Tasikmalaya" data-tech="HTML, CSS, JS, PHP, MySQL, Hosting">
-          <img src="foto5.jpg" alt="Screenshot Project UMKM" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=UMKM+Web+Preview&font=montserrat';" />
-          <div class="gallery-caption"><i class="fas fa-code-branch"></i> Tampilan Web UMKM Desa Serang, Tasikmalaya</div>
+        <p>
+          Pengalaman paling berharga adalah memahami perbedaan cara eksekusi query pada aplikasi web:
+          <strong>bind parameter (prepared statement)</strong> vs <strong>get result (query langsung)</strong>. Dalam
+          konteks cPanel dan pengembangan web, menggunakan <code>bindParam</code> (PDO PHP) memberikan keamanan tinggi
+          terhadap SQL injection.
+        </p>
+      </div>
+
+      <!-- Tim UMKMSerangJuara -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fas fa-users"></i> Tim Pengembang — UMKMSerangJuara.com</div>
+        <p>
+          Bergabung dalam tim pengembangan platform <a href="https://umkmserangjuara.com/" target="_blank"
+            rel="noopener"><strong>UMKMSerangJuara.com</strong></a>,
+          sebuah inisiatif digital untuk mempromosikan UMKM di wilayah Serang. Saya fokus pada integrasi hosting cPanel,
+          optimasi database, dan kolaborasi menggunakan Git & GitHub.
+        </p>
+        <div class="team-grid">
+          <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Hyugaaw"
+              target="_blank">Hyugaaw</a></div>
+          <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/KuchAli"
+              target="_blank">KuchAli</a></div>
+          <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Refal45"
+              target="_blank">Refal45 (saya)</a></div>
         </div>
       </div>
-      <p>
-        Pengalaman paling berharga adalah memahami perbedaan cara eksekusi query pada aplikasi web:
-        <strong>bind parameter (prepared statement)</strong> vs <strong>get result (query langsung)</strong>. Dalam konteks cPanel dan pengembangan web, menggunakan <code>bindParam</code> (PDO PHP) memberikan keamanan tinggi terhadap SQL injection.
-      </p>
-    </div>
 
-    <!-- Tim UMKMSerangJuara -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fas fa-users"></i> Tim Pengembang — UMKMSerangJuara.com</div>
-      <p>
-        Bergabung dalam tim pengembangan platform <a href="https://umkmserangjuara.com/" target="_blank" rel="noopener"><strong>UMKMSerangJuara.com</strong></a>,
-        sebuah inisiatif digital untuk mempromosikan UMKM di wilayah Serang. Saya fokus pada integrasi hosting cPanel, optimasi database, dan kolaborasi menggunakan Git & GitHub.
-      </p>
-      <div class="team-grid">
-        <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Hyugaaw" target="_blank">Hyugaaw</a></div>
-        <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/KuchAli" target="_blank">KuchAli</a></div>
-        <div class="team-member"><i class="fab fa-github"></i> <a href="https://github.com/Refal45" target="_blank">Refal45 (saya)</a></div>
+      <!-- Google Cloud Platform -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fab fa-google"></i> Google Cloud Platform — Maps & Authentication</div>
+        <div class="exp-date"><i class="far fa-calendar-alt"></i> Eksplorasi API: 2025</div>
+        <p>
+          Selama PKL saya juga mendalami <strong>Google Cloud Platform (GCP)</strong> untuk menambahkan peta interaktif
+          dan sistem login sosial pada proyek UMKM. Saya mengimplementasikan <strong>Maps JavaScript API</strong> untuk
+          menampilkan lokasi usaha mikro dan menggunakan <strong>OAuth 2.0 (Google Sign-In)</strong> untuk autentikasi
+          pengguna. Pengelolaan kredensial API, pembatasan kunci API (API key restriction), dan integrasi dengan backend
+          PHP menjadi fokus utama.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-img="clouds.jpeg" data-title="Google Maps API Integration"
+            data-tech="Maps JavaScript API, Marker, InfoWindow">
+            <img src="clouds.jpeg" alt="Google Maps API"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+Maps+API&font=montserrat';" />
+            <div class="gallery-caption"><i class="fas fa-map-marked-alt"></i> Google Maps API (Lokasi UMKM)</div>
+          </div>
+          <div class="gallery-item" data-img="clouds2.jpeg" data-title="Google OAuth 2.0 Authentication"
+            data-tech="Google Sign-In, JWT, OAuth Playground">
+            <img src="clouds2.jpeg" alt="Google OAuth"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+OAuth&font=montserrat';" />
+            <div class="gallery-caption"><i class="fas fa-id-card"></i> Google OAuth 2.0 — Login Sosial</div>
+          </div>
+          <div class="gallery-item" data-img="clouds3.jpeg" data-title="Akun Google Cloud Console Saya"
+            data-tech="API Key, Credentials, Billing">
+            <img src="clouds3.jpeg" alt="Google Cloud Console"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+Cloud+Akun&font=montserrat';" />
+            <div class="gallery-caption"><i class="fas fa-user-circle"></i> Akun Saya — Google Cloud Console</div>
+          </div>
+        </div>
+        <div class="tech-note">
+          <i class="fas fa-cloud"></i> <strong>Layanan Google Cloud yang digunakan:</strong>
+          <ul class="mt-2 mb-0">
+            <li><i class="fab fa-google"></i> <strong>Maps JavaScript API</strong> – Menampilkan peta lokasi UMKM dengan
+              marker dan info window.</li>
+            <li><i class="fas fa-id-card"></i> <strong>Google OAuth 2.0</strong> – Login sekali klik menggunakan akun
+              Google.</li>
+            <li><i class="fas fa-database"></i> <strong>Cloud Console & API Key Management</strong> – Membatasi akses
+              berdasarkan domain dan IP.</li>
+          </ul>
+        </div>
+        <p>Contoh implementasi: <strong>maps</strong> di halaman kontak menampilkan lokasi UMKM, <strong>OAuth</strong>
+          memudahkan pengguna login tanpa registrasi rumit. Akun Google Cloud saya telah mengaktifkan API tersebut dan
+          mengelola kuota dengan aman.</p>
       </div>
-    </div>
 
-    <!-- Google Cloud Platform -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fab fa-google"></i> Google Cloud Platform — Maps & Authentication</div>
-      <div class="exp-date"><i class="far fa-calendar-alt"></i> Eksplorasi API: 2025</div>
-      <p>
-        Selama PKL saya juga mendalami <strong>Google Cloud Platform (GCP)</strong> untuk menambahkan peta interaktif dan sistem login sosial pada proyek UMKM. Saya mengimplementasikan <strong>Maps JavaScript API</strong> untuk
-        menampilkan lokasi usaha mikro dan menggunakan <strong>OAuth 2.0 (Google Sign-In)</strong> untuk autentikasi pengguna. Pengelolaan kredensial API, pembatasan kunci API (API key restriction), dan integrasi dengan backend PHP menjadi fokus utama.
-      </p>
-      <div class="gallery-grid">
-        <div class="gallery-item" data-img="clouds.jpeg" data-title="Google Maps API Integration" data-tech="Maps JavaScript API, Marker, InfoWindow">
-          <img src="clouds.jpeg" alt="Google Maps API" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+Maps+API&font=montserrat';" />
-          <div class="gallery-caption"><i class="fas fa-map-marked-alt"></i> Google Maps API (Lokasi UMKM)</div>
-        </div>
-        <div class="gallery-item" data-img="clouds2.jpeg" data-title="Google OAuth 2.0 Authentication" data-tech="Google Sign-In, JWT, OAuth Playground">
-          <img src="clouds2.jpeg" alt="Google OAuth" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+OAuth&font=montserrat';" />
-          <div class="gallery-caption"><i class="fas fa-id-card"></i> Google OAuth 2.0 — Login Sosial</div>
-        </div>
-        <div class="gallery-item" data-img="clouds3.jpeg" data-title="Akun Google Cloud Console Saya" data-tech="API Key, Credentials, Billing">
-          <img src="clouds3.jpeg" alt="Google Cloud Console" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Google+Cloud+Akun&font=montserrat';" />
-          <div class="gallery-caption"><i class="fas fa-user-circle"></i> Akun Saya — Google Cloud Console</div>
-        </div>
-      </div>
-      <div class="tech-note">
-        <i class="fas fa-cloud"></i> <strong>Layanan Google Cloud yang digunakan:</strong>
-        <ul class="mt-2 mb-0">
-          <li><i class="fab fa-google"></i> <strong>Maps JavaScript API</strong> – Menampilkan peta lokasi UMKM dengan marker dan info window.</li>
-          <li><i class="fas fa-id-card"></i> <strong>Google OAuth 2.0</strong> – Login sekali klik menggunakan akun Google.</li>
-          <li><i class="fas fa-database"></i> <strong>Cloud Console & API Key Management</strong> – Membatasi akses berdasarkan domain dan IP.</li>
-        </ul>
-      </div>
-      <p>Contoh implementasi: <strong>maps</strong> di halaman kontak menampilkan lokasi UMKM, <strong>OAuth</strong> memudahkan pengguna login tanpa registrasi rumit. Akun Google Cloud saya telah mengaktifkan API tersebut dan mengelola kuota dengan aman.</p>
-    </div>
-
-    <!-- Bind Parameter vs Get Result -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fas fa-code"></i> Bind Parameter vs Get Result (cPanel & PHP)</div>
-      <table class="custom-table">
-        <thead>
-          <tr><th>Metode</th><th>Deskripsi</th><th>Keamanan SQL Injection</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>bindParam (PDO / MySQLi Prepared)</strong></td><td>Mengikat parameter ke statement sebelum eksekusi. Query dan data terpisah.</td><td><i class="fas fa-shield-alt text-success"></i> Sangat aman</td></tr>
-          <tr><td><strong>getResult (MySQLi → get_result())</strong></td><td>Mengambil hasil set setelah prepared statement dieksekusi.</td><td><i class="fas fa-check-circle text-warning"></i> Aman jika pakai bind_param</td></tr>
-          <tr><td><strong>Query langsung (tanpa binding)</strong></td><td>Menggabungkan variabel ke SQL mentah.</td><td><i class="fas fa-exclamation-triangle text-danger"></i> Rawan SQL injection</td></tr>
-        </tbody>
-      </table>
-      <div class="tech-note">
-        <i class="fas fa-terminal"></i> <strong>Praktik terbaik di cPanel:</strong> Selalu gunakan prepared statement. Contoh PDO:
-        <pre><code>$stmt = $pdo->prepare("SELECT * FROM products WHERE category = :cat");
+      <!-- Bind Parameter vs Get Result -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fas fa-code"></i> Bind Parameter vs Get Result (cPanel & PHP)</div>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Metode</th>
+              <th>Deskripsi</th>
+              <th>Keamanan SQL Injection</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>bindParam (PDO / MySQLi Prepared)</strong></td>
+              <td>Mengikat parameter ke statement sebelum eksekusi. Query dan data terpisah.</td>
+              <td><i class="fas fa-shield-alt text-success"></i> Sangat aman</td>
+            </tr>
+            <tr>
+              <td><strong>getResult (MySQLi → get_result())</strong></td>
+              <td>Mengambil hasil set setelah prepared statement dieksekusi.</td>
+              <td><i class="fas fa-check-circle text-warning"></i> Aman jika pakai bind_param</td>
+            </tr>
+            <tr>
+              <td><strong>Query langsung (tanpa binding)</strong></td>
+              <td>Menggabungkan variabel ke SQL mentah.</td>
+              <td><i class="fas fa-exclamation-triangle text-danger"></i> Rawan SQL injection</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="tech-note">
+          <i class="fas fa-terminal"></i> <strong>Praktik terbaik di cPanel:</strong> Selalu gunakan prepared statement.
+          Contoh PDO:
+          <pre><code>$stmt = $pdo->prepare("SELECT * FROM products WHERE category = :cat");
 $stmt->bindParam(':cat', $category, PDO::PARAM_STR);
 $stmt->execute();
 $results = $stmt->fetchAll();</code></pre>
-      </div>
-    </div>
-
-    <!-- Manajemen File cPanel -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fas fa-folder-tree"></i> Manajemen File & Direktori di cPanel</div>
-      <ul>
-        <li>Upload dan ekstrak file website via File Manager atau FTP.</li>
-        <li>Mengatur permission folder (755 untuk direktori, 644 untuk file).</li>
-        <li>Mengelola file <code>.htaccess</code> untuk pengalihan dan keamanan.</li>
-        <li>Membuat subdomain dan addon domain untuk staging.</li>
-        <li>Backup & restore langsung dari cPanel.</li>
-      </ul>
-    </div>
-
-    <!-- ===== TEKNOLOGI YANG DIGUNAKAN ===== -->
-    <div class="exp-card">
-      <div class="exp-title"><i class="fas fa-microchip"></i> Teknologi & Tools Selama PKL</div>
-      <p>Berikut adalah stack teknologi dan perangkat yang saya gunakan dan pelajari selama menjalani Praktek Kerja Lapangan di UBSI Margonda:</p>
-      <div class="tech-grid-cat">
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fas fa-server"></i> Backend</div>
-          <div class="tech-cat-items">
-            <span><i class="fab fa-php"></i> PHP Native</span>
-            <span><i class="fab fa-laravel"></i> Laravel</span>
-          </div>
-        </div>
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fas fa-database"></i> Database</div>
-          <div class="tech-cat-items">
-            <span><i class="fas fa-database"></i> MySQL</span>
-            <span><i class="fas fa-cloud"></i> phpMyAdmin</span>
-          </div>
-        </div>
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fas fa-paint-brush"></i> Frontend</div>
-          <div class="tech-cat-items">
-            <span><i class="fab fa-js"></i> JavaScript</span>
-            <span><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
-            <span><i class="fab fa-html5"></i> HTML5</span>
-            <span><i class="fab fa-css3-alt"></i> CSS3</span>
-          </div>
-        </div>
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fab fa-google"></i> Google Cloud</div>
-          <div class="tech-cat-items">
-            <span><i class="fas fa-map-marked-alt"></i> Maps API</span>
-            <span><i class="fas fa-user-shield"></i> OAuth 2.0</span>
-            <span><i class="fas fa-cloud"></i> Cloud Console</span>
-          </div>
-        </div>
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fas fa-tools"></i> DevOps & Tools</div>
-          <div class="tech-cat-items">
-            <span><i class="fab fa-git-alt"></i> Git</span>
-            <span><i class="fab fa-github"></i> GitHub</span>
-            <span><i class="fas fa-code"></i> VS Code</span>
-            <span><i class="fas fa-server"></i> XAMPP</span>
-          </div>
-        </div>
-        <div class="tech-cat-card">
-          <div class="tech-cat-header"><i class="fas fa-globe"></i> Hosting & Domain</div>
-          <div class="tech-cat-items">
-            <span><i class="fab fa-cpanel"></i> cPanel</span>
-            <span><i class="fas fa-globe"></i> Domaenesia</span>
-            <span><i class="fas fa-folder-tree"></i> File Manager</span>
-          </div>
         </div>
       </div>
-    </div>
 
-    <!-- CTA DOWNLOAD CV -->
-    <div class="exp-card" style="text-align:center; background: var(--hero-bg);">
-      <h3 style="font-weight:700; margin-bottom:0.6rem;">
-        <i class="fas fa-file-alt" style="color: var(--active-color);"></i> Tertarik bekerja sama?
-      </h3>
-      <p style="color: var(--text-secondary); margin-bottom: 0.4rem;">
-        Unduh CV lengkap saya untuk melihat riwayat pendidikan, pengalaman, dan keahlian secara detail.
-      </p>
-      <a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf" class="btn-download-cv" style="margin-top: 0.8rem;">
-        <i class="fas fa-download"></i> Download CV Lengkap
-      </a>
-    </div>
-
-    <div class="last-updated" id="lastUpdated"></div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="full-width-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4><i class="fas fa-terminal"></i> Raifal.dev</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Fullstack Developer berdedikasi menciptakan solusi digital modern.</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/refal_3434" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://github.com/Refal45" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
-          <a href="mailto:raifalzahran@gmail.com" class="social-link"><i class="fas fa-envelope"></i> Email</a>
-        </div>
-        <div class="email-direct"><i class="far fa-envelope"></i> <a href="mailto:raifalzahran@gmail.com">raifalzahran@gmail.com</a></div>
-      </div>
-      <div class="footer-col">
-        <h4><i class="fas fa-compass"></i> Menu Cepat</h4>
-        <ul class="footer-quick-links">
-          <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-          <li><a href="tentang.html"><i class="fas fa-user"></i> Tentang</a></li>
-          <li><a href="project.html"><i class="fas fa-folder-open"></i> Proyek</a></li>
-          <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-          <li><a href="pengalaman.html"><i class="fas fa-briefcase"></i> PKL</a></li>
-          <li><a href="CV_Raifal_Fadhal_Zahran.pdf" download="CV_Raifal_Fadhal_Zahran.pdf"><i class="fas fa-file-arrow-down"></i> Download CV</a></li>
+      <!-- Manajemen File cPanel -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fas fa-folder-tree"></i> Manajemen File & Direktori di cPanel</div>
+        <ul>
+          <li>Upload dan ekstrak file website via File Manager atau FTP.</li>
+          <li>Mengatur permission folder (755 untuk direktori, 644 untuk file).</li>
+          <li>Mengelola file <code>.htaccess</code> untuk pengalihan dan keamanan.</li>
+          <li>Membuat subdomain dan addon domain untuk staging.</li>
+          <li>Backup & restore langsung dari cPanel.</li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
-        <p style="font-size: 0.85rem;">Depok, Jawa Barat, Indonesia</p>
-        <div class="footer-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6451247341326!2d106.79122927494921!3d-6.375170493590673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5aa9bf14d7f%3A0x114c0ee2f576f917!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1711023456789!5m2!1sid!2sid" allowfullscreen="" loading="lazy" style="border:0; width:100%; height:180px; border-radius:20px;"></iframe>
+
+      <!-- ===== TEKNOLOGI YANG DIGUNAKAN (tambahan baru) ===== -->
+      <div class="exp-card">
+        <div class="exp-title"><i class="fas fa-microchip"></i> Teknologi & Tools Selama PKL</div>
+        <p>Berikut adalah stack teknologi dan perangkat yang saya gunakan dan pelajari selama menjalani Praktek Kerja
+          Lapangan di UBSI Margonda:</p>
+        <div class="tech-grid-cat">
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fas fa-server"></i> Backend</div>
+            <div class="tech-cat-items">
+              <span><i class="fab fa-php"></i> PHP Native</span>
+              <span><i class="fab fa-laravel"></i> Laravel</span>
+            </div>
+          </div>
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fas fa-database"></i> Database</div>
+            <div class="tech-cat-items">
+              <span><i class="fas fa-database"></i> MySQL</span>
+              <span><i class="fas fa-cloud"></i> phpMyAdmin</span>
+            </div>
+          </div>
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fas fa-paint-brush"></i> Frontend</div>
+            <div class="tech-cat-items">
+              <span><i class="fab fa-js"></i> JavaScript</span>
+              <span><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+              <span><i class="fab fa-html5"></i> HTML5</span>
+              <span><i class="fab fa-css3-alt"></i> CSS3</span>
+            </div>
+          </div>
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fab fa-google"></i> Google Cloud</div>
+            <div class="tech-cat-items">
+              <span><i class="fas fa-map-marked-alt"></i> Maps API</span>
+              <span><i class="fas fa-user-shield"></i> OAuth 2.0</span>
+              <span><i class="fas fa-cloud"></i> Cloud Console</span>
+            </div>
+          </div>
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fas fa-tools"></i> DevOps & Tools</div>
+            <div class="tech-cat-items">
+              <span><i class="fab fa-git-alt"></i> Git</span>
+              <span><i class="fab fa-github"></i> GitHub</span>
+              <span><i class="fas fa-code"></i> VS Code</span>
+              <span><i class="fas fa-server"></i> XAMPP</span>
+            </div>
+          </div>
+          <div class="tech-cat-card">
+            <div class="tech-cat-header"><i class="fas fa-globe"></i> Hosting & Domain</div>
+            <div class="tech-cat-items">
+              <span><i class="fab fa-cpanel"></i> cPanel</span>
+              <span><i class="fas fa-globe"></i> Domaenesia</span>
+              <span><i class="fas fa-folder-tree"></i> File Manager</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="full-width-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><i class="fas fa-terminal"></i> Raifal.dev</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Fullstack Developer berdedikasi menciptakan solusi
+            digital modern.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/refal_3434" target="_blank" class="social-link"><i
+                class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://github.com/Refal45" target="_blank" class="social-link"><i class="fab fa-github"></i>
+              GitHub</a>
+            <a href="mailto:raifalzahran@gmail.com" class="social-link"><i class="fas fa-envelope"></i> Email</a>
+          </div>
+          <div class="email-direct"><i class="far fa-envelope"></i> <a
+              href="mailto:raifalzahran@gmail.com">raifalzahran@gmail.com</a></div>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fas fa-compass"></i> Menu Cepat</h4>
+          <ul class="footer-quick-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="tentang.html"><i class="fas fa-user"></i> Tentang</a></li>
+            <li><a href="project.html"><i class="fas fa-folder-open"></i> Proyek</a></li>
+            <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+            <li><a href="pengalaman.html"><i class="fas fa-briefcase"></i> PKL</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fas fa-map-pin"></i> Lokasi</h4>
+          <p style="font-size: 0.85rem;">Depok, Jawa Barat, Indonesia</p>
+          <div class="footer-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6451247341326!2d106.79122927494921!3d-6.375170493590673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5aa9bf14d7f%3A0x114c0ee2f576f917!2sDepok%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1711023456789!5m2!1sid!2sid"
+              allowfullscreen="" loading="lazy"
+              style="border:0; width:100%; height:180px; border-radius:20px;"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Pengalaman PKL </i></div>
+    </div>
+  </footer>
+
+  <!-- Modal Lightbox -->
+  <div class="modal fade image-modal" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-transparent">
+        <div class="modal-body p-0 text-end">
+          <button type="button" class="btn-close btn-close-white mb-2" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+          <img id="modalImage" src="" alt="Full size" />
+          <p id="modalCaption" class="text-white mt-2 bg-dark bg-opacity-50 d-inline-block px-3 py-1 rounded-pill"
+            style="font-size: 0.9rem"></p>
         </div>
       </div>
     </div>
-    <div class="copyright"><i class="far fa-copyright"></i> 2026 Raifal Fadhal Zahran | Pengalaman PKL</div>
   </div>
-</footer>
 
-<!-- Modal Lightbox -->
-<div class="modal fade image-modal" id="imageModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-transparent">
-      <div class="modal-body p-0 text-end">
-        <button type="button" class="btn-close btn-close-white mb-2" data-bs-dismiss="modal" aria-label="Close"></button>
-        <img id="modalImage" src="" alt="Full size" />
-        <p id="modalCaption" class="text-white mt-2 bg-dark bg-opacity-50 d-inline-block px-3 py-1 rounded-pill" style="font-size: 0.9rem"></p>
-      </div>
-    </div>
-  </div>
-</div>
+  <div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
+  <div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
-<div id="toastMsg" class="custom-toast"><i class="fas fa-info-circle"></i> <span id="toastText"></span></div>
-<div id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      // DRAWER MOBILE
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('sidebarOverlay');
+      const menuIcon = document.getElementById('mobileMenuIcon');
+      const closeDrawer = document.getElementById('closeDrawerBtn');
+      function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+      function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+      if (menuIcon) menuIcon.addEventListener('click', openDrawer);
+      if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
+      if (overlay) overlay.addEventListener('click', closeDrawerFunc);
+      window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  (function() {
-    // DRAWER MOBILE
-    const drawer = document.getElementById('mobileDrawer');
-    const overlay = document.getElementById('sidebarOverlay');
-    const menuIcon = document.getElementById('mobileMenuIcon');
-    const closeDrawer = document.getElementById('closeDrawerBtn');
-    function openDrawer() { if (window.innerWidth <= 900) { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-    function closeDrawerFunc() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    if (menuIcon) menuIcon.addEventListener('click', openDrawer);
-    if (closeDrawer) closeDrawer.addEventListener('click', closeDrawerFunc);
-    if (overlay) overlay.addEventListener('click', closeDrawerFunc);
-    window.addEventListener('resize', () => { if (window.innerWidth > 900 && drawer.classList.contains('open')) closeDrawerFunc(); });
+      // DARK MODE
+      const body = document.body;
+      const desktopToggle = document.getElementById('desktopThemeToggle');
+      const drawerToggle = document.getElementById('drawerDarkToggle');
+      const updateDarkUI = (isDark) => {
+        [desktopToggle, drawerToggle].forEach(t => {
+          if (!t) return;
+          const icon = t.querySelector('i'), span = t.querySelector('span');
+          if (isDark) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = 'Mode Terang'; }
+          else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = 'Mode Gelap'; }
+        });
+      };
+      const setTheme = (theme) => {
+        if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
+        else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
+      };
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') setTheme('dark');
+      else if (storedTheme === 'light') setTheme('light');
+      else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
+      if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
+      if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // DARK MODE
-    const body = document.body;
-    const desktopToggle = document.getElementById('desktopThemeToggle');
-    const drawerToggle = document.getElementById('drawerDarkToggle');
-    const updateDarkUI = (isDark) => {
-      [desktopToggle, drawerToggle].forEach(t => {
-        if (!t) return;
-        const icon = t.querySelector('i'), span = t.querySelector('span');
-        if (isDark) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = 'Mode Terang'; }
-        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = 'Mode Gelap'; }
+      // TOAST
+      const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
+      function showToast(msg, icon = 'fas fa-info-circle') {
+        toastTextSpan.innerText = msg;
+        const iconElem = toastEl.querySelector('i');
+        if (iconElem) iconElem.className = `${icon} me-2`;
+        toastEl.classList.add('show');
+        setTimeout(() => toastEl.classList.remove('show'), 2500);
+      }
+
+      // LIGHTBOX GALLERY
+      const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+      const modalImage = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        const img = item.querySelector('img');
+        const title = item.getAttribute('data-title') || item.querySelector('.gallery-caption')?.innerText || 'Dokumentasi';
+        const tech = item.getAttribute('data-tech') || '';
+        item.addEventListener('click', (e) => {
+          if (e.target.tagName === 'IMG') {
+            modalImage.src = img.src;
+            modalCaption.innerText = `${title} ${tech ? '| ' + tech : ''}`;
+            modal.show();
+          } else {
+            showToast(`📸 ${title} — klik gambar untuk memperbesar`, 'fas fa-camera');
+          }
+        });
       });
-    };
-    const setTheme = (theme) => {
-      if (theme === 'dark') { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateDarkUI(true); }
-      else { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateDarkUI(false); }
-    };
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') setTheme('dark');
-    else if (storedTheme === 'light') setTheme('light');
-    else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const toggleDark = () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); };
-    if (desktopToggle) desktopToggle.addEventListener('click', toggleDark);
-    if (drawerToggle) drawerToggle.addEventListener('click', toggleDark);
 
-    // TOAST
-    const toastEl = document.getElementById('toastMsg'), toastTextSpan = document.getElementById('toastText');
-    function showToast(msg, icon = 'fas fa-info-circle') {
-      toastTextSpan.innerText = msg;
-      const iconElem = toastEl.querySelector('i');
-      if (iconElem) iconElem.className = `${icon} me-2`;
-      toastEl.classList.add('show');
-      setTimeout(() => toastEl.classList.remove('show'), 2500);
-    }
+      // BACK TO TOP
+      const backBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
+      backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // LIGHTBOX GALLERY
-    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
-    const modalImage = document.getElementById('modalImage');
-    const modalCaption = document.getElementById('modalCaption');
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      const img = item.querySelector('img');
-      const title = item.getAttribute('data-title') || item.querySelector('.gallery-caption')?.innerText || 'Dokumentasi';
-      const tech = item.getAttribute('data-tech') || '';
-      item.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IMG') {
-          modalImage.src = img.src;
-          modalCaption.innerText = `${title} ${tech ? '| ' + tech : ''}`;
-          modal.show();
-        } else {
-          showToast(`📸 ${title} — klik gambar untuk memperbesar`, 'fas fa-camera');
-        }
-      });
-    });
+      // LAST UPDATED & GREETING
+      const now = new Date();
+      document.getElementById('lastUpdated').innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} | Raifal Fadhal Zahran · PKL Domaenesia, cPanel & Google Cloud API`;
+      const hour = new Date().getHours();
+      let greet = 'Perjalanan PKL';
+      if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
+      else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
+      else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
+      else greet = '🌙 Selamat malam,';
+      document.getElementById('dynamicGreeting').innerHTML = `${greet} <span style="font-weight:700;">Pengalaman PKL</span>`;
 
-    // BACK TO TOP
-    const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { window.scrollY > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show'); });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // LAST UPDATED & GREETING
-    const now = new Date();
-    const lastUpd = document.getElementById('lastUpdated');
-    if (lastUpd) {
-      lastUpd.innerHTML = `<i class="far fa-calendar-alt"></i> Terakhir diperbarui: ${now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' })} | Raifal Fadhal Zahran · PKL Domaenesia, cPanel & Google Cloud API`;
-    }
-    const hour = new Date().getHours();
-    let greet = 'Perjalanan PKL';
-    if (hour >= 5 && hour < 11) greet = '☀️ Selamat pagi,';
-    else if (hour >= 11 && hour < 15) greet = '🌤️ Selamat siang,';
-    else if (hour >= 15 && hour < 18) greet = '🌇 Selamat sore,';
-    else greet = '🌙 Selamat malam,';
-    const greetEl = document.getElementById('dynamicGreeting');
-    if (greetEl) greetEl.innerHTML = `${greet} <span style="font-weight:700;">Pengalaman PKL</span>`;
-
-    // FALLBACK IMAGES
-    const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
-    profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
-
-    // ===== HANDLER DOWNLOAD CV =====
-    // Menampilkan toast saat user klik tombol Download CV
-    document.querySelectorAll('a[href$=".pdf"][download]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const fileName = btn.getAttribute('download') || 'CV';
-        showToast(`📄 Mengunduh ${fileName}...`, 'fas fa-file-arrow-down');
-        // Animasi loading singkat pada tombol hero
-        const icon = btn.querySelector('i');
-        if (icon && btn.classList.contains('btn-download-cv')) {
-          const originalClass = icon.className;
-          icon.className = 'fas fa-spinner';
-          btn.classList.add('loading');
-          setTimeout(() => {
-            btn.classList.remove('loading');
-            icon.className = originalClass;
-          }, 1200);
-        }
-      });
-    });
-
-    // Toast selamat datang
-    setTimeout(() => showToast('✨ Selamat datang di halaman PKL', 'fas fa-briefcase'), 800);
-  })();
-</script>
+      // FALLBACK IMAGES
+      const profileImgs = [document.getElementById('heroProfileImg'), document.getElementById('drawerProfileImg')];
+      profileImgs.forEach(img => { if (img) img.onerror = () => { img.src = 'https://ui-avatars.com/api/?background=4f46e5&color=fff&bold=true&size=120&name=Raifal'; }; });
+      setTimeout(() => showToast('✨ Selamat datang di halaman PKL', 'fas fa-briefcase'), 800);
+    })();
+  </script>
 </body>
+
 </html>
